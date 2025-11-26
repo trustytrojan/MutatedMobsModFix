@@ -25,13 +25,6 @@ public class MainClass
     
     @Mod.EventHandler
     public void preInit(final FMLPreInitializationEvent e) {
-        // Force load EntitySpellcasterIllager to ensure DataParameter IDs are consistent
-        try {
-            Class.forName("net.minecraft.entity.monster.EntitySpellcasterIllager");
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-
         MainClass.proxy.preInit(e);
         EntityLoader.init();
         MainClass.proxy.registerRenders();
