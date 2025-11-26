@@ -46,12 +46,12 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
     protected void initEntityAI() {
         this.tasks.addTask(2, (EntityAIBase)new EntityAICreeperSwell3(this));
         this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, (Class)EntityOcelot.class, 6.0f, 1.0, 1.2));
+        this.tasks.addTask(3, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, EntityOcelot.class, 6.0f, 1.0, 1.2));
         this.tasks.addTask(4, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0, false));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 0.8));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(6, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
         this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
     }
     
@@ -75,10 +75,10 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntitySlimeCreeper.STATE, (Object)(-1));
-        this.dataManager.register((DataParameter)EntitySlimeCreeper.POWERED, (Object)false);
-        this.dataManager.register((DataParameter)EntitySlimeCreeper.IGNITED, (Object)false);
-        this.dataManager.register((DataParameter)EntitySlimeCreeper.SLIME_SIZE, (Object)1);
+        this.dataManager.register(EntitySlimeCreeper.STATE, (-1));
+        this.dataManager.register(EntitySlimeCreeper.POWERED, false);
+        this.dataManager.register(EntitySlimeCreeper.IGNITED, false);
+        this.dataManager.register(EntitySlimeCreeper.SLIME_SIZE, 1);
     }
     
     @Nullable
@@ -93,7 +93,7 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
     }
     
     protected void setSlimeSize(final int size, final boolean resetHealth) {
-        this.dataManager.set((DataParameter)EntitySlimeCreeper.SLIME_SIZE, (Object)size);
+        this.dataManager.set(EntitySlimeCreeper.SLIME_SIZE, size);
         this.setSize(0.8f * size, 2.0f * size);
         this.setPosition(this.posX, this.posY, this.posZ);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue((double)(size * size * 2));
@@ -105,16 +105,16 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
     }
     
     public int getSlimeSize() {
-        return (int)this.dataManager.get((DataParameter)EntitySlimeCreeper.SLIME_SIZE);
+        return (int)this.dataManager.get(EntitySlimeCreeper.SLIME_SIZE);
     }
     
     public static void registerFixesCreeper(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntitySlimeCreeper.class);
+        EntityLiving.registerFixesMob(fixer, EntitySlimeCreeper.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
-        if ((Boolean)this.dataManager.get((DataParameter)EntitySlimeCreeper.POWERED)) {
+        if ((Boolean)this.dataManager.get(EntitySlimeCreeper.POWERED)) {
             compound.setBoolean("powered", true);
         }
         compound.setShort("Fuse", (short)this.fuseTime);
@@ -125,7 +125,7 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
     
     public void readEntityFromNBT(final NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
-        this.dataManager.set((DataParameter)EntitySlimeCreeper.POWERED, (Object)compound.getBoolean("powered"));
+        this.dataManager.set(EntitySlimeCreeper.POWERED, compound.getBoolean("powered"));
         if (compound.hasKey("Fuse", 99)) {
             this.fuseTime = compound.getShort("Fuse");
         }
@@ -217,7 +217,7 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
                 this.explode();
             }
             if (this.getHealth() <= 1.0f && this.getSlimeSize() == 1) {
-                this.dataManager.set((DataParameter)EntitySlimeCreeper.POWERED, (Object)true);
+                this.dataManager.set(EntitySlimeCreeper.POWERED, true);
             }
         }
         super.onUpdate();
@@ -252,7 +252,7 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
     }
     
     public boolean getPowered() {
-        return (boolean)this.dataManager.get((DataParameter)EntitySlimeCreeper.POWERED);
+        return (boolean)this.dataManager.get(EntitySlimeCreeper.POWERED);
     }
     
     @SideOnly(Side.CLIENT)
@@ -273,16 +273,16 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
     }
     
     public int getCreeperState() {
-        return (int)this.dataManager.get((DataParameter)EntitySlimeCreeper.STATE);
+        return (int)this.dataManager.get(EntitySlimeCreeper.STATE);
     }
     
     public void setCreeperState(final int state) {
-        this.dataManager.set((DataParameter)EntitySlimeCreeper.STATE, (Object)state);
+        this.dataManager.set(EntitySlimeCreeper.STATE, state);
     }
     
     public void onStruckByLightning(final EntityLightningBolt lightningBolt) {
         super.onStruckByLightning(lightningBolt);
-        this.dataManager.set((DataParameter)EntitySlimeCreeper.POWERED, (Object)true);
+        this.dataManager.set(EntitySlimeCreeper.POWERED, true);
     }
     
     protected boolean processInteract(final EntityPlayer player, final EnumHand hand) {
@@ -346,11 +346,11 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
     }
     
     public boolean hasIgnited() {
-        return (boolean)this.dataManager.get((DataParameter)EntitySlimeCreeper.IGNITED);
+        return (boolean)this.dataManager.get(EntitySlimeCreeper.IGNITED);
     }
     
     public void ignite() {
-        this.dataManager.set((DataParameter)EntitySlimeCreeper.IGNITED, (Object)true);
+        this.dataManager.set(EntitySlimeCreeper.IGNITED, true);
     }
     
     public boolean ableToCauseSkullDrop() {
@@ -362,9 +362,9 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
     }
     
     static {
-        STATE = EntityDataManager.createKey((Class)EntitySlimeCreeper.class, DataSerializers.VARINT);
-        POWERED = EntityDataManager.createKey((Class)EntitySlimeCreeper.class, DataSerializers.BOOLEAN);
-        IGNITED = EntityDataManager.createKey((Class)EntitySlimeCreeper.class, DataSerializers.BOOLEAN);
-        SLIME_SIZE = EntityDataManager.createKey((Class)EntitySlimeCreeper.class, DataSerializers.VARINT);
+        STATE = EntityDataManager.createKey(EntitySlimeCreeper.class, DataSerializers.VARINT);
+        POWERED = EntityDataManager.createKey(EntitySlimeCreeper.class, DataSerializers.BOOLEAN);
+        IGNITED = EntityDataManager.createKey(EntitySlimeCreeper.class, DataSerializers.BOOLEAN);
+        SLIME_SIZE = EntityDataManager.createKey(EntitySlimeCreeper.class, DataSerializers.VARINT);
     }
 }

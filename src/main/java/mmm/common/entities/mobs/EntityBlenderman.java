@@ -63,7 +63,7 @@ public class EntityBlenderman extends EntityMob implements IMutant
     protected void initEntityAI() {
         this.tasks.addTask(0, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
         this.tasks.addTask(7, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0, 0.0f));
-        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.tasks.addTask(10, (EntityAIBase)new AIPlaceBlock(this));
         this.tasks.addTask(11, (EntityAIBase)new AITakeBlock(this));
@@ -73,10 +73,10 @@ public class EntityBlenderman extends EntityMob implements IMutant
         this.tasks.addTask(3, (EntityAIBase)new EntityAIMoveThroughVillage((EntityCreature)this, 0.7, true));
         this.tasks.addTask(4, (EntityAIBase)new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
         this.tasks.addTask(6, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 0.6));
-        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 6.0f));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityWolf.class, true));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityGolem.class, true));
+        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
+        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityWolf.class, true));
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, true));
     }
     
     protected void applyEntityAttributes() {
@@ -129,12 +129,12 @@ public class EntityBlenderman extends EntityMob implements IMutant
         final IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED);
         if (entitylivingbaseIn == null) {
             this.targetChangeTime = 0;
-            this.dataManager.set((DataParameter)EntityBlenderman.SCREAMING, (Object)false);
+            this.dataManager.set(EntityBlenderman.SCREAMING, false);
             iattributeinstance.removeModifier(EntityBlenderman.ATTACKING_SPEED_BOOST);
         }
         else {
             this.targetChangeTime = this.ticksExisted;
-            this.dataManager.set((DataParameter)EntityBlenderman.SCREAMING, (Object)true);
+            this.dataManager.set(EntityBlenderman.SCREAMING, true);
             if (!iattributeinstance.hasModifier(EntityBlenderman.ATTACKING_SPEED_BOOST)) {
                 iattributeinstance.applyModifier(EntityBlenderman.ATTACKING_SPEED_BOOST);
             }
@@ -143,8 +143,8 @@ public class EntityBlenderman extends EntityMob implements IMutant
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityBlenderman.CARRIED_BLOCK, (Object)com.google.common.base.Optional.absent());
-        this.dataManager.register((DataParameter)EntityBlenderman.SCREAMING, (Object)false);
+        this.dataManager.register(EntityBlenderman.CARRIED_BLOCK, com.google.common.base.Optional.absent());
+        this.dataManager.register(EntityBlenderman.SCREAMING, false);
     }
     
     public void playEndermanSound() {
@@ -157,14 +157,14 @@ public class EntityBlenderman extends EntityMob implements IMutant
     }
     
     public void notifyDataManagerChange(final DataParameter<?> key) {
-        if (EntityBlenderman.SCREAMING.equals((Object)key) && this.isScreaming() && this.world.isRemote) {
+        if (EntityBlenderman.SCREAMING.equals(key) && this.isScreaming() && this.world.isRemote) {
             this.playEndermanSound();
         }
-        super.notifyDataManagerChange((DataParameter)key);
+        super.notifyDataManagerChange(key);
     }
     
     public static void registerFixesEnderman(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityBlenderman.class);
+        EntityLiving.registerFixesMob(fixer, EntityBlenderman.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -344,12 +344,12 @@ public class EntityBlenderman extends EntityMob implements IMutant
     }
     
     public void setHeldBlockState(@Nullable final IBlockState state) {
-        this.dataManager.set((DataParameter)EntityBlenderman.CARRIED_BLOCK, (Object)com.google.common.base.Optional.fromNullable((Object)state));
+        this.dataManager.set(EntityBlenderman.CARRIED_BLOCK, com.google.common.base.Optional.fromNullable(state));
     }
     
     @Nullable
     public IBlockState getHeldBlockState() {
-        return (IBlockState)((com.google.common.base.Optional)this.dataManager.get((DataParameter)EntityBlenderman.CARRIED_BLOCK)).orNull();
+        return (IBlockState)((com.google.common.base.Optional)this.dataManager.get(EntityBlenderman.CARRIED_BLOCK)).orNull();
     }
     
     public boolean attackEntityFrom(final DamageSource source, final float amount) {
@@ -388,15 +388,15 @@ public class EntityBlenderman extends EntityMob implements IMutant
     }
     
     public boolean isScreaming() {
-        return (boolean)this.dataManager.get((DataParameter)EntityBlenderman.SCREAMING);
+        return (boolean)this.dataManager.get(EntityBlenderman.SCREAMING);
     }
     
     static {
         ATTACKING_SPEED_BOOST_ID = UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0");
         ATTACKING_SPEED_BOOST = new AttributeModifier(EntityBlenderman.ATTACKING_SPEED_BOOST_ID, "Attacking speed boost", 0.15000000596046448, 0).setSaved(false);
         CARRIABLE_BLOCKS = Sets.newIdentityHashSet();
-        CARRIED_BLOCK = EntityDataManager.createKey((Class)EntityBlenderman.class, DataSerializers.OPTIONAL_BLOCK_STATE);
-        SCREAMING = EntityDataManager.createKey((Class)EntityBlenderman.class, DataSerializers.BOOLEAN);
+        CARRIED_BLOCK = EntityDataManager.createKey(EntityBlenderman.class, DataSerializers.OPTIONAL_BLOCK_STATE);
+        SCREAMING = EntityDataManager.createKey(EntityBlenderman.class, DataSerializers.BOOLEAN);
         EntityBlenderman.CARRIABLE_BLOCKS.add(Blocks.TNT);
         EntityBlenderman.CARRIABLE_BLOCKS.add((Block)Blocks.CACTUS);
         EntityBlenderman.CARRIABLE_BLOCKS.add(Blocks.CLAY);
@@ -455,13 +455,13 @@ public class EntityBlenderman extends EntityMob implements IMutant
         private int teleportTime;
         
         public AIFindPlayer(final EntityBlenderman p_i45842_1_) {
-            super((EntityCreature)p_i45842_1_, (Class)EntityPlayer.class, false);
+            super((EntityCreature)p_i45842_1_, EntityPlayer.class, false);
             this.enderman = p_i45842_1_;
         }
         
         public boolean shouldExecute() {
             final double d0 = this.getTargetDistance();
-            this.player = this.enderman.world.getNearestAttackablePlayer(this.enderman.posX, this.enderman.posY, this.enderman.posZ, d0, d0, (Function)null, (Predicate)new Predicate<EntityPlayer>() {
+            this.player = this.enderman.world.getNearestAttackablePlayer(this.enderman.posX, this.enderman.posY, this.enderman.posZ, d0, d0, (Function)null, new Predicate<EntityPlayer>() {
                 public boolean apply(@Nullable final EntityPlayer p_apply_1_) {
                     return p_apply_1_ != null && AIFindPlayer.this.enderman.shouldAttackPlayer(p_apply_1_);
                 }
@@ -570,7 +570,7 @@ public class EntityBlenderman extends EntityMob implements IMutant
             final IBlockState iblockstate = world.getBlockState(blockpos);
             final Block block = iblockstate.getBlock();
             final RayTraceResult raytraceresult = world.rayTraceBlocks(new Vec3d((double)(MathHelper.floor(this.enderman.posX) + 0.5f), (double)(j + 0.5f), (double)(MathHelper.floor(this.enderman.posZ) + 0.5f)), new Vec3d((double)(i + 0.5f), (double)(j + 0.5f), (double)(k + 0.5f)), false, true, false);
-            final boolean flag = raytraceresult != null && raytraceresult.getBlockPos().equals((Object)blockpos);
+            final boolean flag = raytraceresult != null && raytraceresult.getBlockPos().equals(blockpos);
             if (EntityBlenderman.CARRIABLE_BLOCKS.contains(block) && flag) {
                 this.enderman.setHeldBlockState(iblockstate);
                 world.setBlockToAir(blockpos);

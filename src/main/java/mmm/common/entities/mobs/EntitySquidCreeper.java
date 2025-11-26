@@ -46,13 +46,13 @@ public class EntitySquidCreeper extends EntityHalfCreeper implements IMutant
     
     protected void initEntityAI() {
         this.tasks.addTask(2, (EntityAIBase)new EntityAISquidCreeperSwell(this));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, (Class)EntityOcelot.class, 6.0f, 1.0, 1.2));
+        this.tasks.addTask(3, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, EntityOcelot.class, 6.0f, 1.0, 1.2));
         this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
         this.tasks.addTask(4, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0, false));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 0.8));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(6, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
         this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
     }
     
@@ -76,18 +76,18 @@ public class EntitySquidCreeper extends EntityHalfCreeper implements IMutant
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntitySquidCreeper.STATE, (Object)(-1));
-        this.dataManager.register((DataParameter)EntitySquidCreeper.POWERED, (Object)false);
-        this.dataManager.register((DataParameter)EntitySquidCreeper.IGNITED, (Object)false);
+        this.dataManager.register(EntitySquidCreeper.STATE, (-1));
+        this.dataManager.register(EntitySquidCreeper.POWERED, false);
+        this.dataManager.register(EntitySquidCreeper.IGNITED, false);
     }
     
     public static void registerFixesCreeper(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntitySilverfishCreeper.class);
+        EntityLiving.registerFixesMob(fixer, EntitySilverfishCreeper.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
-        if ((Boolean)this.dataManager.get((DataParameter)EntitySquidCreeper.POWERED)) {
+        if ((Boolean)this.dataManager.get(EntitySquidCreeper.POWERED)) {
             compound.setBoolean("powered", true);
         }
         compound.setShort("Fuse", (short)this.fuseTime);
@@ -97,7 +97,7 @@ public class EntitySquidCreeper extends EntityHalfCreeper implements IMutant
     
     public void readEntityFromNBT(final NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
-        this.dataManager.set((DataParameter)EntitySquidCreeper.POWERED, (Object)compound.getBoolean("powered"));
+        this.dataManager.set(EntitySquidCreeper.POWERED, compound.getBoolean("powered"));
         if (compound.hasKey("Fuse", 99)) {
             this.fuseTime = compound.getShort("Fuse");
         }
@@ -152,7 +152,7 @@ public class EntitySquidCreeper extends EntityHalfCreeper implements IMutant
     }
     
     public boolean getPowered() {
-        return (boolean)this.dataManager.get((DataParameter)EntitySquidCreeper.POWERED);
+        return (boolean)this.dataManager.get(EntitySquidCreeper.POWERED);
     }
     
     @SideOnly(Side.CLIENT)
@@ -166,11 +166,11 @@ public class EntitySquidCreeper extends EntityHalfCreeper implements IMutant
     }
     
     public int getCreeperState() {
-        return (int)this.dataManager.get((DataParameter)EntitySquidCreeper.STATE);
+        return (int)this.dataManager.get(EntitySquidCreeper.STATE);
     }
     
     public void setCreeperState(final int state) {
-        this.dataManager.set((DataParameter)EntitySquidCreeper.STATE, (Object)state);
+        this.dataManager.set(EntitySquidCreeper.STATE, state);
     }
     
     protected boolean processInteract(final EntityPlayer player, final EnumHand hand) {
@@ -227,11 +227,11 @@ public class EntitySquidCreeper extends EntityHalfCreeper implements IMutant
     }
     
     public boolean hasIgnited() {
-        return (boolean)this.dataManager.get((DataParameter)EntitySquidCreeper.IGNITED);
+        return (boolean)this.dataManager.get(EntitySquidCreeper.IGNITED);
     }
     
     public void ignite() {
-        this.dataManager.set((DataParameter)EntitySquidCreeper.IGNITED, (Object)true);
+        this.dataManager.set(EntitySquidCreeper.IGNITED, true);
     }
     
     public boolean ableToCauseSkullDrop() {
@@ -243,8 +243,8 @@ public class EntitySquidCreeper extends EntityHalfCreeper implements IMutant
     }
     
     static {
-        STATE = EntityDataManager.createKey((Class)EntitySilverfishCreeper.class, DataSerializers.VARINT);
-        POWERED = EntityDataManager.createKey((Class)EntitySilverfishCreeper.class, DataSerializers.BOOLEAN);
-        IGNITED = EntityDataManager.createKey((Class)EntitySilverfishCreeper.class, DataSerializers.BOOLEAN);
+        STATE = EntityDataManager.createKey(EntitySilverfishCreeper.class, DataSerializers.VARINT);
+        POWERED = EntityDataManager.createKey(EntitySilverfishCreeper.class, DataSerializers.BOOLEAN);
+        IGNITED = EntityDataManager.createKey(EntitySilverfishCreeper.class, DataSerializers.BOOLEAN);
     }
 }

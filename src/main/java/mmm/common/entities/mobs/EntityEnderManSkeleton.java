@@ -56,12 +56,12 @@ public class EntityEnderManSkeleton extends EntityMob implements IRangedAttackMo
     protected void initEntityAI() {
         this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(6, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(1, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityWolf.class, true));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityGolem.class, true));
+        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityWolf.class, true));
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, true));
     }
     
     protected void applyEntityAttributes() {
@@ -72,7 +72,7 @@ public class EntityEnderManSkeleton extends EntityMob implements IRangedAttackMo
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityEnderManSkeleton.SWINGING_ARMS, (Object)false);
+        this.dataManager.register(EntityEnderManSkeleton.SWINGING_ARMS, false);
     }
     
     public EnumCreatureAttribute getCreatureAttribute() {
@@ -130,7 +130,7 @@ public class EntityEnderManSkeleton extends EntityMob implements IRangedAttackMo
     }
     
     public static void registerFixesSkeleton(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityEnderManSkeleton.class);
+        EntityLiving.registerFixesMob(fixer, EntityEnderManSkeleton.class);
     }
     
     protected void dropFewItems(final boolean par1, final int par2) {
@@ -267,14 +267,14 @@ public class EntityEnderManSkeleton extends EntityMob implements IRangedAttackMo
     
     @SideOnly(Side.CLIENT)
     public boolean isSwingingArms() {
-        return (boolean)this.dataManager.get((DataParameter)EntityEnderManSkeleton.SWINGING_ARMS);
+        return (boolean)this.dataManager.get(EntityEnderManSkeleton.SWINGING_ARMS);
     }
     
     public void setSwingingArms(final boolean swingingArms) {
-        this.dataManager.set((DataParameter)EntityEnderManSkeleton.SWINGING_ARMS, (Object)swingingArms);
+        this.dataManager.set(EntityEnderManSkeleton.SWINGING_ARMS, swingingArms);
     }
     
     static {
-        SWINGING_ARMS = EntityDataManager.createKey((Class)EntityEnderManSkeleton.class, DataSerializers.BOOLEAN);
+        SWINGING_ARMS = EntityDataManager.createKey(EntityEnderManSkeleton.class, DataSerializers.BOOLEAN);
     }
 }

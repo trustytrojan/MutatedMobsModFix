@@ -56,7 +56,7 @@ public class EntityZombieSpider extends EntityMob implements IMutant
         this.tasks.addTask(2, (EntityAIBase)new EntityAIZombieSpiderAttack(this, 1.0, false));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
         this.tasks.addTask(7, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.applyEntityAI();
     }
@@ -64,9 +64,9 @@ public class EntityZombieSpider extends EntityMob implements IMutant
     protected void applyEntityAI() {
         this.tasks.addTask(6, (EntityAIBase)new EntityAIMoveThroughVillage((EntityCreature)this, 1.0, false));
         this.targetTasks.addTask(1, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, true, new Class[] { EntityPigZombie.class }));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityVillager.class, false));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityIronGolem.class, true));
+        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityVillager.class, false));
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityIronGolem.class, true));
     }
     
     protected void applyEntityAttributes() {
@@ -80,18 +80,18 @@ public class EntityZombieSpider extends EntityMob implements IMutant
     
     protected void entityInit() {
         super.entityInit();
-        this.getDataManager().register((DataParameter)EntityZombieSpider.IS_CHILD, (Object)false);
-        this.getDataManager().register((DataParameter)EntityZombieSpider.ARMS_RAISED, (Object)false);
-        this.dataManager.register((DataParameter)EntityZombieSpider.CLIMBING, (Object)0);
+        this.getDataManager().register(EntityZombieSpider.IS_CHILD, false);
+        this.getDataManager().register(EntityZombieSpider.ARMS_RAISED, false);
+        this.dataManager.register(EntityZombieSpider.CLIMBING, (byte)0);
     }
     
     public void setArmsRaised(final boolean armsRaised) {
-        this.getDataManager().set((DataParameter)EntityZombieSpider.ARMS_RAISED, (Object)armsRaised);
+        this.getDataManager().set(EntityZombieSpider.ARMS_RAISED, armsRaised);
     }
     
     @SideOnly(Side.CLIENT)
     public boolean isArmsRaised() {
-        return (boolean)this.getDataManager().get((DataParameter)EntityZombieSpider.ARMS_RAISED);
+        return (boolean)this.getDataManager().get(EntityZombieSpider.ARMS_RAISED);
     }
     
     public boolean isBreakDoorsTaskSet() {
@@ -112,7 +112,7 @@ public class EntityZombieSpider extends EntityMob implements IMutant
     }
     
     public boolean isChild() {
-        return (boolean)this.getDataManager().get((DataParameter)EntityZombieSpider.IS_CHILD);
+        return (boolean)this.getDataManager().get(EntityZombieSpider.IS_CHILD);
     }
     
     protected int getExperiencePoints(final EntityPlayer player) {
@@ -123,7 +123,7 @@ public class EntityZombieSpider extends EntityMob implements IMutant
     }
     
     public void setChild(final boolean childZombie) {
-        this.getDataManager().set((DataParameter)EntityZombieSpider.IS_CHILD, (Object)childZombie);
+        this.getDataManager().set(EntityZombieSpider.IS_CHILD, childZombie);
         if (this.world != null && !this.world.isRemote) {
             final IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED);
             iattributeinstance.removeModifier(EntityZombieSpider.BABY_SPEED_BOOST);
@@ -135,10 +135,10 @@ public class EntityZombieSpider extends EntityMob implements IMutant
     }
     
     public void notifyDataManagerChange(final DataParameter<?> key) {
-        if (EntityZombieSpider.IS_CHILD.equals((Object)key)) {
+        if (EntityZombieSpider.IS_CHILD.equals(key)) {
             this.setChildSize(this.isChild());
         }
-        super.notifyDataManagerChange((DataParameter)key);
+        super.notifyDataManagerChange(key);
     }
     
     public void onLivingUpdate() {
@@ -241,14 +241,14 @@ public class EntityZombieSpider extends EntityMob implements IMutant
     }
     
     public void setBesideClimbableBlock(final boolean climbing) {
-        byte b0 = (byte)this.dataManager.get((DataParameter)EntityZombieSpider.CLIMBING);
+        byte b0 = (byte)this.dataManager.get(EntityZombieSpider.CLIMBING);
         if (climbing) {
             b0 |= 0x1;
         }
         else {
             b0 &= 0xFFFFFFFE;
         }
-        this.dataManager.set((DataParameter)EntityZombieSpider.CLIMBING, (Object)b0);
+        this.dataManager.set(EntityZombieSpider.CLIMBING, b0);
     }
     
     @Nullable
@@ -272,7 +272,7 @@ public class EntityZombieSpider extends EntityMob implements IMutant
     }
     
     public boolean isBesideClimbableBlock() {
-        return ((byte)this.dataManager.get((DataParameter)EntityZombieSpider.CLIMBING) & 0x1) != 0x0;
+        return ((byte)this.dataManager.get(EntityZombieSpider.CLIMBING) & 0x1) != 0x0;
     }
     
     protected void setEquipmentBasedOnDifficulty(final DifficultyInstance difficulty) {
@@ -289,7 +289,7 @@ public class EntityZombieSpider extends EntityMob implements IMutant
     }
     
     public static void registerFixesZombie(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityZombieSpider.class);
+        EntityLiving.registerFixesMob(fixer, EntityZombieSpider.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -356,7 +356,7 @@ public class EntityZombieSpider extends EntityMob implements IMutant
             if (EntityZombieSpider$groupdata.isChild) {
                 this.setChild(true);
                 if (this.world.rand.nextFloat() < 0.05) {
-                    final List<EntityChicken> list = (List<EntityChicken>)this.world.getEntitiesWithinAABB((Class)EntityChicken.class, this.getEntityBoundingBox().grow(5.0, 3.0, 5.0), EntitySelectors.IS_STANDALONE);
+                    final List<EntityChicken> list = (List<EntityChicken>)this.world.getEntitiesWithinAABB(EntityChicken.class, this.getEntityBoundingBox().grow(5.0, 3.0, 5.0), EntitySelectors.IS_STANDALONE);
                     if (!list.isEmpty()) {
                         final EntityChicken entitychicken = list.get(0);
                         entitychicken.setChickenJockey(true);
@@ -435,12 +435,12 @@ public class EntityZombieSpider extends EntityMob implements IMutant
     }
     
     static {
-        CLIMBING = EntityDataManager.createKey((Class)EntityZombieSpiderPigman.class, DataSerializers.BYTE);
+        CLIMBING = EntityDataManager.createKey(EntityZombieSpiderPigman.class, DataSerializers.BYTE);
         BABY_SPEED_BOOST_ID = UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836");
         BABY_SPEED_BOOST = new AttributeModifier(EntityZombieSpider.BABY_SPEED_BOOST_ID, "Baby speed boost", 0.5, 1);
-        IS_CHILD = EntityDataManager.createKey((Class)EntityZombieSpider.class, DataSerializers.BOOLEAN);
-        VILLAGER_TYPE = EntityDataManager.createKey((Class)EntityZombieSpider.class, DataSerializers.VARINT);
-        ARMS_RAISED = EntityDataManager.createKey((Class)EntityZombieSpider.class, DataSerializers.BOOLEAN);
+        IS_CHILD = EntityDataManager.createKey(EntityZombieSpider.class, DataSerializers.BOOLEAN);
+        VILLAGER_TYPE = EntityDataManager.createKey(EntityZombieSpider.class, DataSerializers.VARINT);
+        ARMS_RAISED = EntityDataManager.createKey(EntityZombieSpider.class, DataSerializers.BOOLEAN);
     }
     
     class GroupData implements IEntityLivingData

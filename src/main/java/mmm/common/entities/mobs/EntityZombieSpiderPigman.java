@@ -88,7 +88,7 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityZombieSpiderPigman.CLIMBING, (Object)0);
+        this.dataManager.register(EntityZombieSpiderPigman.CLIMBING, (byte)0);
     }
     
     public boolean isOnLadder() {
@@ -107,7 +107,7 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     }
     
     public boolean isBesideClimbableBlock() {
-        return ((byte)this.dataManager.get((DataParameter)EntityZombieSpiderPigman.CLIMBING) & 0x1) != 0x0;
+        return ((byte)this.dataManager.get(EntityZombieSpiderPigman.CLIMBING) & 0x1) != 0x0;
     }
     
     public boolean attackEntityAsMob(final Entity par1Entity) {
@@ -145,18 +145,18 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     }
     
     public void setBesideClimbableBlock(final boolean climbing) {
-        byte b0 = (byte)this.dataManager.get((DataParameter)EntityZombieSpiderPigman.CLIMBING);
+        byte b0 = (byte)this.dataManager.get(EntityZombieSpiderPigman.CLIMBING);
         if (climbing) {
             b0 |= 0x1;
         }
         else {
             b0 &= 0xFFFFFFFE;
         }
-        this.dataManager.set((DataParameter)EntityZombieSpiderPigman.CLIMBING, (Object)b0);
+        this.dataManager.set(EntityZombieSpiderPigman.CLIMBING, b0);
     }
     
     public static void registerFixesPigZombie(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityZombieSpiderPigman.class);
+        EntityLiving.registerFixesMob(fixer, EntityZombieSpiderPigman.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -171,7 +171,7 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     }
     
     public static void registerFixesSpider(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityZombieSpiderPigman.class);
+        EntityLiving.registerFixesMob(fixer, EntityZombieSpiderPigman.class);
     }
     
     public void readEntityFromNBT(final NBTTagCompound compound) {
@@ -312,7 +312,7 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     }
     
     static {
-        CLIMBING = EntityDataManager.createKey((Class)EntityZombieSpiderPigman.class, DataSerializers.BYTE);
+        CLIMBING = EntityDataManager.createKey(EntityZombieSpiderPigman.class, DataSerializers.BYTE);
         ATTACK_SPEED_BOOST_MODIFIER_UUID = UUID.fromString("49455A49-7EC5-45BA-B886-3B90B23A1718");
         ATTACK_SPEED_BOOST_MODIFIER = new AttributeModifier(EntityZombieSpiderPigman.ATTACK_SPEED_BOOST_MODIFIER_UUID, "Attacking speed boost", 0.05, 0).setSaved(false);
     }
@@ -355,7 +355,7 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     static class AITargetAggressor extends EntityAINearestAttackableTarget<EntityPlayer>
     {
         public AITargetAggressor(final EntityZombieSpiderPigman p_i45829_1_) {
-            super((EntityCreature)p_i45829_1_, (Class)EntityPlayer.class, true);
+            super((EntityCreature)p_i45829_1_, EntityPlayer.class, true);
         }
         
         public boolean shouldExecute() {

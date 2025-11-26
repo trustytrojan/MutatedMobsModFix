@@ -53,12 +53,12 @@ public class EntityIlliusionerWitherSkeleton extends EntityMob implements IMutan
     }
     
     protected void initEntityAI() {
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityGolem.class, true));
+        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, true));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
         this.tasks.addTask(7, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0, 0.0f));
-        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
         this.tasks.addTask(4, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0, false));
@@ -66,9 +66,9 @@ public class EntityIlliusionerWitherSkeleton extends EntityMob implements IMutan
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityIlliusionerWitherSkeleton.SWINGING_ARMS, (Object)false);
-        this.dataManager.register((DataParameter)EntityIlliusionerWitherSkeleton.Clone, (Object)false);
-        this.dataManager.register((DataParameter)EntityIlliusionerWitherSkeleton.SPLIT, (Object)false);
+        this.dataManager.register(EntityIlliusionerWitherSkeleton.SWINGING_ARMS, false);
+        this.dataManager.register(EntityIlliusionerWitherSkeleton.Clone, false);
+        this.dataManager.register(EntityIlliusionerWitherSkeleton.SPLIT, false);
     }
     
     protected int getExperiencePoints(final EntityPlayer player) {
@@ -99,7 +99,7 @@ public class EntityIlliusionerWitherSkeleton extends EntityMob implements IMutan
     }
     
     private void SetSplit() {
-        this.dataManager.set((DataParameter)EntityIlliusionerWitherSkeleton.SPLIT, (Object)false);
+        this.dataManager.set(EntityIlliusionerWitherSkeleton.SPLIT, false);
         this.CanSplit = false;
     }
     
@@ -181,7 +181,7 @@ public class EntityIlliusionerWitherSkeleton extends EntityMob implements IMutan
     }
     
     public static void registerFixesSkeleton(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityIlliusionerWitherSkeleton.class);
+        EntityLiving.registerFixesMob(fixer, EntityIlliusionerWitherSkeleton.class);
     }
     
     protected SoundEvent getAmbientSound() {
@@ -228,19 +228,19 @@ public class EntityIlliusionerWitherSkeleton extends EntityMob implements IMutan
     }
     
     public boolean isIlliusion() {
-        return (boolean)this.dataManager.get((DataParameter)EntityIlliusionerWitherSkeleton.Clone);
+        return (boolean)this.dataManager.get(EntityIlliusionerWitherSkeleton.Clone);
     }
     
     public boolean HasSplited() {
-        return (boolean)this.dataManager.get((DataParameter)EntityIlliusionerWitherSkeleton.SPLIT);
+        return (boolean)this.dataManager.get(EntityIlliusionerWitherSkeleton.SPLIT);
     }
     
     public void Illiusion() {
-        this.dataManager.set((DataParameter)EntityIlliusionerWitherSkeleton.Clone, (Object)true);
+        this.dataManager.set(EntityIlliusionerWitherSkeleton.Clone, true);
     }
     
     public void WillSplit() {
-        this.dataManager.set((DataParameter)EntityIlliusionerWitherSkeleton.SPLIT, (Object)false);
+        this.dataManager.set(EntityIlliusionerWitherSkeleton.SPLIT, false);
         this.CanSplit = false;
     }
     
@@ -285,17 +285,17 @@ public class EntityIlliusionerWitherSkeleton extends EntityMob implements IMutan
     
     @SideOnly(Side.CLIENT)
     public boolean isSwingingArms() {
-        return (boolean)this.dataManager.get((DataParameter)EntityIlliusionerWitherSkeleton.SWINGING_ARMS);
+        return (boolean)this.dataManager.get(EntityIlliusionerWitherSkeleton.SWINGING_ARMS);
     }
     
     public void setSwingingArms(final boolean swingingArms) {
-        this.dataManager.set((DataParameter)EntityIlliusionerWitherSkeleton.SWINGING_ARMS, (Object)swingingArms);
+        this.dataManager.set(EntityIlliusionerWitherSkeleton.SWINGING_ARMS, swingingArms);
     }
     
     static {
-        SWINGING_ARMS = EntityDataManager.createKey((Class)EntityIlliusionerWitherSkeleton.class, DataSerializers.BOOLEAN);
-        SPLIT = EntityDataManager.createKey((Class)EntityIlliusionerWitherSkeleton.class, DataSerializers.BOOLEAN);
-        Clone = EntityDataManager.createKey((Class)EntityIlliusionerWitherSkeleton.class, DataSerializers.BOOLEAN);
+        SWINGING_ARMS = EntityDataManager.createKey(EntityIlliusionerWitherSkeleton.class, DataSerializers.BOOLEAN);
+        SPLIT = EntityDataManager.createKey(EntityIlliusionerWitherSkeleton.class, DataSerializers.BOOLEAN);
+        Clone = EntityDataManager.createKey(EntityIlliusionerWitherSkeleton.class, DataSerializers.BOOLEAN);
     }
     
     class GroupData implements IEntityLivingData

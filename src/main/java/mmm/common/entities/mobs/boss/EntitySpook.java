@@ -68,7 +68,7 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
         this.tasks.addTask(0, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
         this.tasks.addTask(7, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.applyEntityAI();
     }
@@ -95,29 +95,29 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     }
     
     public int getCreeperState() {
-        return (int)this.dataManager.get((DataParameter)EntitySpook.STATE);
+        return (int)this.dataManager.get(EntitySpook.STATE);
     }
     
     public void setCreeperState(final int state) {
-        this.dataManager.set((DataParameter)EntitySpook.STATE, (Object)state);
+        this.dataManager.set(EntitySpook.STATE, state);
     }
     
     protected void entityInit() {
         super.entityInit();
-        this.getDataManager().register((DataParameter)EntitySpook.IS_CHILD, (Object)false);
-        this.getDataManager().register((DataParameter)EntitySpook.ARMS_RAISED, (Object)false);
-        this.dataManager.register((DataParameter)EntitySpook.STATE, (Object)(-1));
-        this.dataManager.register((DataParameter)EntitySpook.POWERED, (Object)false);
-        this.dataManager.register((DataParameter)EntitySpook.CLIMBING, (Object)0);
+        this.getDataManager().register(EntitySpook.IS_CHILD, false);
+        this.getDataManager().register(EntitySpook.ARMS_RAISED, false);
+        this.dataManager.register(EntitySpook.STATE, (-1));
+        this.dataManager.register(EntitySpook.POWERED, false);
+        this.dataManager.register(EntitySpook.CLIMBING, (byte)0);
     }
     
     public void setArmsRaised(final boolean armsRaised) {
-        this.getDataManager().set((DataParameter)EntitySpook.ARMS_RAISED, (Object)armsRaised);
+        this.getDataManager().set(EntitySpook.ARMS_RAISED, armsRaised);
     }
     
     @SideOnly(Side.CLIENT)
     public boolean isArmsRaised() {
-        return (boolean)this.getDataManager().get((DataParameter)EntitySpook.ARMS_RAISED);
+        return (boolean)this.getDataManager().get(EntitySpook.ARMS_RAISED);
     }
     
     public boolean isBreakDoorsTaskSet() {
@@ -138,7 +138,7 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     }
     
     public boolean isChild() {
-        return (boolean)this.getDataManager().get((DataParameter)EntitySpook.IS_CHILD);
+        return (boolean)this.getDataManager().get(EntitySpook.IS_CHILD);
     }
     
     protected int getExperiencePoints(final EntityPlayer player) {
@@ -149,7 +149,7 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     }
     
     public void setChild(final boolean childZombie) {
-        this.getDataManager().set((DataParameter)EntitySpook.IS_CHILD, (Object)childZombie);
+        this.getDataManager().set(EntitySpook.IS_CHILD, childZombie);
         if (this.world != null && !this.world.isRemote) {
             final IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED);
             iattributeinstance.removeModifier(EntitySpook.BABY_SPEED_BOOST);
@@ -161,10 +161,10 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     }
     
     public void notifyDataManagerChange(final DataParameter<?> key) {
-        if (EntitySpook.IS_CHILD.equals((Object)key)) {
+        if (EntitySpook.IS_CHILD.equals(key)) {
             this.setChildSize(this.isChild());
         }
-        super.notifyDataManagerChange((DataParameter)key);
+        super.notifyDataManagerChange(key);
     }
     
     protected boolean teleportRandomly() {
@@ -221,12 +221,12 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     
     protected void updateAITasks() {
         if (this.getHealth() <= 160.0f) {
-            this.dataManager.set((DataParameter)EntitySpook.POWERED, (Object)true);
+            this.dataManager.set(EntitySpook.POWERED, true);
             this.LightningPower();
         }
         else {
             if (this.getHealth() > 160.0f) {
-                this.dataManager.set((DataParameter)EntitySpook.POWERED, (Object)false);
+                this.dataManager.set(EntitySpook.POWERED, false);
                 this.RemoveLightningPower();
             }
             if (this.isPotionActive(MobEffects.LEVITATION)) {
@@ -337,14 +337,14 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     }
     
     public void setBesideClimbableBlock(final boolean climbing) {
-        byte b0 = (byte)this.dataManager.get((DataParameter)EntitySpook.CLIMBING);
+        byte b0 = (byte)this.dataManager.get(EntitySpook.CLIMBING);
         if (climbing) {
             b0 |= 0x1;
         }
         else {
             b0 &= 0xFFFFFFFE;
         }
-        this.dataManager.set((DataParameter)EntitySpook.CLIMBING, (Object)b0);
+        this.dataManager.set(EntitySpook.CLIMBING, b0);
     }
     
     @Nullable
@@ -368,11 +368,11 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     }
     
     public boolean isBesideClimbableBlock() {
-        return ((byte)this.dataManager.get((DataParameter)EntitySpook.CLIMBING) & 0x1) != 0x0;
+        return ((byte)this.dataManager.get(EntitySpook.CLIMBING) & 0x1) != 0x0;
     }
     
     public static void registerFixesZombie(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntitySpook.class);
+        EntityLiving.registerFixesMob(fixer, EntitySpook.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -381,7 +381,7 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
             compound.setBoolean("IsBaby", true);
         }
         compound.setBoolean("CanBreakDoors", this.isBreakDoorsTaskSet());
-        if ((Boolean)this.dataManager.get((DataParameter)EntitySpook.POWERED)) {
+        if ((Boolean)this.dataManager.get(EntitySpook.POWERED)) {
             compound.setBoolean("powered", true);
         }
         compound.setByte("ExplosionRadius", (byte)this.punchExplosion);
@@ -393,14 +393,14 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
             this.setChild(true);
         }
         this.setBreakDoorsAItask(compound.getBoolean("CanBreakDoors"));
-        this.dataManager.set((DataParameter)EntitySpook.POWERED, (Object)compound.getBoolean("powered"));
+        this.dataManager.set(EntitySpook.POWERED, compound.getBoolean("powered"));
         if (compound.hasKey("ExplosionRadius", 99)) {
             this.punchExplosion = compound.getByte("ExplosionRadius");
         }
     }
     
     public boolean getPowered() {
-        return (boolean)this.dataManager.get((DataParameter)EntitySpook.POWERED);
+        return (boolean)this.dataManager.get(EntitySpook.POWERED);
     }
     
     public void LightningPower() {
@@ -497,14 +497,14 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     }
     
     static {
-        CLIMBING = EntityDataManager.createKey((Class)EntitySpook.class, DataSerializers.BYTE);
+        CLIMBING = EntityDataManager.createKey(EntitySpook.class, DataSerializers.BYTE);
         BABY_SPEED_BOOST_ID = UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836");
         BABY_SPEED_BOOST = new AttributeModifier(EntitySpook.BABY_SPEED_BOOST_ID, "Baby speed boost", 0.5, 1);
-        IS_CHILD = EntityDataManager.createKey((Class)EntitySpook.class, DataSerializers.BOOLEAN);
-        STATE = EntityDataManager.createKey((Class)EntitySpook.class, DataSerializers.VARINT);
-        POWERED = EntityDataManager.createKey((Class)EntitySpook.class, DataSerializers.BOOLEAN);
-        VILLAGER_TYPE = EntityDataManager.createKey((Class)EntitySpook.class, DataSerializers.VARINT);
-        ARMS_RAISED = EntityDataManager.createKey((Class)EntitySpook.class, DataSerializers.BOOLEAN);
+        IS_CHILD = EntityDataManager.createKey(EntitySpook.class, DataSerializers.BOOLEAN);
+        STATE = EntityDataManager.createKey(EntitySpook.class, DataSerializers.VARINT);
+        POWERED = EntityDataManager.createKey(EntitySpook.class, DataSerializers.BOOLEAN);
+        VILLAGER_TYPE = EntityDataManager.createKey(EntitySpook.class, DataSerializers.VARINT);
+        ARMS_RAISED = EntityDataManager.createKey(EntitySpook.class, DataSerializers.BOOLEAN);
     }
     
     class GroupData implements IEntityLivingData

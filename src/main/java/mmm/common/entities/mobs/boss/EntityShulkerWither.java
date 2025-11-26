@@ -68,22 +68,22 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
         this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
         this.tasks.addTask(2, (EntityAIBase)new EntityAIAttackRanged((IRangedAttackMob)this, 1.0, 40, 20.0f));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(7, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(1, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityLiving.class, 0, false, false, (Predicate)EntityShulkerWither.NOT_UNDEAD));
+        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityLiving.class, 0, false, false, EntityShulkerWither.NOT_UNDEAD));
     }
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityShulkerWither.FIRST_HEAD_TARGET, (Object)0);
-        this.dataManager.register((DataParameter)EntityShulkerWither.SECOND_HEAD_TARGET, (Object)0);
-        this.dataManager.register((DataParameter)EntityShulkerWither.THIRD_HEAD_TARGET, (Object)0);
-        this.dataManager.register((DataParameter)EntityShulkerWither.INVULNERABILITY_TIME, (Object)0);
+        this.dataManager.register(EntityShulkerWither.FIRST_HEAD_TARGET, 0);
+        this.dataManager.register(EntityShulkerWither.SECOND_HEAD_TARGET, 0);
+        this.dataManager.register(EntityShulkerWither.THIRD_HEAD_TARGET, 0);
+        this.dataManager.register(EntityShulkerWither.INVULNERABILITY_TIME, 0);
     }
     
     public static void registerFixesWither(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityShulkerWither.class);
+        EntityLiving.registerFixesMob(fixer, EntityShulkerWither.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -247,7 +247,7 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
                         }
                     }
                     else {
-                        final List<EntityLivingBase> list = (List<EntityLivingBase>)this.world.getEntitiesWithinAABB(EntityLivingBase.class, this.getEntityBoundingBox().grow(20.0, 8.0, 20.0), Predicates.and((Predicate)EntityShulkerWither.NOT_UNDEAD, EntitySelectors.NOT_SPECTATING));
+                        final List<EntityLivingBase> list = (List<EntityLivingBase>)this.world.getEntitiesWithinAABB(EntityLivingBase.class, this.getEntityBoundingBox().grow(20.0, 8.0, 20.0), Predicates.and(EntityShulkerWither.NOT_UNDEAD, EntitySelectors.NOT_SPECTATING));
                         int j3 = 0;
                         while (j3 < 10 && !list.isEmpty()) {
                             final EntityLivingBase entitylivingbase = list.get(this.rand.nextInt(list.size()));
@@ -468,19 +468,19 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
     }
     
     public int getInvulTime() {
-        return (int)this.dataManager.get((DataParameter)EntityShulkerWither.INVULNERABILITY_TIME);
+        return (int)this.dataManager.get(EntityShulkerWither.INVULNERABILITY_TIME);
     }
     
     public void setInvulTime(final int time) {
-        this.dataManager.set((DataParameter)EntityShulkerWither.INVULNERABILITY_TIME, (Object)time);
+        this.dataManager.set(EntityShulkerWither.INVULNERABILITY_TIME, time);
     }
     
     public int getWatchedTargetId(final int head) {
-        return (int)this.dataManager.get((DataParameter)EntityShulkerWither.HEAD_TARGETS[head]);
+        return (int)this.dataManager.get(EntityShulkerWither.HEAD_TARGETS[head]);
     }
     
     public void updateWatchedTargetId(final int targetOffset, final int newId) {
-        this.dataManager.set((DataParameter)EntityShulkerWither.HEAD_TARGETS[targetOffset], (Object)newId);
+        this.dataManager.set(EntityShulkerWither.HEAD_TARGETS[targetOffset], newId);
     }
     
     public boolean isArmored() {
@@ -503,12 +503,12 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
     }
     
     static {
-        FIRST_HEAD_TARGET = EntityDataManager.createKey((Class)EntityShulkerWither.class, DataSerializers.VARINT);
-        SECOND_HEAD_TARGET = EntityDataManager.createKey((Class)EntityShulkerWither.class, DataSerializers.VARINT);
-        THIRD_HEAD_TARGET = EntityDataManager.createKey((Class)EntityShulkerWither.class, DataSerializers.VARINT);
+        FIRST_HEAD_TARGET = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
+        SECOND_HEAD_TARGET = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
+        THIRD_HEAD_TARGET = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
         HEAD_TARGETS = new DataParameter[] { EntityShulkerWither.FIRST_HEAD_TARGET, EntityShulkerWither.SECOND_HEAD_TARGET, EntityShulkerWither.THIRD_HEAD_TARGET };
-        INVULNERABILITY_TIME = EntityDataManager.createKey((Class)EntityShulkerWither.class, DataSerializers.VARINT);
-        NOT_UNDEAD = (Predicate)new Predicate<Entity>() {
+        INVULNERABILITY_TIME = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
+        NOT_UNDEAD = new Predicate<Entity>() {
             public boolean apply(@Nullable final Entity p_apply_1_) {
                 return p_apply_1_ instanceof EntityLivingBase && ((EntityLivingBase)p_apply_1_).getCreatureAttribute() != EnumCreatureAttribute.UNDEAD && ((EntityLivingBase)p_apply_1_).attackable();
             }

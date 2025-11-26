@@ -42,23 +42,23 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
     }
     
     public static void registerFixesWitch(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntitySpiderWitch.class);
+        EntityLiving.registerFixesMob(fixer, EntitySpiderWitch.class);
     }
     
     protected void initEntityAI() {
         this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
         this.tasks.addTask(2, (EntityAIBase)new EntityAIAttackRanged((IRangedAttackMob)this, 1.0, 15, 75.0f));
         this.tasks.addTask(2, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(3, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(3, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(1, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true));
+        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
     }
     
     protected void entityInit() {
         super.entityInit();
-        this.getDataManager().register((DataParameter)EntitySpiderWitch.IS_AGGRESSIVE, (Object)false);
-        this.dataManager.register((DataParameter)EntitySpiderWitch.CLIMBING, (Object)0);
+        this.getDataManager().register(EntitySpiderWitch.IS_AGGRESSIVE, false);
+        this.dataManager.register(EntitySpiderWitch.CLIMBING, (byte)0);
     }
     
     public boolean isOnLadder() {
@@ -74,14 +74,14 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
     }
     
     public void setBesideClimbableBlock(final boolean climbing) {
-        byte b0 = (byte)this.dataManager.get((DataParameter)EntitySpiderWitch.CLIMBING);
+        byte b0 = (byte)this.dataManager.get(EntitySpiderWitch.CLIMBING);
         if (climbing) {
             b0 |= 0x1;
         }
         else {
             b0 &= 0xFFFFFFFE;
         }
-        this.dataManager.set((DataParameter)EntitySpiderWitch.CLIMBING, (Object)b0);
+        this.dataManager.set(EntitySpiderWitch.CLIMBING, b0);
     }
     
     public EnumCreatureAttribute getCreatureAttribute() {
@@ -96,7 +96,7 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
     }
     
     public boolean isBesideClimbableBlock() {
-        return ((byte)this.dataManager.get((DataParameter)EntitySpiderWitch.CLIMBING) & 0x1) != 0x0;
+        return ((byte)this.dataManager.get(EntitySpiderWitch.CLIMBING) & 0x1) != 0x0;
     }
     
     protected SoundEvent getAmbientSound() {
@@ -112,11 +112,11 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
     }
     
     public void setAggressive(final boolean aggressive) {
-        this.getDataManager().set((DataParameter)EntitySpiderWitch.IS_AGGRESSIVE, (Object)aggressive);
+        this.getDataManager().set(EntitySpiderWitch.IS_AGGRESSIVE, aggressive);
     }
     
     public boolean isDrinkingPotion() {
-        return (boolean)this.getDataManager().get((DataParameter)EntitySpiderWitch.IS_AGGRESSIVE);
+        return (boolean)this.getDataManager().get(EntitySpiderWitch.IS_AGGRESSIVE);
     }
     
     protected void applyEntityAttributes() {
@@ -239,7 +239,7 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
     static {
         MODIFIER_UUID = UUID.fromString("5CD17E52-A79A-43D3-A529-90FDE04B181E");
         MODIFIER = new AttributeModifier(EntitySpiderWitch.MODIFIER_UUID, "Drinking speed penalty", -0.25, 0).setSaved(false);
-        IS_AGGRESSIVE = EntityDataManager.createKey((Class)EntitySpiderWitch.class, DataSerializers.BOOLEAN);
-        CLIMBING = EntityDataManager.createKey((Class)EntitySpiderWitch.class, DataSerializers.BYTE);
+        IS_AGGRESSIVE = EntityDataManager.createKey(EntitySpiderWitch.class, DataSerializers.BOOLEAN);
+        CLIMBING = EntityDataManager.createKey(EntitySpiderWitch.class, DataSerializers.BYTE);
     }
 }

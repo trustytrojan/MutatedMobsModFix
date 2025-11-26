@@ -45,15 +45,15 @@ public class EntityCreeperPig extends EntityHalfCreeper
     
     protected void initEntityAI() {
         this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, (Class)EntityOcelot.class, 6.0f, 1.0, 1.2));
+        this.tasks.addTask(3, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, EntityOcelot.class, 6.0f, 1.0, 1.2));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 0.8));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(6, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
         if (ConfigHandler.S_EvilCreeperPigs) {
             this.tasks.addTask(2, (EntityAIBase)new EntityAICreeperPigSwell(this));
             this.tasks.addTask(4, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0, false));
-            this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true));
+            this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
         }
         else {
             this.tasks.addTask(1, (EntityAIBase)new EntityAIPanic((EntityCreature)this, 1.25));
@@ -80,18 +80,18 @@ public class EntityCreeperPig extends EntityHalfCreeper
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityCreeperPig.STATE, (Object)(-1));
-        this.dataManager.register((DataParameter)EntityCreeperPig.POWERED, (Object)false);
-        this.dataManager.register((DataParameter)EntityCreeperPig.IGNITED, (Object)false);
+        this.dataManager.register(EntityCreeperPig.STATE, (-1));
+        this.dataManager.register(EntityCreeperPig.POWERED, false);
+        this.dataManager.register(EntityCreeperPig.IGNITED, false);
     }
     
     public static void registerFixesCreeper(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityCreeperPig.class);
+        EntityLiving.registerFixesMob(fixer, EntityCreeperPig.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
-        if ((Boolean)this.dataManager.get((DataParameter)EntityCreeperPig.POWERED)) {
+        if ((Boolean)this.dataManager.get(EntityCreeperPig.POWERED)) {
             compound.setBoolean("powered", true);
         }
         compound.setShort("Fuse", (short)this.fuseTime);
@@ -101,7 +101,7 @@ public class EntityCreeperPig extends EntityHalfCreeper
     
     public void readEntityFromNBT(final NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
-        this.dataManager.set((DataParameter)EntityCreeperPig.POWERED, (Object)compound.getBoolean("powered"));
+        this.dataManager.set(EntityCreeperPig.POWERED, compound.getBoolean("powered"));
         if (compound.hasKey("Fuse", 99)) {
             this.fuseTime = compound.getShort("Fuse");
         }
@@ -170,7 +170,7 @@ public class EntityCreeperPig extends EntityHalfCreeper
     }
     
     public boolean getPowered() {
-        return (boolean)this.dataManager.get((DataParameter)EntityCreeperPig.POWERED);
+        return (boolean)this.dataManager.get(EntityCreeperPig.POWERED);
     }
     
     @SideOnly(Side.CLIENT)
@@ -179,16 +179,16 @@ public class EntityCreeperPig extends EntityHalfCreeper
     }
     
     public int getCreeperState() {
-        return (int)this.dataManager.get((DataParameter)EntityCreeperPig.STATE);
+        return (int)this.dataManager.get(EntityCreeperPig.STATE);
     }
     
     public void setCreeperState(final int state) {
-        this.dataManager.set((DataParameter)EntityCreeperPig.STATE, (Object)state);
+        this.dataManager.set(EntityCreeperPig.STATE, state);
     }
     
     public void onStruckByLightning(final EntityLightningBolt lightningBolt) {
         super.onStruckByLightning(lightningBolt);
-        this.dataManager.set((DataParameter)EntityCreeperPig.POWERED, (Object)true);
+        this.dataManager.set(EntityCreeperPig.POWERED, true);
         this.setSprinting(true);
     }
     
@@ -234,11 +234,11 @@ public class EntityCreeperPig extends EntityHalfCreeper
     }
     
     public boolean hasIgnited() {
-        return (boolean)this.dataManager.get((DataParameter)EntityCreeperPig.IGNITED);
+        return (boolean)this.dataManager.get(EntityCreeperPig.IGNITED);
     }
     
     public void ignite() {
-        this.dataManager.set((DataParameter)EntityCreeperPig.IGNITED, (Object)true);
+        this.dataManager.set(EntityCreeperPig.IGNITED, true);
     }
     
     public boolean ableToCauseSkullDrop() {
@@ -250,8 +250,8 @@ public class EntityCreeperPig extends EntityHalfCreeper
     }
     
     static {
-        STATE = EntityDataManager.createKey((Class)EntityCreeperPig.class, DataSerializers.VARINT);
-        POWERED = EntityDataManager.createKey((Class)EntityCreeperPig.class, DataSerializers.BOOLEAN);
-        IGNITED = EntityDataManager.createKey((Class)EntityCreeperPig.class, DataSerializers.BOOLEAN);
+        STATE = EntityDataManager.createKey(EntityCreeperPig.class, DataSerializers.VARINT);
+        POWERED = EntityDataManager.createKey(EntityCreeperPig.class, DataSerializers.BOOLEAN);
+        IGNITED = EntityDataManager.createKey(EntityCreeperPig.class, DataSerializers.BOOLEAN);
     }
 }

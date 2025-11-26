@@ -47,12 +47,12 @@ public class EntityBlazeSkeleton extends EntityMob implements IRangedAttackMob, 
     }
     
     protected void initEntityAI() {
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityGolem.class, true));
+        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, true));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
         this.tasks.addTask(7, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0, 0.0f));
-        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
         this.tasks.addTask(2, (EntityAIBase)new EntityAIAttackRangedBow((EntityMob)this, 0.4, 12, 240.0f));
@@ -63,12 +63,12 @@ public class EntityBlazeSkeleton extends EntityMob implements IRangedAttackMob, 
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityBlazeSkeleton.SWINGING_ARMS, (Object)false);
-        this.getDataManager().register((DataParameter)EntityBlazeSkeleton.IS_CHILD, (Object)false);
+        this.dataManager.register(EntityBlazeSkeleton.SWINGING_ARMS, false);
+        this.getDataManager().register(EntityBlazeSkeleton.IS_CHILD, false);
     }
     
     public boolean isChild() {
-        return (boolean)this.getDataManager().get((DataParameter)EntityBlazeSkeleton.IS_CHILD);
+        return (boolean)this.getDataManager().get(EntityBlazeSkeleton.IS_CHILD);
     }
     
     protected int getExperiencePoints(final EntityPlayer player) {
@@ -83,16 +83,16 @@ public class EntityBlazeSkeleton extends EntityMob implements IRangedAttackMob, 
     }
     
     public void setChild(final boolean childZombie) {
-        this.getDataManager().set((DataParameter)EntityBlazeSkeleton.IS_CHILD, (Object)childZombie);
+        this.getDataManager().set(EntityBlazeSkeleton.IS_CHILD, childZombie);
         if (this.world == null || this.world.isRemote || childZombie) {}
         this.setChildSize(childZombie);
     }
     
     public void notifyDataManagerChange(final DataParameter<?> key) {
-        if (EntityBlazeSkeleton.IS_CHILD.equals((Object)key)) {
+        if (EntityBlazeSkeleton.IS_CHILD.equals(key)) {
             this.setChildSize(this.isChild());
         }
-        super.notifyDataManagerChange((DataParameter)key);
+        super.notifyDataManagerChange(key);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -156,7 +156,7 @@ public class EntityBlazeSkeleton extends EntityMob implements IRangedAttackMob, 
     }
     
     public static void registerFixesSkeleton(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityBlazeSkeleton.class);
+        EntityLiving.registerFixesMob(fixer, EntityBlazeSkeleton.class);
     }
     
     protected SoundEvent getAmbientSound() {
@@ -275,16 +275,16 @@ public class EntityBlazeSkeleton extends EntityMob implements IRangedAttackMob, 
     
     @SideOnly(Side.CLIENT)
     public boolean isSwingingArms() {
-        return (boolean)this.dataManager.get((DataParameter)EntityBlazeSkeleton.SWINGING_ARMS);
+        return (boolean)this.dataManager.get(EntityBlazeSkeleton.SWINGING_ARMS);
     }
     
     public void setSwingingArms(final boolean swingingArms) {
-        this.dataManager.set((DataParameter)EntityBlazeSkeleton.SWINGING_ARMS, (Object)swingingArms);
+        this.dataManager.set(EntityBlazeSkeleton.SWINGING_ARMS, swingingArms);
     }
     
     static {
-        SWINGING_ARMS = EntityDataManager.createKey((Class)EntityBlazeSkeleton.class, DataSerializers.BOOLEAN);
-        IS_CHILD = EntityDataManager.createKey((Class)EntityZombie.class, DataSerializers.BOOLEAN);
+        SWINGING_ARMS = EntityDataManager.createKey(EntityBlazeSkeleton.class, DataSerializers.BOOLEAN);
+        IS_CHILD = EntityDataManager.createKey(EntityZombie.class, DataSerializers.BOOLEAN);
     }
     
     class GroupData implements IEntityLivingData

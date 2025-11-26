@@ -40,33 +40,33 @@ public class EntityZombieCreeper extends EntityZombie implements IMutant
     
     protected void initEntityAI() {
         this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, (Class)EntityOcelot.class, 6.0f, 1.0, 1.2));
+        this.tasks.addTask(3, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, EntityOcelot.class, 6.0f, 1.0, 1.2));
         this.tasks.addTask(4, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0, false));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 0.8));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(6, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityGolem.class, true));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityVillager.class, true));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityWolf.class, true));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPig.class, true));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityZombieVillager.class, true));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, true));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityVillager.class, true));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityWolf.class, true));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPig.class, true));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityZombieVillager.class, true));
         this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
     }
     
     public static void registerFixesCreeper(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityZombieCreeper.class);
+        EntityLiving.registerFixesMob(fixer, EntityZombieCreeper.class);
     }
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityZombieCreeper.STATE, (Object)(-1));
-        this.dataManager.register((DataParameter)EntityZombieCreeper.POWERED, (Object)false);
+        this.dataManager.register(EntityZombieCreeper.STATE, (-1));
+        this.dataManager.register(EntityZombieCreeper.POWERED, false);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
-        if ((Boolean)this.dataManager.get((DataParameter)EntityZombieCreeper.POWERED)) {
+        if ((Boolean)this.dataManager.get(EntityZombieCreeper.POWERED)) {
             compound.setBoolean("powered", true);
         }
         compound.setShort("Fuse", (short)this.fuseTime);
@@ -75,7 +75,7 @@ public class EntityZombieCreeper extends EntityZombie implements IMutant
     
     public void readEntityFromNBT(final NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
-        this.dataManager.set((DataParameter)EntityZombieCreeper.POWERED, (Object)compound.getBoolean("powered"));
+        this.dataManager.set(EntityZombieCreeper.POWERED, compound.getBoolean("powered"));
         if (compound.hasKey("Fuse", 99)) {
             this.fuseTime = compound.getShort("Fuse");
         }
@@ -110,11 +110,11 @@ public class EntityZombieCreeper extends EntityZombie implements IMutant
     }
     
     public int getCreeperState() {
-        return (int)this.dataManager.get((DataParameter)EntityZombieCreeper.STATE);
+        return (int)this.dataManager.get(EntityZombieCreeper.STATE);
     }
     
     public void setCreeperState(final int state) {
-        this.dataManager.set((DataParameter)EntityZombieCreeper.STATE, (Object)state);
+        this.dataManager.set(EntityZombieCreeper.STATE, state);
     }
     
     public void onStruckByLightning(final EntityLightningBolt lightningBolt) {
@@ -122,7 +122,7 @@ public class EntityZombieCreeper extends EntityZombie implements IMutant
     }
     
     public boolean getPowered() {
-        return (boolean)this.dataManager.get((DataParameter)EntityZombieCreeper.POWERED);
+        return (boolean)this.dataManager.get(EntityZombieCreeper.POWERED);
     }
     
     @SideOnly(Side.CLIENT)
@@ -175,7 +175,7 @@ public class EntityZombieCreeper extends EntityZombie implements IMutant
     }
     
     static {
-        STATE = EntityDataManager.createKey((Class)EntityZombieCreeper.class, DataSerializers.VARINT);
-        POWERED = EntityDataManager.createKey((Class)EntityZombieCreeper.class, DataSerializers.BOOLEAN);
+        STATE = EntityDataManager.createKey(EntityZombieCreeper.class, DataSerializers.VARINT);
+        POWERED = EntityDataManager.createKey(EntityZombieCreeper.class, DataSerializers.BOOLEAN);
     }
 }

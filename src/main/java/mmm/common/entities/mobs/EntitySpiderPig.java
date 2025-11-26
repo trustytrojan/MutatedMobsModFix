@@ -51,7 +51,7 @@ public class EntitySpiderPig extends EntityAnimal implements IJumpingMount, IMut
         this.tasks.addTask(4, (EntityAIBase)new EntityAITempt((EntityCreature)this, 1.2, false, (Set)EntitySpiderPig.TEMPTATION_ITEMS));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIFollowParent((EntityAnimal)this, 1.1));
         this.tasks.addTask(6, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 6.0f));
+        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
         this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
     }
     
@@ -93,18 +93,18 @@ public class EntitySpiderPig extends EntityAnimal implements IJumpingMount, IMut
     }
     
     public void notifyDataManagerChange(final DataParameter<?> key) {
-        if (EntitySpiderPig.BOOST_TIME.equals((Object)key) && this.world.isRemote) {
+        if (EntitySpiderPig.BOOST_TIME.equals(key) && this.world.isRemote) {
             this.boosting = true;
             this.boostTime = 0;
-            this.totalBoostTime = (int)this.dataManager.get((DataParameter)EntitySpiderPig.BOOST_TIME);
+            this.totalBoostTime = (int)this.dataManager.get(EntitySpiderPig.BOOST_TIME);
         }
-        super.notifyDataManagerChange((DataParameter)key);
+        super.notifyDataManagerChange(key);
     }
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntitySpiderPig.BOOST_TIME, (Object)0);
-        this.dataManager.register((DataParameter)EntitySpiderPig.CLIMBING, (Object)0);
+        this.dataManager.register(EntitySpiderPig.BOOST_TIME, 0);
+        this.dataManager.register(EntitySpiderPig.CLIMBING, (byte)0);
     }
     
     public boolean isOnLadder() {
@@ -116,14 +116,14 @@ public class EntitySpiderPig extends EntityAnimal implements IJumpingMount, IMut
     }
     
     public void setBesideClimbableBlock(final boolean climbing) {
-        byte b0 = (byte)this.dataManager.get((DataParameter)EntitySpiderPig.CLIMBING);
+        byte b0 = (byte)this.dataManager.get(EntitySpiderPig.CLIMBING);
         if (climbing) {
             b0 |= 0x1;
         }
         else {
             b0 &= 0xFFFFFFFE;
         }
-        this.dataManager.set((DataParameter)EntitySpiderPig.CLIMBING, (Object)b0);
+        this.dataManager.set(EntitySpiderPig.CLIMBING, b0);
     }
     
     public EnumCreatureAttribute getCreatureAttribute() {
@@ -138,11 +138,11 @@ public class EntitySpiderPig extends EntityAnimal implements IJumpingMount, IMut
     }
     
     public boolean isBesideClimbableBlock() {
-        return ((byte)this.dataManager.get((DataParameter)EntitySpiderPig.CLIMBING) & 0x1) != 0x0;
+        return ((byte)this.dataManager.get(EntitySpiderPig.CLIMBING) & 0x1) != 0x0;
     }
     
     public static void registerFixesPig(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntitySpiderPig.class);
+        EntityLiving.registerFixesMob(fixer, EntitySpiderPig.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -324,7 +324,7 @@ public class EntitySpiderPig extends EntityAnimal implements IJumpingMount, IMut
         this.boosting = true;
         this.boostTime = 0;
         this.totalBoostTime = this.getRNG().nextInt(841) + 140;
-        this.getDataManager().set((DataParameter)EntitySpiderPig.BOOST_TIME, (Object)this.totalBoostTime);
+        this.getDataManager().set(EntitySpiderPig.BOOST_TIME, this.totalBoostTime);
         return true;
     }
     
@@ -362,8 +362,8 @@ public class EntitySpiderPig extends EntityAnimal implements IJumpingMount, IMut
     }
     
     static {
-        CLIMBING = EntityDataManager.createKey((Class)EntitySpiderPig.class, DataSerializers.BYTE);
-        BOOST_TIME = EntityDataManager.createKey((Class)EntitySpiderPig.class, DataSerializers.VARINT);
+        CLIMBING = EntityDataManager.createKey(EntitySpiderPig.class, DataSerializers.BYTE);
+        BOOST_TIME = EntityDataManager.createKey(EntitySpiderPig.class, DataSerializers.VARINT);
         TEMPTATION_ITEMS = Sets.newHashSet(new Item[] { Items.CARROT, Items.POTATO, Items.BEETROOT });
     }
 }

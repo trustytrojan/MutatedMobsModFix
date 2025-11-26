@@ -44,19 +44,19 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
         super.initEntityAI();
         this.tasks.addTask(0, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
         this.tasks.addTask(1, (EntityAIBase)new AICastingSpell());
-        this.tasks.addTask(2, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, (Class)EntityPlayer.class, 8.0f, 0.6, 1.0));
+        this.tasks.addTask(2, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, EntityPlayer.class, 8.0f, 0.6, 1.0));
         this.tasks.addTask(4, (EntityAIBase)new AISummonSpell());
         this.tasks.addTask(5, (EntityAIBase)new AIAttackSpell());
         this.tasks.addTask(6, (EntityAIBase)new AIWololoSpell());
         this.tasks.addTask(8, (EntityAIBase)new EntityAIWander((EntityCreature)this, 0.6));
-        this.tasks.addTask(9, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 3.0f, 1.0f));
-        this.tasks.addTask(10, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityLiving.class, 8.0f));
+        this.tasks.addTask(9, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 3.0f, 1.0f));
+        this.tasks.addTask(10, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityLiving.class, 8.0f));
         this.targetTasks.addTask(1, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, true, new Class[] { EntityCreepervoker.class }));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true).setUnseenMemoryTicks(300));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityVillager.class, false).setUnseenMemoryTicks(300));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityIronGolem.class, false));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityGolem.class, false));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityCreeperPig.class, false));
+        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true).setUnseenMemoryTicks(300));
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityVillager.class, false).setUnseenMemoryTicks(300));
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityIronGolem.class, false));
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, false));
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityCreeperPig.class, false));
     }
     
     protected void applyEntityAttributes() {
@@ -68,24 +68,24 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityCreepervoker.STATE, (Object)(-1));
-        this.dataManager.register((DataParameter)EntityCreepervoker.POWERED, (Object)false);
+        this.dataManager.register(EntityCreepervoker.STATE, (-1));
+        this.dataManager.register(EntityCreepervoker.POWERED, false);
     }
     
     public static void registerFixesEvoker(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityCreepervoker.class);
+        EntityLiving.registerFixesMob(fixer, EntityCreepervoker.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
-        if ((Boolean)this.dataManager.get((DataParameter)EntityCreepervoker.POWERED)) {
+        if ((Boolean)this.dataManager.get(EntityCreepervoker.POWERED)) {
             compound.setBoolean("powered", true);
         }
     }
     
     public void readEntityFromNBT(final NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
-        this.dataManager.set((DataParameter)EntityCreepervoker.POWERED, (Object)compound.getBoolean("powered"));
+        this.dataManager.set(EntityCreepervoker.POWERED, compound.getBoolean("powered"));
     }
     
     protected void updateAITasks() {
@@ -126,16 +126,16 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
     }
     
     public int getCreeperState() {
-        return (int)this.dataManager.get((DataParameter)EntityCreepervoker.STATE);
+        return (int)this.dataManager.get(EntityCreepervoker.STATE);
     }
     
     public void setCreeperState(final int state) {
-        this.dataManager.set((DataParameter)EntityCreepervoker.STATE, (Object)state);
+        this.dataManager.set(EntityCreepervoker.STATE, state);
     }
     
     public void onStruckByLightning(final EntityLightningBolt lightningBolt) {
         super.onStruckByLightning(lightningBolt);
-        this.dataManager.set((DataParameter)EntityCreepervoker.POWERED, (Object)true);
+        this.dataManager.set(EntityCreepervoker.POWERED, true);
         this.setSprinting(true);
         this.addPotionEffect(new PotionEffect(MobEffects.SPEED, 100, 10));
         this.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 5));
@@ -144,7 +144,7 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
     }
     
     public boolean getPowered() {
-        return (boolean)this.dataManager.get((DataParameter)EntityCreepervoker.POWERED);
+        return (boolean)this.dataManager.get(EntityCreepervoker.POWERED);
     }
     
     protected void dropFewItems(final boolean par1, final int par2) {
@@ -294,7 +294,7 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
             if (!super.shouldExecute()) {
                 return false;
             }
-            final int i = EntityCreepervoker.this.world.getEntitiesWithinAABB((Class)EntityVex.class, EntityCreepervoker.this.getEntityBoundingBox().grow(16.0)).size();
+            final int i = EntityCreepervoker.this.world.getEntitiesWithinAABB(EntityVex.class, EntityCreepervoker.this.getEntityBoundingBox().grow(16.0)).size();
             return EntityCreepervoker.this.rand.nextInt(8) + 1 > i;
         }
         
@@ -354,7 +354,7 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
             if (!EntityCreepervoker.this.world.getGameRules().getBoolean("mobGriefing")) {
                 return false;
             }
-            final List<EntitySheep> list = (List<EntitySheep>)EntityCreepervoker.this.world.getEntitiesWithinAABB((Class)EntitySheep.class, EntityCreepervoker.this.getEntityBoundingBox().grow(16.0, 4.0, 16.0), (Predicate)this.wololoSelector);
+            final List<EntitySheep> list = (List<EntitySheep>)EntityCreepervoker.this.world.getEntitiesWithinAABB(EntitySheep.class, EntityCreepervoker.this.getEntityBoundingBox().grow(16.0, 4.0, 16.0), this.wololoSelector);
             if (list.isEmpty()) {
                 return false;
             }

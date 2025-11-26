@@ -46,11 +46,11 @@ public class EntityShulkerGhast extends EntityFlying implements IMob, IMutant
     
     @SideOnly(Side.CLIENT)
     public boolean isAttacking() {
-        return (boolean)this.dataManager.get((DataParameter)EntityShulkerGhast.ATTACKING);
+        return (boolean)this.dataManager.get(EntityShulkerGhast.ATTACKING);
     }
     
     public void setAttacking(final boolean attacking) {
-        this.dataManager.set((DataParameter)EntityShulkerGhast.ATTACKING, (Object)attacking);
+        this.dataManager.set(EntityShulkerGhast.ATTACKING, attacking);
     }
     
     public int getFireballStrength() {
@@ -105,7 +105,7 @@ public class EntityShulkerGhast extends EntityFlying implements IMob, IMutant
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityShulkerGhast.ATTACKING, (Object)false);
+        this.dataManager.register(EntityShulkerGhast.ATTACKING, false);
     }
     
     protected void applyEntityAttributes() {
@@ -143,7 +143,7 @@ public class EntityShulkerGhast extends EntityFlying implements IMob, IMutant
     }
     
     public static void registerFixesGhast(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityShulkerGhast.class);
+        EntityLiving.registerFixesMob(fixer, EntityShulkerGhast.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -163,7 +163,7 @@ public class EntityShulkerGhast extends EntityFlying implements IMob, IMutant
     }
     
     static {
-        ATTACKING = EntityDataManager.createKey((Class)EntityShulkerGhast.class, DataSerializers.BOOLEAN);
+        ATTACKING = EntityDataManager.createKey(EntityShulkerGhast.class, DataSerializers.BOOLEAN);
     }
     
     static class AIFireballAttack extends EntityAIBase

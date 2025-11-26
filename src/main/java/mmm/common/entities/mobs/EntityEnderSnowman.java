@@ -36,15 +36,15 @@ public class EntityEnderSnowman extends EntityGolem implements IRangedAttackMob,
     }
     
     public static void registerFixesSnowman(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityEnderSnowman.class);
+        EntityLiving.registerFixesMob(fixer, EntityEnderSnowman.class);
     }
     
     protected void initEntityAI() {
         this.tasks.addTask(1, (EntityAIBase)new EntityAIAttackRanged((IRangedAttackMob)this, 1.25, 2, 50.0f));
         this.tasks.addTask(2, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0, 1.0000001E-5f));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 6.0f));
+        this.tasks.addTask(3, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
         this.tasks.addTask(4, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityLiving.class, 10, true, false, IMob.MOB_SELECTOR));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityLiving.class, 10, true, false, IMob.MOB_SELECTOR));
     }
     
     protected void applyEntityAttributes() {
@@ -55,7 +55,7 @@ public class EntityEnderSnowman extends EntityGolem implements IRangedAttackMob,
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityEnderSnowman.PUMPKIN_EQUIPPED, (Object)16);
+        this.dataManager.register(EntityEnderSnowman.PUMPKIN_EQUIPPED, (byte)16);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -145,16 +145,16 @@ public class EntityEnderSnowman extends EntityGolem implements IRangedAttackMob,
     }
     
     public boolean isPumpkinEquipped() {
-        return ((byte)this.dataManager.get((DataParameter)EntityEnderSnowman.PUMPKIN_EQUIPPED) & 0x10) != 0x0;
+        return ((byte)this.dataManager.get(EntityEnderSnowman.PUMPKIN_EQUIPPED) & 0x10) != 0x0;
     }
     
     public void setPumpkinEquipped(final boolean pumpkinEquipped) {
-        final byte b0 = (byte)this.dataManager.get((DataParameter)EntityEnderSnowman.PUMPKIN_EQUIPPED);
+        final byte b0 = (byte)this.dataManager.get(EntityEnderSnowman.PUMPKIN_EQUIPPED);
         if (pumpkinEquipped) {
-            this.dataManager.set((DataParameter)EntityEnderSnowman.PUMPKIN_EQUIPPED, (Object)(byte)(b0 | 0x10));
+            this.dataManager.set(EntityEnderSnowman.PUMPKIN_EQUIPPED, (byte)(b0 | 0x10));
         }
         else {
-            this.dataManager.set((DataParameter)EntityEnderSnowman.PUMPKIN_EQUIPPED, (Object)(byte)(b0 & 0xFFFFFFEF));
+            this.dataManager.set(EntityEnderSnowman.PUMPKIN_EQUIPPED, (byte)(b0 & 0xFFFFFFEF));
         }
     }
     
@@ -186,6 +186,6 @@ public class EntityEnderSnowman extends EntityGolem implements IRangedAttackMob,
     }
     
     static {
-        PUMPKIN_EQUIPPED = EntityDataManager.createKey((Class)EntityEnderSnowman.class, DataSerializers.BYTE);
+        PUMPKIN_EQUIPPED = EntityDataManager.createKey(EntityEnderSnowman.class, DataSerializers.BYTE);
     }
 }

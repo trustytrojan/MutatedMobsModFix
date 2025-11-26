@@ -64,7 +64,7 @@ public class EntitySantaSpider extends EntityMob implements IBoss, IMutant
         this.tasks.addTask(1, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0, true));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
         this.tasks.addTask(7, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.applyEntityAI();
     }
@@ -86,9 +86,9 @@ public class EntitySantaSpider extends EntityMob implements IBoss, IMutant
     
     protected void entityInit() {
         super.entityInit();
-        this.getDataManager().register((DataParameter)EntitySantaSpider.IS_CHILD, (Object)false);
-        this.getDataManager().register((DataParameter)EntitySantaSpider.ARMS_RAISED, (Object)false);
-        this.dataManager.register((DataParameter)EntitySantaSpider.CLIMBING, (Object)0);
+        this.getDataManager().register(EntitySantaSpider.IS_CHILD, false);
+        this.getDataManager().register(EntitySantaSpider.ARMS_RAISED, false);
+        this.dataManager.register(EntitySantaSpider.CLIMBING, (byte)0);
     }
     
     public void setCustomNameTag(final String name) {
@@ -97,16 +97,16 @@ public class EntitySantaSpider extends EntityMob implements IBoss, IMutant
     }
     
     public boolean canAttackClass(final Class<? extends EntityLivingBase> cls) {
-        return !EntitySantaSpider.class.isAssignableFrom(cls) && cls != EntitySantaSpider.class && super.canAttackClass((Class)cls);
+        return !EntitySantaSpider.class.isAssignableFrom(cls) && cls != EntitySantaSpider.class && super.canAttackClass(cls);
     }
     
     public void setArmsRaised(final boolean armsRaised) {
-        this.getDataManager().set((DataParameter)EntitySantaSpider.ARMS_RAISED, (Object)armsRaised);
+        this.getDataManager().set(EntitySantaSpider.ARMS_RAISED, armsRaised);
     }
     
     @SideOnly(Side.CLIENT)
     public boolean isArmsRaised() {
-        return (boolean)this.getDataManager().get((DataParameter)EntitySantaSpider.ARMS_RAISED);
+        return (boolean)this.getDataManager().get(EntitySantaSpider.ARMS_RAISED);
     }
     
     public boolean isBreakDoorsTaskSet() {
@@ -127,7 +127,7 @@ public class EntitySantaSpider extends EntityMob implements IBoss, IMutant
     }
     
     public boolean isChild() {
-        return (boolean)this.getDataManager().get((DataParameter)EntitySantaSpider.IS_CHILD);
+        return (boolean)this.getDataManager().get(EntitySantaSpider.IS_CHILD);
     }
     
     protected int getExperiencePoints(final EntityPlayer player) {
@@ -138,7 +138,7 @@ public class EntitySantaSpider extends EntityMob implements IBoss, IMutant
     }
     
     public void setChild(final boolean childZombie) {
-        this.getDataManager().set((DataParameter)EntitySantaSpider.IS_CHILD, (Object)childZombie);
+        this.getDataManager().set(EntitySantaSpider.IS_CHILD, childZombie);
         if (this.world != null && !this.world.isRemote) {
             final IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED);
             iattributeinstance.removeModifier(EntitySantaSpider.BABY_SPEED_BOOST);
@@ -150,10 +150,10 @@ public class EntitySantaSpider extends EntityMob implements IBoss, IMutant
     }
     
     public void notifyDataManagerChange(final DataParameter<?> key) {
-        if (EntitySantaSpider.IS_CHILD.equals((Object)key)) {
+        if (EntitySantaSpider.IS_CHILD.equals(key)) {
             this.setChildSize(this.isChild());
         }
-        super.notifyDataManagerChange((DataParameter)key);
+        super.notifyDataManagerChange(key);
     }
     
     public void onLivingUpdate() {
@@ -383,14 +383,14 @@ public class EntitySantaSpider extends EntityMob implements IBoss, IMutant
     }
     
     public void setBesideClimbableBlock(final boolean climbing) {
-        byte b0 = (byte)this.dataManager.get((DataParameter)EntitySantaSpider.CLIMBING);
+        byte b0 = (byte)this.dataManager.get(EntitySantaSpider.CLIMBING);
         if (climbing) {
             b0 |= 0x1;
         }
         else {
             b0 &= 0xFFFFFFFE;
         }
-        this.dataManager.set((DataParameter)EntitySantaSpider.CLIMBING, (Object)b0);
+        this.dataManager.set(EntitySantaSpider.CLIMBING, b0);
     }
     
     @Nullable
@@ -414,7 +414,7 @@ public class EntitySantaSpider extends EntityMob implements IBoss, IMutant
     }
     
     public boolean isBesideClimbableBlock() {
-        return ((byte)this.dataManager.get((DataParameter)EntitySantaSpider.CLIMBING) & 0x1) != 0x0;
+        return ((byte)this.dataManager.get(EntitySantaSpider.CLIMBING) & 0x1) != 0x0;
     }
     
     protected void setEquipmentBasedOnDifficulty(final DifficultyInstance difficulty) {
@@ -431,7 +431,7 @@ public class EntitySantaSpider extends EntityMob implements IBoss, IMutant
     }
     
     public static void registerFixesZombie(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntitySantaSpider.class);
+        EntityLiving.registerFixesMob(fixer, EntitySantaSpider.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -498,7 +498,7 @@ public class EntitySantaSpider extends EntityMob implements IBoss, IMutant
             if (EntityZombieSpider$groupdata.isChild) {
                 this.setChild(true);
                 if (this.world.rand.nextFloat() < 0.05) {
-                    final List<EntityChicken> list = (List<EntityChicken>)this.world.getEntitiesWithinAABB((Class)EntityChicken.class, this.getEntityBoundingBox().grow(5.0, 3.0, 5.0), EntitySelectors.IS_STANDALONE);
+                    final List<EntityChicken> list = (List<EntityChicken>)this.world.getEntitiesWithinAABB(EntityChicken.class, this.getEntityBoundingBox().grow(5.0, 3.0, 5.0), EntitySelectors.IS_STANDALONE);
                     if (!list.isEmpty()) {
                         final EntityChicken entitychicken = list.get(0);
                         entitychicken.setChickenJockey(true);
@@ -563,11 +563,11 @@ public class EntitySantaSpider extends EntityMob implements IBoss, IMutant
     }
     
     static {
-        CLIMBING = EntityDataManager.createKey((Class)EntityZombieSpiderPigman.class, DataSerializers.BYTE);
+        CLIMBING = EntityDataManager.createKey(EntityZombieSpiderPigman.class, DataSerializers.BYTE);
         BABY_SPEED_BOOST_ID = UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836");
         BABY_SPEED_BOOST = new AttributeModifier(EntitySantaSpider.BABY_SPEED_BOOST_ID, "Baby speed boost", 0.5, 1);
-        IS_CHILD = EntityDataManager.createKey((Class)EntitySantaSpider.class, DataSerializers.BOOLEAN);
-        ARMS_RAISED = EntityDataManager.createKey((Class)EntitySantaSpider.class, DataSerializers.BOOLEAN);
+        IS_CHILD = EntityDataManager.createKey(EntitySantaSpider.class, DataSerializers.BOOLEAN);
+        ARMS_RAISED = EntityDataManager.createKey(EntitySantaSpider.class, DataSerializers.BOOLEAN);
     }
     
     class GroupData implements IEntityLivingData

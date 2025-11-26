@@ -47,11 +47,11 @@ public class EntitySlimeGolem extends EntityGolem implements IMutant
         this.tasks.addTask(3, (EntityAIBase)new EntityAIMoveThroughVillage((EntityCreature)this, 0.6, true));
         this.tasks.addTask(4, (EntityAIBase)new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
         this.tasks.addTask(6, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 0.6));
-        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 6.0f));
+        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
         this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(1, (EntityAIBase)new EntityAIProtectTheVillage2(this));
         this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityLiving.class, 10, false, true, (Predicate)new Predicate<EntityLiving>() {
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityLiving.class, 10, false, true, new Predicate<EntityLiving>() {
             public boolean apply(@Nullable final EntityLiving p_apply_1_) {
                 return p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_) && !(p_apply_1_ instanceof EntityCreeper);
             }
@@ -60,12 +60,12 @@ public class EntitySlimeGolem extends EntityGolem implements IMutant
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntitySlimeGolem.PLAYER_CREATED, (Object)0);
-        this.dataManager.register((DataParameter)EntitySlimeGolem.SLIME_SIZE, (Object)1);
+        this.dataManager.register(EntitySlimeGolem.PLAYER_CREATED, (byte)0);
+        this.dataManager.register(EntitySlimeGolem.SLIME_SIZE, 1);
     }
     
     protected void setSlimeSize(final int size, final boolean resetHealth) {
-        this.dataManager.set((DataParameter)EntitySlimeGolem.SLIME_SIZE, (Object)size);
+        this.dataManager.set(EntitySlimeGolem.SLIME_SIZE, size);
         this.setSize(0.5f * size, 1.6f * size);
         this.setPosition(this.posX, this.posY, this.posZ);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue((double)(size * size * 20));
@@ -76,7 +76,7 @@ public class EntitySlimeGolem extends EntityGolem implements IMutant
     }
     
     public int getSlimeSize() {
-        return (int)this.dataManager.get((DataParameter)EntitySlimeGolem.SLIME_SIZE);
+        return (int)this.dataManager.get(EntitySlimeGolem.SLIME_SIZE);
     }
     
     protected void updateAITasks() {
@@ -144,11 +144,11 @@ public class EntitySlimeGolem extends EntityGolem implements IMutant
     }
     
     public boolean canAttackClass(final Class<? extends EntityLivingBase> cls) {
-        return (!this.isPlayerCreated() || !EntityPlayer.class.isAssignableFrom(cls)) && cls != EntityGolem.class && super.canAttackClass((Class)cls);
+        return (!this.isPlayerCreated() || !EntityPlayer.class.isAssignableFrom(cls)) && cls != EntityGolem.class && super.canAttackClass(cls);
     }
     
     public static void registerFixesIronGolem(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntitySlimeGolem.class);
+        EntityLiving.registerFixesMob(fixer, EntitySlimeGolem.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -278,16 +278,16 @@ public class EntitySlimeGolem extends EntityGolem implements IMutant
     }
     
     public boolean isPlayerCreated() {
-        return ((byte)this.dataManager.get((DataParameter)EntitySlimeGolem.PLAYER_CREATED) & 0x1) != 0x0;
+        return ((byte)this.dataManager.get(EntitySlimeGolem.PLAYER_CREATED) & 0x1) != 0x0;
     }
     
     public void setPlayerCreated(final boolean playerCreated) {
-        final byte b0 = (byte)this.dataManager.get((DataParameter)EntitySlimeGolem.PLAYER_CREATED);
+        final byte b0 = (byte)this.dataManager.get(EntitySlimeGolem.PLAYER_CREATED);
         if (playerCreated) {
-            this.dataManager.set((DataParameter)EntitySlimeGolem.PLAYER_CREATED, (Object)(byte)(b0 | 0x1));
+            this.dataManager.set(EntitySlimeGolem.PLAYER_CREATED, (byte)(b0 | 0x1));
         }
         else {
-            this.dataManager.set((DataParameter)EntitySlimeGolem.PLAYER_CREATED, (Object)(byte)(b0 & 0xFFFFFFFE));
+            this.dataManager.set(EntitySlimeGolem.PLAYER_CREATED, (byte)(b0 & 0xFFFFFFFE));
         }
     }
     
@@ -299,7 +299,7 @@ public class EntitySlimeGolem extends EntityGolem implements IMutant
     }
     
     static {
-        PLAYER_CREATED = EntityDataManager.createKey((Class)EntitySlimeGolem.class, DataSerializers.BYTE);
-        SLIME_SIZE = EntityDataManager.createKey((Class)EntitySlimeGolem.class, DataSerializers.VARINT);
+        PLAYER_CREATED = EntityDataManager.createKey(EntitySlimeGolem.class, DataSerializers.BYTE);
+        SLIME_SIZE = EntityDataManager.createKey(EntitySlimeGolem.class, DataSerializers.VARINT);
     }
 }

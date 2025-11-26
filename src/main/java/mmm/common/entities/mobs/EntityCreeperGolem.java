@@ -60,11 +60,11 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
         this.tasks.addTask(3, (EntityAIBase)new EntityAIMoveThroughVillage((EntityCreature)this, 0.6, true));
         this.tasks.addTask(4, (EntityAIBase)new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
         this.tasks.addTask(6, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 0.6));
-        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 6.0f));
+        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
         this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(1, (EntityAIBase)new EntityAIProtectTheVillage3(this));
         this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityLiving.class, 10, false, true, (Predicate)new Predicate<EntityLiving>() {
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityLiving.class, 10, false, true, new Predicate<EntityLiving>() {
             public boolean apply(@Nullable final EntityLiving p_apply_1_) {
                 return p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_) && !(p_apply_1_ instanceof EntityCreeper);
             }
@@ -73,9 +73,9 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityCreeperGolem.PLAYER_CREATED, (Object)0);
-        this.dataManager.register((DataParameter)EntityCreeperGolem.STATE, (Object)(-1));
-        this.dataManager.register((DataParameter)EntityCreeperGolem.POWERED, (Object)false);
+        this.dataManager.register(EntityCreeperGolem.PLAYER_CREATED, (byte)0);
+        this.dataManager.register(EntityCreeperGolem.STATE, (-1));
+        this.dataManager.register(EntityCreeperGolem.POWERED, false);
     }
     
     protected void onDeathUpdate() {
@@ -156,11 +156,11 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
                 this.setHomePosAndDistance(blockpos, (int)(this.village.getVillageRadius() * 0.6f));
             }
             if (this.getHealth() <= 50.0f) {
-                this.dataManager.set((DataParameter)EntityCreeperGolem.POWERED, (Object)true);
+                this.dataManager.set(EntityCreeperGolem.POWERED, true);
                 this.LightningPower();
             }
             else if (this.getHealth() > 50.0f) {
-                this.dataManager.set((DataParameter)EntityCreeperGolem.POWERED, (Object)false);
+                this.dataManager.set(EntityCreeperGolem.POWERED, false);
                 this.RemoveLightningPower();
             }
         }
@@ -241,17 +241,17 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
     }
     
     public boolean canAttackClass(final Class<? extends EntityLivingBase> cls) {
-        return (!this.isPlayerCreated() || !EntityPlayer.class.isAssignableFrom(cls)) && cls != EntityGolem.class && super.canAttackClass((Class)cls);
+        return (!this.isPlayerCreated() || !EntityPlayer.class.isAssignableFrom(cls)) && cls != EntityGolem.class && super.canAttackClass(cls);
     }
     
     public static void registerFixesIronGolem(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityCreeperGolem.class);
+        EntityLiving.registerFixesMob(fixer, EntityCreeperGolem.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
         compound.setBoolean("PlayerCreated", this.isPlayerCreated());
-        if ((Boolean)this.dataManager.get((DataParameter)EntityCreeperGolem.POWERED)) {
+        if ((Boolean)this.dataManager.get(EntityCreeperGolem.POWERED)) {
             compound.setBoolean("powered", true);
         }
         compound.setShort("Fuse", (short)this.fuseTime);
@@ -261,7 +261,7 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
     public void readEntityFromNBT(final NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
         this.setPlayerCreated(compound.getBoolean("PlayerCreated"));
-        this.dataManager.set((DataParameter)EntityCreeperGolem.POWERED, (Object)compound.getBoolean("powered"));
+        this.dataManager.set(EntityCreeperGolem.POWERED, compound.getBoolean("powered"));
         if (compound.hasKey("Fuse", 99)) {
             this.fuseTime = compound.getShort("Fuse");
         }
@@ -275,7 +275,7 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
     }
     
     public boolean getPowered() {
-        return (boolean)this.dataManager.get((DataParameter)EntityCreeperGolem.POWERED);
+        return (boolean)this.dataManager.get(EntityCreeperGolem.POWERED);
     }
     
     @SideOnly(Side.CLIENT)
@@ -284,16 +284,16 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
     }
     
     public int getCreeperState() {
-        return (int)this.dataManager.get((DataParameter)EntityCreeperGolem.STATE);
+        return (int)this.dataManager.get(EntityCreeperGolem.STATE);
     }
     
     public void setCreeperState(final int state) {
-        this.dataManager.set((DataParameter)EntityCreeperGolem.STATE, (Object)state);
+        this.dataManager.set(EntityCreeperGolem.STATE, state);
     }
     
     public void onStruckByLightning(final EntityLightningBolt lightningBolt) {
         super.onStruckByLightning(lightningBolt);
-        this.dataManager.set((DataParameter)EntityCreeperGolem.POWERED, (Object)true);
+        this.dataManager.set(EntityCreeperGolem.POWERED, true);
         this.LightningPower();
     }
     
@@ -384,16 +384,16 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
     }
     
     public boolean isPlayerCreated() {
-        return ((byte)this.dataManager.get((DataParameter)EntityCreeperGolem.PLAYER_CREATED) & 0x1) != 0x0;
+        return ((byte)this.dataManager.get(EntityCreeperGolem.PLAYER_CREATED) & 0x1) != 0x0;
     }
     
     public void setPlayerCreated(final boolean playerCreated) {
-        final byte b0 = (byte)this.dataManager.get((DataParameter)EntityCreeperGolem.PLAYER_CREATED);
+        final byte b0 = (byte)this.dataManager.get(EntityCreeperGolem.PLAYER_CREATED);
         if (playerCreated) {
-            this.dataManager.set((DataParameter)EntityCreeperGolem.PLAYER_CREATED, (Object)(byte)(b0 | 0x1));
+            this.dataManager.set(EntityCreeperGolem.PLAYER_CREATED, (byte)(b0 | 0x1));
         }
         else {
-            this.dataManager.set((DataParameter)EntityCreeperGolem.PLAYER_CREATED, (Object)(byte)(b0 & 0xFFFFFFFE));
+            this.dataManager.set(EntityCreeperGolem.PLAYER_CREATED, (byte)(b0 & 0xFFFFFFFE));
         }
     }
     
@@ -405,8 +405,8 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
     }
     
     static {
-        PLAYER_CREATED = EntityDataManager.createKey((Class)EntityCreeperGolem.class, DataSerializers.BYTE);
-        STATE = EntityDataManager.createKey((Class)EntityCreeperGolem.class, DataSerializers.VARINT);
-        POWERED = EntityDataManager.createKey((Class)EntityCreeperGolem.class, DataSerializers.BOOLEAN);
+        PLAYER_CREATED = EntityDataManager.createKey(EntityCreeperGolem.class, DataSerializers.BYTE);
+        STATE = EntityDataManager.createKey(EntityCreeperGolem.class, DataSerializers.VARINT);
+        POWERED = EntityDataManager.createKey(EntityCreeperGolem.class, DataSerializers.BOOLEAN);
     }
 }

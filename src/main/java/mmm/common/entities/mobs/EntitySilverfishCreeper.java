@@ -51,15 +51,15 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
     
     protected void initEntityAI() {
         this.tasks.addTask(2, (EntityAIBase)new EntityAICreeperSwell2(this));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, (Class)EntityOcelot.class, 6.0f, 1.0, 1.2));
+        this.tasks.addTask(3, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, EntityOcelot.class, 6.0f, 1.0, 1.2));
         this.summonSilverfish = new AISummonSilverfish(this);
         this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
         this.tasks.addTask(3, (EntityAIBase)this.summonSilverfish);
         this.tasks.addTask(4, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0, false));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 0.8));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(6, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
         this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
     }
     
@@ -90,12 +90,12 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
     }
     
     public static void registerFixesCreeper(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntitySilverfishCreeper.class);
+        EntityLiving.registerFixesMob(fixer, EntitySilverfishCreeper.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
-        if ((Boolean)this.dataManager.get((DataParameter)EntitySilverfishCreeper.POWERED)) {
+        if ((Boolean)this.dataManager.get(EntitySilverfishCreeper.POWERED)) {
             compound.setBoolean("powered", true);
         }
         compound.setShort("Fuse", (short)this.fuseTime);
@@ -105,7 +105,7 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
     
     public void readEntityFromNBT(final NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
-        this.dataManager.set((DataParameter)EntitySilverfishCreeper.POWERED, (Object)compound.getBoolean("powered"));
+        this.dataManager.set(EntitySilverfishCreeper.POWERED, compound.getBoolean("powered"));
         if (compound.hasKey("Fuse", 99)) {
             this.fuseTime = compound.getShort("Fuse");
         }
@@ -192,7 +192,7 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
     }
     
     public boolean getPowered() {
-        return (boolean)this.dataManager.get((DataParameter)EntitySilverfishCreeper.POWERED);
+        return (boolean)this.dataManager.get(EntitySilverfishCreeper.POWERED);
     }
     
     @SideOnly(Side.CLIENT)
@@ -206,11 +206,11 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
     }
     
     public int getCreeperState() {
-        return (int)this.dataManager.get((DataParameter)EntitySilverfishCreeper.STATE);
+        return (int)this.dataManager.get(EntitySilverfishCreeper.STATE);
     }
     
     public void setCreeperState(final int state) {
-        this.dataManager.set((DataParameter)EntitySilverfishCreeper.STATE, (Object)state);
+        this.dataManager.set(EntitySilverfishCreeper.STATE, state);
     }
     
     protected boolean processInteract(final EntityPlayer player, final EnumHand hand) {
@@ -333,11 +333,11 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
     }
     
     public boolean hasIgnited() {
-        return (boolean)this.dataManager.get((DataParameter)EntitySilverfishCreeper.IGNITED);
+        return (boolean)this.dataManager.get(EntitySilverfishCreeper.IGNITED);
     }
     
     public void ignite() {
-        this.dataManager.set((DataParameter)EntitySilverfishCreeper.IGNITED, (Object)true);
+        this.dataManager.set(EntitySilverfishCreeper.IGNITED, true);
     }
     
     public boolean ableToCauseSkullDrop() {
@@ -391,7 +391,7 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
                 final BlockPos blockpos = new BlockPos(this.entity.posX, this.entity.posY + 0.5, this.entity.posZ).offset(this.facing);
                 final IBlockState iblockstate = world.getBlockState(blockpos);
                 if (BlockSilverfish.canContainSilverfish(iblockstate)) {
-                    world.setBlockState(blockpos, Blocks.MONSTER_EGG.getDefaultState().withProperty((IProperty)BlockSilverfish.VARIANT, (Comparable)BlockSilverfish.EnumType.forModelBlock(iblockstate)), 3);
+                    world.setBlockState(blockpos, Blocks.MONSTER_EGG.getDefaultState().withProperty((IProperty)BlockSilverfish.VARIANT, BlockSilverfish.EnumType.forModelBlock(iblockstate)), 3);
                     this.entity.spawnExplosionParticle();
                     this.entity.setDead();
                 }

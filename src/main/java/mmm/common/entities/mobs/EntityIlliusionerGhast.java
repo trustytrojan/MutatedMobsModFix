@@ -47,11 +47,11 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
     }
     
     public boolean isIlliusion() {
-        return (boolean)this.dataManager.get((DataParameter)EntityIlliusionerGhast.Clone);
+        return (boolean)this.dataManager.get(EntityIlliusionerGhast.Clone);
     }
     
     public boolean HasSplited() {
-        return (boolean)this.dataManager.get((DataParameter)EntityIlliusionerGhast.SPLIT);
+        return (boolean)this.dataManager.get(EntityIlliusionerGhast.SPLIT);
     }
     
     public void split() {
@@ -113,11 +113,11 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
     }
     
     public void Illiusion() {
-        this.dataManager.set((DataParameter)EntityIlliusionerGhast.Clone, (Object)true);
+        this.dataManager.set(EntityIlliusionerGhast.Clone, true);
     }
     
     public void WillSplit() {
-        this.dataManager.set((DataParameter)EntityIlliusionerGhast.SPLIT, (Object)false);
+        this.dataManager.set(EntityIlliusionerGhast.SPLIT, false);
         this.CanSplit = false;
     }
     
@@ -139,11 +139,11 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
     
     @SideOnly(Side.CLIENT)
     public boolean isAttacking() {
-        return (boolean)this.dataManager.get((DataParameter)EntityIlliusionerGhast.ATTACKING);
+        return (boolean)this.dataManager.get(EntityIlliusionerGhast.ATTACKING);
     }
     
     public void setAttacking(final boolean attacking) {
-        this.dataManager.set((DataParameter)EntityIlliusionerGhast.ATTACKING, (Object)attacking);
+        this.dataManager.set(EntityIlliusionerGhast.ATTACKING, attacking);
     }
     
     public int getFireballStrength() {
@@ -161,7 +161,7 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
     }
     
     private void SetSplit() {
-        this.dataManager.set((DataParameter)EntityIlliusionerGhast.SPLIT, (Object)false);
+        this.dataManager.set(EntityIlliusionerGhast.SPLIT, false);
         this.CanSplit = false;
     }
     
@@ -182,9 +182,9 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityIlliusionerGhast.ATTACKING, (Object)false);
-        this.dataManager.register((DataParameter)EntityIlliusionerGhast.Clone, (Object)false);
-        this.dataManager.register((DataParameter)EntityIlliusionerGhast.SPLIT, (Object)false);
+        this.dataManager.register(EntityIlliusionerGhast.ATTACKING, false);
+        this.dataManager.register(EntityIlliusionerGhast.Clone, false);
+        this.dataManager.register(EntityIlliusionerGhast.SPLIT, false);
     }
     
     protected void applyEntityAttributes() {
@@ -228,7 +228,7 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
     }
     
     public static void registerFixesGhast(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityIlliusionerGhast.class);
+        EntityLiving.registerFixesMob(fixer, EntityIlliusionerGhast.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -259,9 +259,9 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
     }
     
     static {
-        ATTACKING = EntityDataManager.createKey((Class)EntityIlliusionerGhast.class, DataSerializers.BOOLEAN);
-        SPLIT = EntityDataManager.createKey((Class)EntityIlliusionerGhast.class, DataSerializers.BOOLEAN);
-        Clone = EntityDataManager.createKey((Class)EntityIlliusionerGhast.class, DataSerializers.BOOLEAN);
+        ATTACKING = EntityDataManager.createKey(EntityIlliusionerGhast.class, DataSerializers.BOOLEAN);
+        SPLIT = EntityDataManager.createKey(EntityIlliusionerGhast.class, DataSerializers.BOOLEAN);
+        Clone = EntityDataManager.createKey(EntityIlliusionerGhast.class, DataSerializers.BOOLEAN);
     }
     
     static class AIFireballAttack extends EntityAIBase

@@ -57,12 +57,12 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
         this.tasks.addTask(3, (EntityAIBase)new EntityAIMoveThroughVillage((EntityCreature)this, 0.6, true));
         this.tasks.addTask(4, (EntityAIBase)new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
         this.tasks.addTask(6, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 0.6));
-        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 6.0f));
+        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
         this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(1, (EntityAIBase)new EntityAIDefendVillage8(this));
         this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
         this.tasks.addTask(4, (EntityAIBase)new AIGuardianAttack(this));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityLiving.class, 10, false, true, (Predicate)new Predicate<EntityLiving>() {
+        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityLiving.class, 10, false, true, new Predicate<EntityLiving>() {
             public boolean apply(@Nullable final EntityLiving p_apply_1_) {
                 return p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_) && !(p_apply_1_ instanceof EntityCreeper);
             }
@@ -70,8 +70,8 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
     }
     
     public void notifyDataManagerChange(final DataParameter<?> key) {
-        super.notifyDataManagerChange((DataParameter)key);
-        if (EntityGuardianGolem.TARGET_ENTITY.equals((Object)key)) {
+        super.notifyDataManagerChange(key);
+        if (EntityGuardianGolem.TARGET_ENTITY.equals(key)) {
             this.clientSideAttackTime = 0;
             this.targetedEntity = null;
         }
@@ -79,16 +79,16 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityGuardianGolem.PLAYER_CREATED, (Object)0);
-        this.dataManager.register((DataParameter)EntityGuardianGolem.TARGET_ENTITY, (Object)0);
+        this.dataManager.register(EntityGuardianGolem.PLAYER_CREATED, (byte)0);
+        this.dataManager.register(EntityGuardianGolem.TARGET_ENTITY, 0);
     }
     
     private void setTargetedEntity(final int entityId) {
-        this.dataManager.set((DataParameter)EntityGuardianGolem.TARGET_ENTITY, (Object)entityId);
+        this.dataManager.set(EntityGuardianGolem.TARGET_ENTITY, entityId);
     }
     
     public boolean hasTargetedEntity() {
-        return (int)this.dataManager.get((DataParameter)EntityGuardianGolem.TARGET_ENTITY) != 0;
+        return (int)this.dataManager.get(EntityGuardianGolem.TARGET_ENTITY) != 0;
     }
     
     @Nullable
@@ -102,7 +102,7 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
         if (this.targetedEntity != null) {
             return this.targetedEntity;
         }
-        final Entity entity = this.world.getEntityByID((int)this.dataManager.get((DataParameter)EntityGuardianGolem.TARGET_ENTITY));
+        final Entity entity = this.world.getEntityByID((int)this.dataManager.get(EntityGuardianGolem.TARGET_ENTITY));
         if (entity instanceof EntityLivingBase) {
             return this.targetedEntity = (EntityLivingBase)entity;
         }
@@ -200,11 +200,11 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
     }
     
     public boolean canAttackClass(final Class<? extends EntityLivingBase> cls) {
-        return (!this.isPlayerCreated() || !EntityPlayer.class.isAssignableFrom(cls)) && cls != EntityCreeper.class && super.canAttackClass((Class)cls);
+        return (!this.isPlayerCreated() || !EntityPlayer.class.isAssignableFrom(cls)) && cls != EntityCreeper.class && super.canAttackClass(cls);
     }
     
     public static void registerFixesIronGolem(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityGuardianGolem.class);
+        EntityLiving.registerFixesMob(fixer, EntityGuardianGolem.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -296,16 +296,16 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
     }
     
     public boolean isPlayerCreated() {
-        return ((byte)this.dataManager.get((DataParameter)EntityGuardianGolem.PLAYER_CREATED) & 0x1) != 0x0;
+        return ((byte)this.dataManager.get(EntityGuardianGolem.PLAYER_CREATED) & 0x1) != 0x0;
     }
     
     public void setPlayerCreated(final boolean playerCreated) {
-        final byte b0 = (byte)this.dataManager.get((DataParameter)EntityGuardianGolem.PLAYER_CREATED);
+        final byte b0 = (byte)this.dataManager.get(EntityGuardianGolem.PLAYER_CREATED);
         if (playerCreated) {
-            this.dataManager.set((DataParameter)EntityGuardianGolem.PLAYER_CREATED, (Object)(byte)(b0 | 0x1));
+            this.dataManager.set(EntityGuardianGolem.PLAYER_CREATED, (byte)(b0 | 0x1));
         }
         else {
-            this.dataManager.set((DataParameter)EntityGuardianGolem.PLAYER_CREATED, (Object)(byte)(b0 & 0xFFFFFFFE));
+            this.dataManager.set(EntityGuardianGolem.PLAYER_CREATED, (byte)(b0 & 0xFFFFFFFE));
         }
     }
     
@@ -317,8 +317,8 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
     }
     
     static {
-        PLAYER_CREATED = EntityDataManager.createKey((Class)EntityGuardianGolem.class, DataSerializers.BYTE);
-        TARGET_ENTITY = EntityDataManager.createKey((Class)EntityGuardianGolem.class, DataSerializers.VARINT);
+        PLAYER_CREATED = EntityDataManager.createKey(EntityGuardianGolem.class, DataSerializers.BYTE);
+        TARGET_ENTITY = EntityDataManager.createKey(EntityGuardianGolem.class, DataSerializers.VARINT);
     }
     
     static class AIGuardianAttack extends EntityAIBase

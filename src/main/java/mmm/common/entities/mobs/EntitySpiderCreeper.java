@@ -45,12 +45,12 @@ public class EntitySpiderCreeper extends EntityHalfCreeper
     
     protected void initEntityAI() {
         this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, (Class)EntityOcelot.class, 6.0f, 1.0, 1.2));
+        this.tasks.addTask(3, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, EntityOcelot.class, 6.0f, 1.0, 1.2));
         this.tasks.addTask(4, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0, false));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 0.8));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 8.0f));
+        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(6, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, (Class)EntityPlayer.class, true));
+        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
         this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
     }
     
@@ -80,13 +80,13 @@ public class EntitySpiderCreeper extends EntityHalfCreeper
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntitySpiderCreeper.STATE, (Object)(-1));
-        this.dataManager.register((DataParameter)EntitySpiderCreeper.POWERED, (Object)false);
-        this.dataManager.register((DataParameter)EntitySpiderCreeper.CLIMBING, (Object)0);
+        this.dataManager.register(EntitySpiderCreeper.STATE, (-1));
+        this.dataManager.register(EntitySpiderCreeper.POWERED, false);
+        this.dataManager.register(EntitySpiderCreeper.CLIMBING, (byte)0);
     }
     
     public static void registerFixesCreeper(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntitySpiderCreeper.class);
+        EntityLiving.registerFixesMob(fixer, EntitySpiderCreeper.class);
     }
     
     public boolean isOnLadder() {
@@ -98,14 +98,14 @@ public class EntitySpiderCreeper extends EntityHalfCreeper
     }
     
     public void setBesideClimbableBlock(final boolean climbing) {
-        byte b0 = (byte)this.dataManager.get((DataParameter)EntitySpiderCreeper.CLIMBING);
+        byte b0 = (byte)this.dataManager.get(EntitySpiderCreeper.CLIMBING);
         if (climbing) {
             b0 |= 0x1;
         }
         else {
             b0 &= 0xFFFFFFFE;
         }
-        this.dataManager.set((DataParameter)EntitySpiderCreeper.CLIMBING, (Object)b0);
+        this.dataManager.set(EntitySpiderCreeper.CLIMBING, b0);
     }
     
     public EnumCreatureAttribute getCreatureAttribute() {
@@ -120,12 +120,12 @@ public class EntitySpiderCreeper extends EntityHalfCreeper
     }
     
     public boolean isBesideClimbableBlock() {
-        return ((byte)this.dataManager.get((DataParameter)EntitySpiderCreeper.CLIMBING) & 0x1) != 0x0;
+        return ((byte)this.dataManager.get(EntitySpiderCreeper.CLIMBING) & 0x1) != 0x0;
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
-        if ((Boolean)this.dataManager.get((DataParameter)EntitySpiderCreeper.POWERED)) {
+        if ((Boolean)this.dataManager.get(EntitySpiderCreeper.POWERED)) {
             compound.setBoolean("powered", true);
         }
         compound.setShort("Fuse", (short)this.fuseTime);
@@ -134,7 +134,7 @@ public class EntitySpiderCreeper extends EntityHalfCreeper
     
     public void readEntityFromNBT(final NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
-        this.dataManager.set((DataParameter)EntitySpiderCreeper.POWERED, (Object)compound.getBoolean("powered"));
+        this.dataManager.set(EntitySpiderCreeper.POWERED, compound.getBoolean("powered"));
         if (compound.hasKey("Fuse", 99)) {
             this.fuseTime = compound.getShort("Fuse");
         }
@@ -204,7 +204,7 @@ public class EntitySpiderCreeper extends EntityHalfCreeper
     }
     
     public boolean getPowered() {
-        return (boolean)this.dataManager.get((DataParameter)EntitySpiderCreeper.POWERED);
+        return (boolean)this.dataManager.get(EntitySpiderCreeper.POWERED);
     }
     
     @SideOnly(Side.CLIENT)
@@ -226,11 +226,11 @@ public class EntitySpiderCreeper extends EntityHalfCreeper
     }
     
     public int getCreeperState() {
-        return (int)this.dataManager.get((DataParameter)EntitySpiderCreeper.STATE);
+        return (int)this.dataManager.get(EntitySpiderCreeper.STATE);
     }
     
     public void setCreeperState(final int state) {
-        this.dataManager.set((DataParameter)EntitySpiderCreeper.STATE, (Object)state);
+        this.dataManager.set(EntitySpiderCreeper.STATE, state);
     }
     
     public void onStruckByLightning(final EntityLightningBolt lightningBolt) {
@@ -273,8 +273,8 @@ public class EntitySpiderCreeper extends EntityHalfCreeper
     }
     
     static {
-        STATE = EntityDataManager.createKey((Class)EntitySpiderCreeper.class, DataSerializers.VARINT);
-        POWERED = EntityDataManager.createKey((Class)EntitySpiderCreeper.class, DataSerializers.BOOLEAN);
-        CLIMBING = EntityDataManager.createKey((Class)EntitySpiderCreeper.class, DataSerializers.BYTE);
+        STATE = EntityDataManager.createKey(EntitySpiderCreeper.class, DataSerializers.VARINT);
+        POWERED = EntityDataManager.createKey(EntitySpiderCreeper.class, DataSerializers.BOOLEAN);
+        CLIMBING = EntityDataManager.createKey(EntitySpiderCreeper.class, DataSerializers.BYTE);
     }
 }

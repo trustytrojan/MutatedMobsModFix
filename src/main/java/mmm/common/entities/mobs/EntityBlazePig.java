@@ -53,7 +53,7 @@ public class EntityBlazePig extends EntityAnimal implements IJumpingMount, IMuta
         this.tasks.addTask(4, (EntityAIBase)new EntityAITempt((EntityCreature)this, 1.2, false, (Set)EntityBlazePig.TEMPTATION_ITEMS));
         this.tasks.addTask(5, (EntityAIBase)new EntityAIFollowParent((EntityAnimal)this, 1.1));
         this.tasks.addTask(6, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, (Class)EntityPlayer.class, 6.0f));
+        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
         this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
         this.tasks.addTask(2, (EntityAIBase)new EntityAIMoveTowardsTarget((EntityCreature)this, 0.7, 70.0f));
         this.tasks.addTask(3, (EntityAIBase)new EntityAIMoveThroughVillage((EntityCreature)this, 0.7, true));
@@ -152,21 +152,21 @@ public class EntityBlazePig extends EntityAnimal implements IJumpingMount, IMuta
     }
     
     public void notifyDataManagerChange(final DataParameter<?> key) {
-        if (EntityBlazePig.BOOST_TIME.equals((Object)key) && this.world.isRemote) {
+        if (EntityBlazePig.BOOST_TIME.equals(key) && this.world.isRemote) {
             this.boosting = true;
             this.boostTime = 0;
-            this.totalBoostTime = (int)this.dataManager.get((DataParameter)EntityBlazePig.BOOST_TIME);
+            this.totalBoostTime = (int)this.dataManager.get(EntityBlazePig.BOOST_TIME);
         }
-        super.notifyDataManagerChange((DataParameter)key);
+        super.notifyDataManagerChange(key);
     }
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)EntityBlazePig.BOOST_TIME, (Object)0);
+        this.dataManager.register(EntityBlazePig.BOOST_TIME, 0);
     }
     
     public static void registerFixesPig(final DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, (Class)EntityBlazePig.class);
+        EntityLiving.registerFixesMob(fixer, EntityBlazePig.class);
     }
     
     public void writeEntityToNBT(final NBTTagCompound compound) {
@@ -319,7 +319,7 @@ public class EntityBlazePig extends EntityAnimal implements IJumpingMount, IMuta
         this.boosting = true;
         this.boostTime = 0;
         this.totalBoostTime = this.getRNG().nextInt(841) + 140;
-        this.getDataManager().set((DataParameter)EntityBlazePig.BOOST_TIME, (Object)this.totalBoostTime);
+        this.getDataManager().set(EntityBlazePig.BOOST_TIME, this.totalBoostTime);
         return true;
     }
     
@@ -362,7 +362,7 @@ public class EntityBlazePig extends EntityAnimal implements IJumpingMount, IMuta
     }
     
     static {
-        BOOST_TIME = EntityDataManager.createKey((Class)EntityBlazePig.class, DataSerializers.VARINT);
+        BOOST_TIME = EntityDataManager.createKey(EntityBlazePig.class, DataSerializers.VARINT);
         TEMPTATION_ITEMS = Sets.newHashSet(new Item[] { Items.CARROT, Items.POTATO, Items.BEETROOT });
     }
 }
