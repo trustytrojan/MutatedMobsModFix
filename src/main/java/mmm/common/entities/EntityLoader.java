@@ -141,125 +141,125 @@ public class EntityLoader
         }
     }
     
-    public static void register(final Class EntityClass, final String entityNameIn, final int solidColorIn, final int spotColorIn) {
+    public static void register(final Class<? extends Entity> EntityClass, final String entityNameIn, final int solidColorIn, final int spotColorIn) {
         EntityRegistry.registerModEntity(new ResourceLocation("mmm:" + entityNameIn), EntityClass, entityNameIn, ++EntityLoader.id, (Object)MainClass.instance, 64, 1, true, solidColorIn, spotColorIn);
         RegisterSpawn();
     }
     
-    public static void registerNoEgg(final Class EntityClass, final String entityNameIn) {
+    public static void registerNoEgg(final Class<? extends Entity> EntityClass, final String entityNameIn) {
         EntityRegistry.registerModEntity(new ResourceLocation("mmm:" + entityNameIn), EntityClass, entityNameIn, ++EntityLoader.id, (Object)MainClass.instance, 64, 1, true);
     }
     
     public static void RegisterSpawn() {
         if (ConfigHandler.EnableSilverfishCreeper) {
-            EntityRegistry.addSpawn((Class)EntitySilverfishCreeper.class, ConfigHandler.M_SilverfishCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+            EntityRegistry.addSpawn(EntitySilverfishCreeper.class, ConfigHandler.M_SilverfishCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
         }
         if (ConfigHandler.EnableSquidCreeper) {
-            EntityRegistry.addSpawn((Class)EntitySquidCreeper.class, ConfigHandler.M_SquidCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+            EntityRegistry.addSpawn(EntitySquidCreeper.class, ConfigHandler.M_SquidCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
         }
         if (ConfigHandler.EnableSpiderCreeper) {
-            EntityRegistry.addSpawn((Class)EntitySpiderCreeper.class, ConfigHandler.M_CreeperSpiderSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+            EntityRegistry.addSpawn(EntitySpiderCreeper.class, ConfigHandler.M_CreeperSpiderSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
         }
         if (ConfigHandler.EnableZombieSpider) {
-            EntityRegistry.addSpawn((Class)EntityZombieSpider.class, ConfigHandler.M_ZombieSpiderSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+            EntityRegistry.addSpawn(EntityZombieSpider.class, ConfigHandler.M_ZombieSpiderSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
         }
         if (ConfigHandler.EnableSpiderWitch) {
-            EntityRegistry.addSpawn((Class)EntitySpiderWitch.class, ConfigHandler.M_WitchSpiderSpawnRate, ConfigHandler.Min_SpiderMobAmount, ConfigHandler.Max_SpiderMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+            EntityRegistry.addSpawn(EntitySpiderWitch.class, ConfigHandler.M_WitchSpiderSpawnRate, ConfigHandler.Min_SpiderMobAmount, ConfigHandler.Max_SpiderMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
         }
         if (ConfigHandler.EnableIlliusionerCreeper) {
-            EntityRegistry.addSpawn((Class)EntityIlliusionerCreeper.class, ConfigHandler.M_IlliusionerCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+            EntityRegistry.addSpawn(EntityIlliusionerCreeper.class, ConfigHandler.M_IlliusionerCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
         }
         if (ConfigHandler.EnableSlimeCreeper) {
-            EntityRegistry.addSpawn((Class)EntitySlimeCreeper.class, ConfigHandler.M_SlimeCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND });
+            EntityRegistry.addSpawn(EntitySlimeCreeper.class, ConfigHandler.M_SlimeCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND });
         }
         if (ConfigHandler.EnableEnderSkeleton) {
-            EntityRegistry.addSpawn((Class)EntityEnderManSkeleton.class, ConfigHandler.M_EndermanSkeletonSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.PLAINS, Biomes.SKY });
+            EntityRegistry.addSpawn(EntityEnderManSkeleton.class, ConfigHandler.M_EndermanSkeletonSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.PLAINS, Biomes.SKY });
         }
         if (ConfigHandler.EnableEnderCreeper) {
-            EntityRegistry.addSpawn((Class)EntityEndermanCreeper.class, ConfigHandler.M_EndermanCreeperSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.PLAINS, Biomes.SKY, Biomes.BEACH, Biomes.DESERT, Biomes.FOREST, Biomes.SWAMPLAND, Biomes.HELL, Biomes.EXTREME_HILLS, Biomes.MESA, Biomes.JUNGLE, Biomes.ROOFED_FOREST, Biomes.SAVANNA, Biomes.REDWOOD_TAIGA, Biomes.TAIGA, Biomes.STONE_BEACH });
+            EntityRegistry.addSpawn(EntityEndermanCreeper.class, ConfigHandler.M_EndermanCreeperSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.PLAINS, Biomes.SKY, Biomes.BEACH, Biomes.DESERT, Biomes.FOREST, Biomes.SWAMPLAND, Biomes.HELL, Biomes.EXTREME_HILLS, Biomes.MESA, Biomes.JUNGLE, Biomes.ROOFED_FOREST, Biomes.SAVANNA, Biomes.REDWOOD_TAIGA, Biomes.TAIGA, Biomes.STONE_BEACH });
         }
         if (ConfigHandler.EnableBlazeSkeleton) {
-            EntityRegistry.addSpawn((Class)EntityBlazeSkeleton.class, ConfigHandler.M_BlazeSkeletonSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.HELL });
+            EntityRegistry.addSpawn(EntityBlazeSkeleton.class, ConfigHandler.M_BlazeSkeletonSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.HELL });
         }
         if (ConfigHandler.EnableZombieSpiderPigman) {
-            EntityRegistry.addSpawn((Class)EntityZombieSpiderPigman.class, ConfigHandler.M_PigmanSpiderSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.HELL });
+            EntityRegistry.addSpawn(EntityZombieSpiderPigman.class, ConfigHandler.M_PigmanSpiderSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.HELL });
         }
         if (ConfigHandler.EnableIlliusionerWitherSkeleton) {
-            EntityRegistry.addSpawn((Class)EntityIlliusionerWitherSkeleton.class, ConfigHandler.M_IlliusionerWitherSkeletonSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.HELL });
+            EntityRegistry.addSpawn(EntityIlliusionerWitherSkeleton.class, ConfigHandler.M_IlliusionerWitherSkeletonSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.HELL });
         }
         if (ConfigHandler.EnableCreeperPig) {
-            EntityRegistry.addSpawn((Class)EntityCreeperPig.class, ConfigHandler.M_CreeperPigSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+            EntityRegistry.addSpawn(EntityCreeperPig.class, ConfigHandler.M_CreeperPigSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
         }
         if (ConfigHandler.EnableZombieCreeper) {
-            EntityRegistry.addSpawn((Class)EntityZombieCreeper.class, ConfigHandler.M_ZombieCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+            EntityRegistry.addSpawn(EntityZombieCreeper.class, ConfigHandler.M_ZombieCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
         }
         if (ConfigHandler.EnableHuskSpider) {
-            EntityRegistry.addSpawn((Class)EntityHuskSpider.class, ConfigHandler.M_HuskSpiderSpawnRate, ConfigHandler.Min_SpiderMobAmount, ConfigHandler.Max_SpiderMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.MESA, Biomes.MUSHROOM_ISLAND });
+            EntityRegistry.addSpawn(EntityHuskSpider.class, ConfigHandler.M_HuskSpiderSpawnRate, ConfigHandler.Min_SpiderMobAmount, ConfigHandler.Max_SpiderMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.MESA, Biomes.MUSHROOM_ISLAND });
         }
         if (ConfigHandler.EnableCreepervoker) {
-            EntityRegistry.addSpawn((Class)EntityCreepervoker.class, ConfigHandler.M_CreepervokerSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND });
+            EntityRegistry.addSpawn(EntityCreepervoker.class, ConfigHandler.M_CreepervokerSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND });
         }
         if (ConfigHandler.EnableSquidGhast) {
-            EntityRegistry.addSpawn((Class)EntitySquidGhast.class, ConfigHandler.M_SquidGhastSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.OCEAN, Biomes.RIVER, Biomes.DEEP_OCEAN, Biomes.FROZEN_RIVER, Biomes.BEACH });
+            EntityRegistry.addSpawn(EntitySquidGhast.class, ConfigHandler.M_SquidGhastSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.OCEAN, Biomes.RIVER, Biomes.DEEP_OCEAN, Biomes.FROZEN_RIVER, Biomes.BEACH });
         }
         if (ConfigHandler.EnableSpiderGuardian) {
-            EntityRegistry.addSpawn((Class)EntitySpiderGuardian.class, ConfigHandler.M_SpiderGuardianSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.OCEAN, Biomes.RIVER, Biomes.DEEP_OCEAN, Biomes.FROZEN_RIVER, Biomes.BEACH });
+            EntityRegistry.addSpawn(EntitySpiderGuardian.class, ConfigHandler.M_SpiderGuardianSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.OCEAN, Biomes.RIVER, Biomes.DEEP_OCEAN, Biomes.FROZEN_RIVER, Biomes.BEACH });
         }
         if (ConfigHandler.EnableElderSpiderGuardian) {
-            EntityRegistry.addSpawn((Class)EntityElderSpiderGuardian.class, ConfigHandler.M_ElderSpiderGuardianSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.OCEAN, Biomes.RIVER, Biomes.DEEP_OCEAN, Biomes.FROZEN_RIVER, Biomes.BEACH });
+            EntityRegistry.addSpawn(EntityElderSpiderGuardian.class, ConfigHandler.M_ElderSpiderGuardianSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.OCEAN, Biomes.RIVER, Biomes.DEEP_OCEAN, Biomes.FROZEN_RIVER, Biomes.BEACH });
         }
         if (ConfigHandler.EnableWitherShulker) {
-            EntityRegistry.addSpawn((Class)EntityWitherShulker.class, ConfigHandler.M_WitherShulkerSpawnRate, 0, 1, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+            EntityRegistry.addSpawn(EntityWitherShulker.class, ConfigHandler.M_WitherShulkerSpawnRate, 0, 1, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
             if (ConfigHandler.EnableShulkerWither) {
-                EntityRegistry.addSpawn((Class)EntityShulkerWither.class, ConfigHandler.M_ShulkerWitherSpawnRate, 0, 1, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+                EntityRegistry.addSpawn(EntityShulkerWither.class, ConfigHandler.M_ShulkerWitherSpawnRate, 0, 1, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
             }
             if (ConfigHandler.EnableSantaSpider) {
-                EntityRegistry.addSpawn((Class)EntitySantaSpider.class, ConfigHandler.M_SantaSpiderSpawnRate, 0, 1, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+                EntityRegistry.addSpawn(EntitySantaSpider.class, ConfigHandler.M_SantaSpiderSpawnRate, 0, 1, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
             }
             if (ConfigHandler.EnableSpook) {
-                EntityRegistry.addSpawn((Class)EntitySpook.class, 0, 1, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+                EntityRegistry.addSpawn(EntitySpook.class, 0, 1, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
             }
             if (ConfigHandler.EnableBlazeGolem) {
-                EntityRegistry.addSpawn((Class)EntityBlazeGolem.class, ConfigHandler.M_BlazeGolemSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+                EntityRegistry.addSpawn(EntityBlazeGolem.class, ConfigHandler.M_BlazeGolemSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
             }
             if (ConfigHandler.EnableSlimeGolem) {
-                EntityRegistry.addSpawn((Class)EntitySlimeGolem.class, ConfigHandler.M_SlimeGolemSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+                EntityRegistry.addSpawn(EntitySlimeGolem.class, ConfigHandler.M_SlimeGolemSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
             }
             if (ConfigHandler.EnableCreeperGolem) {
-                EntityRegistry.addSpawn((Class)EntityCreeperGolem.class, ConfigHandler.M_CreeperGolemSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+                EntityRegistry.addSpawn(EntityCreeperGolem.class, ConfigHandler.M_CreeperGolemSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
             }
             if (ConfigHandler.EnableGuardianGolem) {
-                EntityRegistry.addSpawn((Class)EntityGuardianGolem.class, ConfigHandler.M_GuardianGolemSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+                EntityRegistry.addSpawn(EntityGuardianGolem.class, ConfigHandler.M_GuardianGolemSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
             }
             if (ConfigHandler.EnableBlazeSnowman) {
-                EntityRegistry.addSpawn((Class)EntityBlazeSnowman.class, ConfigHandler.M_BlazeSnowmanSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+                EntityRegistry.addSpawn(EntityBlazeSnowman.class, ConfigHandler.M_BlazeSnowmanSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
             }
             if (ConfigHandler.EnableEnderSnowman) {
-                EntityRegistry.addSpawn((Class)EntityEnderSnowman.class, ConfigHandler.M_EnderSnowmanSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+                EntityRegistry.addSpawn(EntityEnderSnowman.class, ConfigHandler.M_EnderSnowmanSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
             }
             if (ConfigHandler.EnableSquidCreeper) {
-                EntityRegistry.addSpawn((Class)EntitySquidCreeper.class, ConfigHandler.M_SquidCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
+                EntityRegistry.addSpawn(EntitySquidCreeper.class, ConfigHandler.M_SquidCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH });
             }
             if (ConfigHandler.EnablePolarWolf) {
-                EntityRegistry.addSpawn((Class)EntityPolarWolf.class, ConfigHandler.M_PolarWolfSpawnRate, 5, 10, EnumCreatureType.MONSTER, new Biome[] { Biomes.ICE_PLAINS, Biomes.ICE_MOUNTAINS, Biomes.COLD_TAIGA, Biomes.COLD_BEACH, Biomes.EXTREME_HILLS, Biomes.TAIGA });
+                EntityRegistry.addSpawn(EntityPolarWolf.class, ConfigHandler.M_PolarWolfSpawnRate, 5, 10, EnumCreatureType.MONSTER, new Biome[] { Biomes.ICE_PLAINS, Biomes.ICE_MOUNTAINS, Biomes.COLD_TAIGA, Biomes.COLD_BEACH, Biomes.EXTREME_HILLS, Biomes.TAIGA });
             }
             if (ConfigHandler.EnableBlazePig) {
-                EntityRegistry.addSpawn((Class)EntityBlazePig.class, ConfigHandler.M_BlazePigSpawnRate, ConfigHandler.Min_MobAmount, ConfigHandler.Max_MobAmount, EnumCreatureType.CREATURE, new Biome[] { Biomes.HELL });
+                EntityRegistry.addSpawn(EntityBlazePig.class, ConfigHandler.M_BlazePigSpawnRate, ConfigHandler.Min_MobAmount, ConfigHandler.Max_MobAmount, EnumCreatureType.CREATURE, new Biome[] { Biomes.HELL });
             }
             if (ConfigHandler.EnableSpiderPig) {
-                EntityRegistry.addSpawn((Class)EntitySpiderPig.class, ConfigHandler.M_SpiderPigSpawnRate, ConfigHandler.Min_SpiderMobAmount, ConfigHandler.Max_SpiderMobAmount, EnumCreatureType.CREATURE, new Biome[] { Biomes.EXTREME_HILLS });
+                EntityRegistry.addSpawn(EntitySpiderPig.class, ConfigHandler.M_SpiderPigSpawnRate, ConfigHandler.Min_SpiderMobAmount, ConfigHandler.Max_SpiderMobAmount, EnumCreatureType.CREATURE, new Biome[] { Biomes.EXTREME_HILLS });
             }
             if (ConfigHandler.EnableShulkerGhast) {
-                EntityRegistry.addSpawn((Class)EntityShulkerGhast.class, ConfigHandler.M_ShulkerGhastSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.HELL });
+                EntityRegistry.addSpawn(EntityShulkerGhast.class, ConfigHandler.M_ShulkerGhastSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.HELL });
             }
             if (ConfigHandler.EnableIlliusionerGhast) {
-                EntityRegistry.addSpawn((Class)EntityIlliusionerGhast.class, ConfigHandler.M_IlliusionerGhastSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.HELL });
+                EntityRegistry.addSpawn(EntityIlliusionerGhast.class, ConfigHandler.M_IlliusionerGhastSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.HELL });
             }
             if (ConfigHandler.EnableGhastShulker) {
-                EntityRegistry.addSpawn((Class)EntityGhastShulker.class, ConfigHandler.M_GhastShulkerSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.SKY });
+                EntityRegistry.addSpawn(EntityGhastShulker.class, ConfigHandler.M_GhastShulkerSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, new Biome[] { Biomes.SKY });
             }
             if (ConfigHandler.EnableEnderGolem) {
-                EntityRegistry.addSpawn((Class)EntityEnderGolem.class, ConfigHandler.M_EnderGolemSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.CREATURE, new Biome[] { Biomes.SKY, Biomes.PLAINS });
+                EntityRegistry.addSpawn(EntityEnderGolem.class, ConfigHandler.M_EnderGolemSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.CREATURE, new Biome[] { Biomes.SKY, Biomes.PLAINS });
             }
         }
     }
