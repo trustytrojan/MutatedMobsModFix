@@ -234,29 +234,22 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
         
         private void spawnFangs(final double p_190876_1_, final double p_190876_3_, final double p_190876_5_, final double p_190876_7_, final float p_190876_9_, final int p_190876_10_) {
             BlockPos blockpos = new BlockPos(p_190876_1_, p_190876_7_, p_190876_3_);
-            boolean flag = false;
             double d0 = 0.0;
-            while (true) {
-                while (EntityCreepervoker.this.world.isBlockNormalCube(blockpos, true) || !EntityCreepervoker.this.world.isBlockNormalCube(blockpos.down(), true)) {
-                    blockpos = blockpos.down();
-                    if (blockpos.getY() < MathHelper.floor(p_190876_5_) - 1) {
-                        if (flag) {
-                            final EntityCreeperfangs EntityCreepervokerfangs = new EntityCreeperfangs(EntityCreepervoker.this.world, p_190876_1_, blockpos.getY() + d0, p_190876_3_, p_190876_9_, p_190876_10_, (EntityLivingBase)EntityCreepervoker.this);
-                            EntityCreepervoker.this.world.spawnEntity((Entity)EntityCreepervokerfangs);
-                        }
-                        return;
-                    }
+            while (EntityCreepervoker.this.world.isBlockNormalCube(blockpos, true) || !EntityCreepervoker.this.world.isBlockNormalCube(blockpos.down(), true)) {
+                blockpos = blockpos.down();
+                if (blockpos.getY() < MathHelper.floor(p_190876_5_) - 1) {
+                    return;
                 }
-                if (!EntityCreepervoker.this.world.isAirBlock(blockpos)) {
-                    final IBlockState iblockstate = EntityCreepervoker.this.world.getBlockState(blockpos);
-                    final AxisAlignedBB axisalignedbb = iblockstate.getCollisionBoundingBox((IBlockAccess)EntityCreepervoker.this.world, blockpos);
-                    if (axisalignedbb != null) {
-                        d0 = axisalignedbb.maxY;
-                    }
-                }
-                flag = true;
-                continue;
             }
+            if (!EntityCreepervoker.this.world.isAirBlock(blockpos)) {
+                final IBlockState iblockstate = EntityCreepervoker.this.world.getBlockState(blockpos);
+                final AxisAlignedBB axisalignedbb = iblockstate.getCollisionBoundingBox((IBlockAccess)EntityCreepervoker.this.world, blockpos);
+                if (axisalignedbb != null) {
+                    d0 = axisalignedbb.maxY;
+                }
+            }
+            final EntityCreeperfangs EntityCreepervokerfangs = new EntityCreeperfangs(EntityCreepervoker.this.world, p_190876_1_, blockpos.getY() + d0, p_190876_3_, p_190876_9_, p_190876_10_, (EntityLivingBase)EntityCreepervoker.this);
+            EntityCreepervoker.this.world.spawnEntity((Entity)EntityCreepervokerfangs);
         }
         
         protected SoundEvent getSpellPrepareSound() {
