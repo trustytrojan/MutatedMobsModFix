@@ -12,12 +12,11 @@ import net.minecraft.util.*;
 import mmm.*;
 import net.minecraftforge.fml.common.registry.*;
 import net.minecraft.entity.*;
-import net.minecraft.world.biome.*;
-import net.minecraft.init.*;
 
 public class EntityLoader
 {
-    private static int id = 0;
+    private static final org.apache.logging.log4j.Logger LOGGER = org.apache.logging.log4j.LogManager.getLogger();
+    private static int entityId = 0;
     
     public static void init() {
         register(EntitySlimeCreeper.class, "SlimeCreeper", 10752, 5635925);
@@ -64,18 +63,22 @@ public class EntityLoader
         registerNoEgg(EntityDeadPolarWolf.class, "deadpolar_wolf");
         register(EntityBlenderman.class, "blender_man", 16755200, 16755200);
 
-        RegisterSpawn();
+        registerSpawns();
     }
     
     public static void register(final Class<? extends Entity> EntityClass, final String entityNameIn, final int solidColorIn, final int spotColorIn) {
-        EntityRegistry.registerModEntity(new ResourceLocation("mmm:" + entityNameIn), EntityClass, entityNameIn, ++EntityLoader.id, (Object)MainClass.instance, 64, 1, true, solidColorIn, spotColorIn);
+        EntityRegistry.registerModEntity(new ResourceLocation("mmm:" + entityNameIn), EntityClass, entityNameIn, entityId, (Object)MainClass.instance, 64, 1, true, solidColorIn, spotColorIn);
+        LOGGER.debug("Registered " + entityNameIn + " with id " + entityId);
+        ++entityId;
     }
     
     public static void registerNoEgg(final Class<? extends Entity> EntityClass, final String entityNameIn) {
-        EntityRegistry.registerModEntity(new ResourceLocation("mmm:" + entityNameIn), EntityClass, entityNameIn, ++EntityLoader.id, (Object)MainClass.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation("mmm:" + entityNameIn), EntityClass, entityNameIn, entityId, (Object)MainClass.instance, 64, 1, true);
+        LOGGER.debug("Registered " + entityNameIn + " with id " + entityId);
+        ++entityId;
     }
     
-    public static void RegisterSpawn() {
+    public static void registerSpawns() {
         EntityRegistry.addSpawn(EntitySilverfishCreeper.class, ConfigHandler.M_SilverfishCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, EntitySilverfishCreeper.SPAWN_BIOMES);
         EntityRegistry.addSpawn(EntitySquidCreeper.class, ConfigHandler.M_SquidCreeperSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, EntitySquidCreeper.SPAWN_BIOMES);
         EntityRegistry.addSpawn(EntitySpiderCreeper.class, ConfigHandler.M_CreeperSpiderSpawnRate, ConfigHandler.Min_CreeperMobAmount, ConfigHandler.Max_CreeperMobAmount, EnumCreatureType.MONSTER, EntitySpiderCreeper.SPAWN_BIOMES);
@@ -112,6 +115,6 @@ public class EntityLoader
         EntityRegistry.addSpawn(EntityShulkerGhast.class, ConfigHandler.M_ShulkerGhastSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, EntityShulkerGhast.SPAWN_BIOMES);
         EntityRegistry.addSpawn(EntityIlliusionerGhast.class, ConfigHandler.M_IlliusionerGhastSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, EntityIlliusionerGhast.SPAWN_BIOMES);
         EntityRegistry.addSpawn(EntityGhastShulker.class, ConfigHandler.M_GhastShulkerSpawnRate, ConfigHandler.Min_EvilMobAmount, ConfigHandler.Max_EvilMobAmount, EnumCreatureType.MONSTER, EntityGhastShulker.SPAWN_BIOMES);
-        EntityRegistry.addSpawn(EntityEnderGolem.class, ConfigHandler.M_EnderGolemSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.CREATURE, new Biome[] { Biomes.SKY, Biomes.PLAINS });
+        EntityRegistry.addSpawn(EntityEnderGolem.class, ConfigHandler.M_EnderGolemSpawnRate, ConfigHandler.Min_GolemAmount, ConfigHandler.Max_GolemAmount, EnumCreatureType.CREATURE, EntityEnderGolem.SPAWN_BIOMES);
     }
 }

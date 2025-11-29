@@ -9,6 +9,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.state.*;
 import net.minecraft.village.*;
 import net.minecraft.world.*;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.pathfinding.*;
 import net.minecraft.entity.player.*;
 import mmm.common.entities.ai.*;
@@ -38,6 +39,7 @@ import net.minecraft.util.math.*;
 
 public class EntityEnderGolem extends EntityGolem implements IMutant
 {
+    public static final Biome[] SPAWN_BIOMES = { Biomes.SKY, Biomes.PLAINS };
     private static final UUID ATTACKING_SPEED_BOOST_ID;
     private static final AttributeModifier ATTACKING_SPEED_BOOST;
     private static final Set<Block> CARRIABLE_BLOCKS;

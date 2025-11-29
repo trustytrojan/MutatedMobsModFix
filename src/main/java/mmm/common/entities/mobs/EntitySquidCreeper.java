@@ -244,8 +244,8 @@ public class EntitySquidCreeper extends EntityHalfCreeper implements IMutant
     }
     
     static {
-        STATE = EntityDataManager.createKey(EntitySilverfishCreeper.class, DataSerializers.VARINT);
-        POWERED = EntityDataManager.createKey(EntitySilverfishCreeper.class, DataSerializers.BOOLEAN);
-        IGNITED = EntityDataManager.createKey(EntitySilverfishCreeper.class, DataSerializers.BOOLEAN);
+        STATE = EntityDataManager.createKey(EntitySquidCreeper.class, DataSerializers.VARINT);
+        POWERED = EntityDataManager.createKey(EntitySquidCreeper.class, DataSerializers.BOOLEAN);
+        IGNITED = EntityDataManager.createKey(EntitySquidCreeper.class, DataSerializers.BOOLEAN);
     }
 }

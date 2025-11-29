@@ -285,7 +285,7 @@ public class EntityBlazeSkeleton extends EntityMob implements IRangedAttackMob, 
     
     static {
         SWINGING_ARMS = EntityDataManager.createKey(EntityBlazeSkeleton.class, DataSerializers.BOOLEAN);
-        IS_CHILD = EntityDataManager.createKey(EntityZombie.class, DataSerializers.BOOLEAN);
+        IS_CHILD = EntityDataManager.createKey(EntityBlazeSkeleton.class, DataSerializers.BOOLEAN);
     }
     
     class GroupData implements IEntityLivingData

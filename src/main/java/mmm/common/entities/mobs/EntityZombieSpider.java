@@ -436,7 +436,7 @@ public class EntityZombieSpider extends EntityMob implements IMutant
     }
     
     static {
-        CLIMBING = EntityDataManager.createKey(EntityZombieSpiderPigman.class, DataSerializers.BYTE);
+        CLIMBING = EntityDataManager.createKey(EntityZombieSpider.class, DataSerializers.BYTE);
         BABY_SPEED_BOOST_ID = UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836");
         BABY_SPEED_BOOST = new AttributeModifier(EntityZombieSpider.BABY_SPEED_BOOST_ID, "Baby speed boost", 0.5, 1);
         IS_CHILD = EntityDataManager.createKey(EntityZombieSpider.class, DataSerializers.BOOLEAN);
