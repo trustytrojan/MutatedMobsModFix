@@ -30,6 +30,7 @@ import net.minecraft.network.datasync.*;
 
 public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH };
     private static final UUID MODIFIER_UUID;
     private static final AttributeModifier MODIFIER;
     private static final DataParameter<Boolean> IS_AGGRESSIVE;

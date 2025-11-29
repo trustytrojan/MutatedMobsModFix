@@ -27,6 +27,7 @@ import net.minecraft.entity.monster.*;
 
 public class EntityBlazeSkeleton extends EntityMob implements IRangedAttackMob, IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.HELL };
     private static final DataParameter<Boolean> SWINGING_ARMS;
     private static final DataParameter<Boolean> IS_CHILD;
     private float heightOffset;

@@ -27,6 +27,7 @@ import net.minecraft.network.datasync.*;
 
 public class EntitySlimeCreeper extends EntityHalfCreeper
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND };
     private static final DataParameter<Integer> STATE;
     private static final DataParameter<Boolean> POWERED;
     private static final DataParameter<Boolean> IGNITED;

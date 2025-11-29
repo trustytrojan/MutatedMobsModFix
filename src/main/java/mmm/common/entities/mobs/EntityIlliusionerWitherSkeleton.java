@@ -26,6 +26,7 @@ import net.minecraft.network.datasync.*;
 
 public class EntityIlliusionerWitherSkeleton extends EntityMob implements IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.HELL };
     private static final DataParameter<Boolean> SWINGING_ARMS;
     private static final DataParameter<Boolean> SPLIT;
     private static final DataParameter<Boolean> Clone;

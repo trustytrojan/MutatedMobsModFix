@@ -33,6 +33,7 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
     private EntitySheep wololoTarget;
     private static final DataParameter<Integer> STATE = EntityDataManager.createKey(EntityCreepervoker.class, DataSerializers.VARINT);
     private static final DataParameter<Boolean> POWERED = EntityDataManager.createKey(EntityCreepervoker.class, DataSerializers.BOOLEAN);
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND };
     
     public EntityCreepervoker(final World worldIn) {
         super(worldIn);

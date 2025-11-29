@@ -39,6 +39,7 @@ public class EntityGhastShulker extends EntityGolem implements IMob, IMutant
     protected static final DataParameter<EnumFacing> ATTACHED_FACE;
     protected static final DataParameter<com.google.common.base.Optional<BlockPos>> ATTACHED_BLOCK_POS;
     protected static final DataParameter<Byte> PEEK_TICK;
+        public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.SKY };
     private float prevPeekAmount;
     private float peekAmount;
     private BlockPos currentAttachmentPosition;

@@ -30,6 +30,7 @@ import net.minecraft.network.datasync.*;
 
 public class EntityEnderManSkeleton extends EntityMob implements IRangedAttackMob, IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.PLAINS, Biomes.SKY };
     public int weaponType;
     private static final DataParameter<Boolean> SWINGING_ARMS;
     public final EntityAIAttackRangedBow<EntityEnderManSkeleton> aiArrowAttack;

@@ -25,6 +25,7 @@ import net.minecraft.util.math.*;
 
 public class EntityShulkerGhast extends EntityFlying implements IMob, IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.HELL };
     private static final DataParameter<Boolean> ATTACKING;
     private int explosionStrength;
     

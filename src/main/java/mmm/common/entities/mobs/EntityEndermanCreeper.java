@@ -32,6 +32,7 @@ import net.minecraft.network.datasync.*;
 
 public class EntityEndermanCreeper extends EntityHalfCreeper implements IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.PLAINS, Biomes.SKY, Biomes.BEACH, Biomes.DESERT, Biomes.FOREST, Biomes.SWAMPLAND, Biomes.HELL, Biomes.EXTREME_HILLS, Biomes.MESA, Biomes.JUNGLE, Biomes.ROOFED_FOREST, Biomes.SAVANNA, Biomes.REDWOOD_TAIGA, Biomes.TAIGA, Biomes.STONE_BEACH };
     private static final DataParameter<Integer> STATE;
     private static final DataParameter<Boolean> POWERED;
     private static final DataParameter<Boolean> IGNITED;

@@ -29,9 +29,11 @@ import net.minecraft.block.*;
 import java.util.*;
 import net.minecraft.block.state.*;
 import net.minecraft.block.properties.*;
+import net.minecraft.world.biome.Biome;
 
 public class EntitySilverfishCreeper extends EntityHalfCreeper
 {
+    public static final Biome[] SPAWN_BIOMES = new Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH };
     private static final DataParameter<Integer> STATE = EntityDataManager.createKey(EntitySilverfishCreeper.class, DataSerializers.VARINT);
     private static final DataParameter<Boolean> POWERED = EntityDataManager.createKey(EntitySilverfishCreeper.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Boolean> IGNITED = EntityDataManager.createKey(EntitySilverfishCreeper.class, DataSerializers.BOOLEAN);

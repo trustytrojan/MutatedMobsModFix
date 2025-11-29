@@ -23,6 +23,7 @@ import net.minecraft.util.math.*;
 
 public class EntitySquidGhast extends EntityFlying implements IMob, IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.OCEAN, Biomes.RIVER, Biomes.DEEP_OCEAN, Biomes.FROZEN_RIVER, Biomes.BEACH };
     private static final DataParameter<Boolean> ATTACKING;
     private int explosionStrength;
     

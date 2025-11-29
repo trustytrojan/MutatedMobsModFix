@@ -15,6 +15,7 @@ import net.minecraft.util.math.*;
 
 public class EntityHuskSpider extends EntityZombieSpider implements IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.MESA, Biomes.MUSHROOM_ISLAND };
     public EntityHuskSpider(final World worldIn) {
         super(worldIn);
     }

@@ -32,6 +32,7 @@ import javax.annotation.*;
 
 public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, IBoss, IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH };
     private static final DataParameter<Integer> FIRST_HEAD_TARGET;
     private static final DataParameter<Integer> SECOND_HEAD_TARGET;
     private static final DataParameter<Integer> THIRD_HEAD_TARGET;

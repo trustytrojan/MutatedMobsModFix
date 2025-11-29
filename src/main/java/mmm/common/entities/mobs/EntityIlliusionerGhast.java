@@ -25,6 +25,7 @@ import net.minecraft.util.math.*;
 
 public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.HELL };
     private static final DataParameter<Boolean> ATTACKING;
     private static final DataParameter<Boolean> SPLIT;
     private static final DataParameter<Boolean> Clone;

@@ -27,6 +27,7 @@ import java.util.*;
 
 public class EntityPolarWolf extends EntityTameable implements IJumpingMount, IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.ICE_PLAINS, Biomes.ICE_MOUNTAINS, Biomes.COLD_TAIGA, Biomes.COLD_BEACH, Biomes.EXTREME_HILLS, Biomes.TAIGA };
     private static final UUID ATTACK_SPEED_BOOST_MODIFIER_UUID;
     private static final AttributeModifier ATTACK_SPEED_BOOST_MODIFIER;
     private int angerLevel;

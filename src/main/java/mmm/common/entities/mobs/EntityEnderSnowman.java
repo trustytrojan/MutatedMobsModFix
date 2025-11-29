@@ -34,6 +34,7 @@ public class EntityEnderSnowman extends EntityGolem implements IRangedAttackMob,
         super(worldIn);
         this.setSize(0.7f, 1.9f);
     }
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH };
     
     public static void registerFixesSnowman(final DataFixer fixer) {
         EntityLiving.registerFixesMob(fixer, EntityEnderSnowman.class);

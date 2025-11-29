@@ -30,6 +30,7 @@ import com.google.common.collect.*;
 
 public class EntitySpiderPig extends EntityAnimal implements IJumpingMount, IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.EXTREME_HILLS };
     private static final DataParameter<Byte> CLIMBING;
     private static final DataParameter<Integer> BOOST_TIME;
     private static final Set<Item> TEMPTATION_ITEMS;

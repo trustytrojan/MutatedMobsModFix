@@ -27,6 +27,7 @@ import net.minecraft.entity.ai.*;
 
 public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.HELL };
     private static final DataParameter<Boolean> CLIMBING;
     private static final UUID ATTACK_SPEED_BOOST_MODIFIER_UUID;
     private static final AttributeModifier ATTACK_SPEED_BOOST_MODIFIER;

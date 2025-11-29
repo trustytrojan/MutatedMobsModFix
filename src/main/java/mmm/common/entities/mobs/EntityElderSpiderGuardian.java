@@ -26,6 +26,7 @@ import com.google.common.base.*;
 
 public class EntityElderSpiderGuardian extends EntityMob implements IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.OCEAN, Biomes.RIVER, Biomes.DEEP_OCEAN, Biomes.FROZEN_RIVER, Biomes.BEACH };
     private static final DataParameter<Boolean> CLIMBING = EntityDataManager.createKey(EntityElderSpiderGuardian.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Boolean> MOVING = EntityDataManager.createKey(EntityElderSpiderGuardian.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Integer> TARGET_ENTITY = EntityDataManager.createKey(EntityElderSpiderGuardian.class, DataSerializers.VARINT);

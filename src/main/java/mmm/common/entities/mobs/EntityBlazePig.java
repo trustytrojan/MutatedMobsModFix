@@ -30,6 +30,8 @@ import com.google.common.collect.*;
 
 public class EntityBlazePig extends EntityAnimal implements IJumpingMount, IMutant
 {
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.HELL };
+    public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES_CREATURE = SPAWN_BIOMES;
     private float heightOffset;
     private int heightOffsetUpdateTime;
     private static final DataParameter<Integer> BOOST_TIME;
