@@ -26,7 +26,7 @@ import com.google.common.base.*;
 
 public class EntitySpiderGuardian extends EntityMob implements IMutant
 {
-    private static final DataParameter<Byte> CLIMBING;
+    private static final DataParameter<Boolean> CLIMBING;
     private static final DataParameter<Boolean> MOVING;
     private static final DataParameter<Integer> TARGET_ENTITY;
     protected float clientSideTailAnimation;
@@ -45,17 +45,17 @@ public class EntitySpiderGuardian extends EntityMob implements IMutant
     }
     
     protected void initEntityAI() {
-        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
-        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntitySpiderGuardian.class, 12.0f, 0.01f));
-        this.tasks.addTask(9, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.tasks.addTask(0, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(5, (EntityAIBase)new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
-        this.tasks.addTask(7, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0, 0.0f));
-        this.tasks.addTask(1, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0, true));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, true));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityVillager.class, true));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntitySquid.class, true));
+        this.tasks.addTask(8, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
+        this.tasks.addTask(8, new EntityAIWatchClosest((EntityLiving)this, EntitySpiderGuardian.class, 12.0f, 0.01f));
+        this.tasks.addTask(9, new EntityAILookIdle((EntityLiving)this));
+        this.tasks.addTask(0, new EntityAISwimming((EntityLiving)this));
+        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
+        this.tasks.addTask(7, new EntityAIWanderAvoidWater((EntityCreature)this, 1.0, 0.0f));
+        this.tasks.addTask(1, new EntityAIAttackMelee((EntityCreature)this, 1.0, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget((EntityCreature)this, EntityVillager.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget((EntityCreature)this, EntitySquid.class, true));
     }
     
     protected void applyEntityAttributes() {
@@ -82,7 +82,7 @@ public class EntitySpiderGuardian extends EntityMob implements IMutant
         super.entityInit();
         this.dataManager.register(EntitySpiderGuardian.MOVING, false);
         this.dataManager.register(EntitySpiderGuardian.TARGET_ENTITY, 0);
-        this.dataManager.register(EntitySpiderGuardian.CLIMBING, (byte)0);
+        this.dataManager.register(EntitySpiderGuardian.CLIMBING, false);
     }
     
     public boolean isOnLadder() {
@@ -101,14 +101,7 @@ public class EntitySpiderGuardian extends EntityMob implements IMutant
     }
     
     public void setBesideClimbableBlock(final boolean climbing) {
-        byte b0 = (byte)this.dataManager.get(EntitySpiderGuardian.CLIMBING);
-        if (climbing) {
-            b0 |= 0x1;
-        }
-        else {
-            b0 &= 0xFFFFFFFE;
-        }
-        this.dataManager.set(EntitySpiderGuardian.CLIMBING, b0);
+        this.dataManager.set(EntitySpiderGuardian.CLIMBING, climbing);
     }
     
     public EnumCreatureAttribute getCreatureAttribute() {
@@ -123,7 +116,7 @@ public class EntitySpiderGuardian extends EntityMob implements IMutant
     }
     
     public boolean isBesideClimbableBlock() {
-        return ((byte)this.dataManager.get(EntitySpiderGuardian.CLIMBING) & 0x1) != 0x0;
+        return (boolean)this.dataManager.get(EntitySpiderGuardian.CLIMBING);
     }
     
     public boolean isMoving() {
@@ -302,7 +295,7 @@ public class EntitySpiderGuardian extends EntityMob implements IMutant
     }
     
     static {
-        CLIMBING = EntityDataManager.createKey(EntityZombieSpiderPigman.class, DataSerializers.BYTE);
+        CLIMBING = EntityDataManager.createKey(EntitySpiderGuardian.class, DataSerializers.BOOLEAN);
         MOVING = EntityDataManager.createKey(EntitySpiderGuardian.class, DataSerializers.BOOLEAN);
         TARGET_ENTITY = EntityDataManager.createKey(EntitySpiderGuardian.class, DataSerializers.VARINT);
     }

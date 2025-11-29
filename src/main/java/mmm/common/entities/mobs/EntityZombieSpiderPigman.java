@@ -27,7 +27,7 @@ import net.minecraft.entity.ai.*;
 
 public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
 {
-    private static final DataParameter<Byte> CLIMBING;
+    private static final DataParameter<Boolean> CLIMBING;
     private static final UUID ATTACK_SPEED_BOOST_MODIFIER_UUID;
     private static final AttributeModifier ATTACK_SPEED_BOOST_MODIFIER;
     private int angerLevel;
@@ -47,8 +47,8 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     }
     
     protected void applyEntityAI() {
-        this.targetTasks.addTask(1, (EntityAIBase)new AIHurtByAggressor(this));
-        this.targetTasks.addTask(2, (EntityAIBase)new AITargetAggressor(this));
+        this.targetTasks.addTask(1, new AIHurtByAggressor(this));
+        this.targetTasks.addTask(2, new AITargetAggressor(this));
     }
     
     protected void applyEntityAttributes() {
@@ -88,7 +88,7 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register(EntityZombieSpiderPigman.CLIMBING, (byte)0);
+        this.dataManager.register(EntityZombieSpiderPigman.CLIMBING, false);
     }
     
     public boolean isOnLadder() {
@@ -107,7 +107,7 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     }
     
     public boolean isBesideClimbableBlock() {
-        return ((byte)this.dataManager.get(EntityZombieSpiderPigman.CLIMBING) & 0x1) != 0x0;
+        return (boolean)this.dataManager.get(EntityZombieSpiderPigman.CLIMBING);
     }
     
     public boolean attackEntityAsMob(final Entity par1Entity) {
@@ -145,14 +145,7 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     }
     
     public void setBesideClimbableBlock(final boolean climbing) {
-        byte b0 = (byte)this.dataManager.get(EntityZombieSpiderPigman.CLIMBING);
-        if (climbing) {
-            b0 |= 0x1;
-        }
-        else {
-            b0 &= 0xFFFFFFFE;
-        }
-        this.dataManager.set(EntityZombieSpiderPigman.CLIMBING, b0);
+        this.dataManager.set(EntityZombieSpiderPigman.CLIMBING, climbing);
     }
     
     public static void registerFixesPigZombie(final DataFixer fixer) {
@@ -312,7 +305,7 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     }
     
     static {
-        CLIMBING = EntityDataManager.createKey(EntityZombieSpiderPigman.class, DataSerializers.BYTE);
+        CLIMBING = EntityDataManager.createKey(EntityZombieSpiderPigman.class, DataSerializers.BOOLEAN);
         ATTACK_SPEED_BOOST_MODIFIER_UUID = UUID.fromString("49455A49-7EC5-45BA-B886-3B90B23A1718");
         ATTACK_SPEED_BOOST_MODIFIER = new AttributeModifier(EntityZombieSpiderPigman.ATTACK_SPEED_BOOST_MODIFIER_UUID, "Attacking speed boost", 0.05, 0).setSaved(false);
     }

@@ -54,14 +54,14 @@ public class EntityEnderManSkeleton extends EntityMob implements IRangedAttackMo
     }
     
     protected void initEntityAI() {
-        this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(5, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityWolf.class, true));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, true));
+        this.tasks.addTask(1, new EntityAISwimming((EntityLiving)this));
+        this.tasks.addTask(5, new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
+        this.tasks.addTask(6, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
+        this.tasks.addTask(6, new EntityAILookIdle((EntityLiving)this));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget((EntityCreature)this, EntityWolf.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, true));
     }
     
     protected void applyEntityAttributes() {
@@ -106,8 +106,8 @@ public class EntityEnderManSkeleton extends EntityMob implements IRangedAttackMo
     
     public void setCombatTask() {
         if (this.world != null && !this.world.isRemote) {
-            this.tasks.removeTask((EntityAIBase)this.aiAttackOnCollide);
-            this.tasks.removeTask((EntityAIBase)this.aiArrowAttack);
+            this.tasks.removeTask(this.aiAttackOnCollide);
+            this.tasks.removeTask(this.aiArrowAttack);
             final ItemStack itemstack = this.getHeldItemMainhand();
             if (itemstack.getItem() == Items.BOW) {
                 int i = 20;
@@ -115,10 +115,10 @@ public class EntityEnderManSkeleton extends EntityMob implements IRangedAttackMo
                     i = 40;
                 }
                 this.aiArrowAttack.setAttackCooldown(i);
-                this.tasks.addTask(4, (EntityAIBase)this.aiArrowAttack);
+                this.tasks.addTask(4, this.aiArrowAttack);
             }
             else {
-                this.tasks.addTask(4, (EntityAIBase)this.aiAttackOnCollide);
+                this.tasks.addTask(4, this.aiAttackOnCollide);
             }
         }
     }

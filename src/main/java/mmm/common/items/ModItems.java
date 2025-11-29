@@ -36,19 +36,13 @@ public class ModItems
         registerItem(ModItems.detonator = new ItemDetonator("detonator"));
         registerItem(ModItems.packed_detonator = new ItemPackedDetonator("packed_detonator"));
         registerItem(ModItems.shulker_detonator = new ItemShulkerDetonator("shulker_detonator"));
-        if (ConfigHandler.EnableSantaSpider) {
-            registerItem(ModItems.firework_detonator = new ItemFireworkDetonator("firework_detonator"));
-        }
+        registerItem(ModItems.firework_detonator = new ItemFireworkDetonator("firework_detonator"));
         if (ConfigHandler.CanDefuse) {
             registerItem(ModItems.defusing_detonator = new ItemDefusingDetonator("defusing_detonator"));
         }
-        if (ConfigHandler.EnableBlazePig) {
-            registerItem(ModItems.porkchop_blazing = (Item)new ItemSpecialFood("porkchop_blazing", 10, true));
-        }
-        if (ConfigHandler.EnableCreeperPig) {
-            registerItem(ModItems.porkchop_creeper = (Item)new ItemSpecialFood("porkchop_creeper", 2, true));
-            registerItem(ModItems.porkchop_chargedcreeper = (Item)new ItemSpecialFood("porkchop_chargedcreeper", 8, true));
-        }
+        registerItem(ModItems.porkchop_blazing = (Item)new ItemSpecialFood("porkchop_blazing", 10, true));
+        registerItem(ModItems.porkchop_creeper = (Item)new ItemSpecialFood("porkchop_creeper", 2, true));
+        registerItem(ModItems.porkchop_chargedcreeper = (Item)new ItemSpecialFood("porkchop_chargedcreeper", 8, true));
         registerItem(ModItems.wither_star = new ItemMisc("wither_star"));
     }
     
@@ -64,23 +58,15 @@ public class ModItems
         registerRender(ModItems.emeraldmob_fuser);
         registerRender(ModItems.detonator);
         registerRender(ModItems.packed_detonator);
-        if (ConfigHandler.EnableShulkerGhast) {
-            registerRender(ModItems.shulker_detonator);
-        }
-        if (ConfigHandler.EnableSantaSpider) {
-            registerRender(ModItems.firework_detonator);
-        }
+        registerRender(ModItems.shulker_detonator);
+        registerRender(ModItems.firework_detonator);
         if (ConfigHandler.CanDefuse) {
             registerRender(ModItems.defusing_detonator);
         }
         registerRender(ModItems.wither_star);
-        if (ConfigHandler.EnableBlazePig) {
-            registerRender(ModItems.porkchop_blazing);
-        }
-        if (ConfigHandler.EnableCreeperPig) {
-            registerRender(ModItems.porkchop_creeper);
-            registerRender(ModItems.porkchop_chargedcreeper);
-        }
+        registerRender(ModItems.porkchop_blazing);
+        registerRender(ModItems.porkchop_creeper);
+        registerRender(ModItems.porkchop_chargedcreeper);
     }
     
     public static void registerRender(final Item item) {

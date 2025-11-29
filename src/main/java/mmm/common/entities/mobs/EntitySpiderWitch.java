@@ -33,7 +33,7 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
     private static final UUID MODIFIER_UUID;
     private static final AttributeModifier MODIFIER;
     private static final DataParameter<Boolean> IS_AGGRESSIVE;
-    private static final DataParameter<Byte> CLIMBING;
+    private static final DataParameter<Boolean> CLIMBING;
     private int witchAttackTimer;
     
     public EntitySpiderWitch(final World worldIn) {
@@ -46,19 +46,19 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
     }
     
     protected void initEntityAI() {
-        this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(2, (EntityAIBase)new EntityAIAttackRanged((IRangedAttackMob)this, 1.0, 15, 75.0f));
-        this.tasks.addTask(2, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
+        this.tasks.addTask(1, new EntityAISwimming((EntityLiving)this));
+        this.tasks.addTask(2, new EntityAIAttackRanged((IRangedAttackMob)this, 1.0, 15, 75.0f));
+        this.tasks.addTask(2, new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
+        this.tasks.addTask(3, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
+        this.tasks.addTask(3, new EntityAILookIdle((EntityLiving)this));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
     }
     
     protected void entityInit() {
         super.entityInit();
         this.getDataManager().register(EntitySpiderWitch.IS_AGGRESSIVE, false);
-        this.dataManager.register(EntitySpiderWitch.CLIMBING, (byte)0);
+        this.dataManager.register(EntitySpiderWitch.CLIMBING, false);
     }
     
     public boolean isOnLadder() {
@@ -74,14 +74,7 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
     }
     
     public void setBesideClimbableBlock(final boolean climbing) {
-        byte b0 = (byte)this.dataManager.get(EntitySpiderWitch.CLIMBING);
-        if (climbing) {
-            b0 |= 0x1;
-        }
-        else {
-            b0 &= 0xFFFFFFFE;
-        }
-        this.dataManager.set(EntitySpiderWitch.CLIMBING, b0);
+        this.dataManager.set(EntitySpiderWitch.CLIMBING, climbing);
     }
     
     public EnumCreatureAttribute getCreatureAttribute() {
@@ -96,7 +89,7 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
     }
     
     public boolean isBesideClimbableBlock() {
-        return ((byte)this.dataManager.get(EntitySpiderWitch.CLIMBING) & 0x1) != 0x0;
+        return (boolean)this.dataManager.get(EntitySpiderWitch.CLIMBING);
     }
     
     protected SoundEvent getAmbientSound() {
@@ -240,6 +233,6 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
         MODIFIER_UUID = UUID.fromString("5CD17E52-A79A-43D3-A529-90FDE04B181E");
         MODIFIER = new AttributeModifier(EntitySpiderWitch.MODIFIER_UUID, "Drinking speed penalty", -0.25, 0).setSaved(false);
         IS_AGGRESSIVE = EntityDataManager.createKey(EntitySpiderWitch.class, DataSerializers.BOOLEAN);
-        CLIMBING = EntityDataManager.createKey(EntitySpiderWitch.class, DataSerializers.BYTE);
+        CLIMBING = EntityDataManager.createKey(EntitySpiderWitch.class, DataSerializers.BOOLEAN);
     }
 }

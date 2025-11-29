@@ -68,14 +68,14 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
     }
     
     protected void initEntityAI() {
-        this.tasks.addTask(1, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
-        this.tasks.addTask(4, (EntityAIBase)new AIAttack());
-        this.tasks.addTask(7, (EntityAIBase)new AIPeek());
-        this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, true, new Class[0]));
-        this.targetTasks.addTask(2, (EntityAIBase)new AIAttackNearest(this));
-        this.targetTasks.addTask(3, (EntityAIBase)new AIDefenseAttack(this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityLivingBase.class, true));
+        this.tasks.addTask(1, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
+        this.tasks.addTask(4, new AIAttack());
+        this.tasks.addTask(7, new AIPeek());
+        this.tasks.addTask(8, new EntityAILookIdle((EntityLiving)this));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget((EntityCreature)this, true, new Class[0]));
+        this.targetTasks.addTask(2, new AIAttackNearest(this));
+        this.targetTasks.addTask(3, new AIDefenseAttack(this));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget((EntityCreature)this, EntityLivingBase.class, true));
     }
     
     protected boolean canTriggerWalking() {

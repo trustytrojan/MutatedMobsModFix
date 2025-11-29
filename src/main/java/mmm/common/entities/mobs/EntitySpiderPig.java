@@ -44,15 +44,15 @@ public class EntitySpiderPig extends EntityAnimal implements IJumpingMount, IMut
     }
     
     protected void initEntityAI() {
-        this.tasks.addTask(0, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(1, (EntityAIBase)new EntityAIPanic((EntityCreature)this, 1.25));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAIMate((EntityAnimal)this, 1.0));
-        this.tasks.addTask(4, (EntityAIBase)new EntityAITempt((EntityCreature)this, 1.2, Items.CARROT_ON_A_STICK, false));
-        this.tasks.addTask(4, (EntityAIBase)new EntityAITempt((EntityCreature)this, 1.2, false, (Set)EntitySpiderPig.TEMPTATION_ITEMS));
-        this.tasks.addTask(5, (EntityAIBase)new EntityAIFollowParent((EntityAnimal)this, 1.1));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
-        this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
+        this.tasks.addTask(0, new EntityAISwimming((EntityLiving)this));
+        this.tasks.addTask(1, new EntityAIPanic((EntityCreature)this, 1.25));
+        this.tasks.addTask(3, new EntityAIMate((EntityAnimal)this, 1.0));
+        this.tasks.addTask(4, new EntityAITempt((EntityCreature)this, 1.2, Items.CARROT_ON_A_STICK, false));
+        this.tasks.addTask(4, new EntityAITempt((EntityCreature)this, 1.2, false, (Set)EntitySpiderPig.TEMPTATION_ITEMS));
+        this.tasks.addTask(5, new EntityAIFollowParent((EntityAnimal)this, 1.1));
+        this.tasks.addTask(6, new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
+        this.tasks.addTask(7, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
+        this.tasks.addTask(8, new EntityAILookIdle((EntityLiving)this));
     }
     
     protected void applyEntityAttributes() {

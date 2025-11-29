@@ -42,21 +42,21 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
     
     protected void initEntityAI() {
         super.initEntityAI();
-        this.tasks.addTask(0, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(1, (EntityAIBase)new AICastingSpell());
-        this.tasks.addTask(2, (EntityAIBase)new EntityAIAvoidEntity((EntityCreature)this, EntityPlayer.class, 8.0f, 0.6, 1.0));
-        this.tasks.addTask(4, (EntityAIBase)new AISummonSpell());
-        this.tasks.addTask(5, (EntityAIBase)new AIAttackSpell());
-        this.tasks.addTask(6, (EntityAIBase)new AIWololoSpell());
-        this.tasks.addTask(8, (EntityAIBase)new EntityAIWander((EntityCreature)this, 0.6));
-        this.tasks.addTask(9, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 3.0f, 1.0f));
-        this.tasks.addTask(10, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityLiving.class, 8.0f));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, true, new Class[] { EntityCreepervoker.class }));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true).setUnseenMemoryTicks(300));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityVillager.class, false).setUnseenMemoryTicks(300));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityIronGolem.class, false));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, false));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityCreeperPig.class, false));
+        this.tasks.addTask(0, new EntityAISwimming((EntityLiving)this));
+        this.tasks.addTask(1, new AICastingSpell());
+        this.tasks.addTask(2, new EntityAIAvoidEntity((EntityCreature)this, EntityPlayer.class, 8.0f, 0.6, 1.0));
+        this.tasks.addTask(4, new AISummonSpell());
+        this.tasks.addTask(5, new AIAttackSpell());
+        this.tasks.addTask(6, new AIWololoSpell());
+        this.tasks.addTask(8, new EntityAIWander((EntityCreature)this, 0.6));
+        this.tasks.addTask(9, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 3.0f, 1.0f));
+        this.tasks.addTask(10, new EntityAIWatchClosest((EntityLiving)this, EntityLiving.class, 8.0f));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget((EntityCreature)this, true, new Class[] { EntityCreepervoker.class }));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true).setUnseenMemoryTicks(300));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget((EntityCreature)this, EntityVillager.class, false).setUnseenMemoryTicks(300));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget((EntityCreature)this, EntityIronGolem.class, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget((EntityCreature)this, EntityCreeperPig.class, false));
     }
     
     protected void applyEntityAttributes() {

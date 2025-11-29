@@ -43,11 +43,11 @@ public class EntityBlazeSnowman extends EntityGolem implements IRangedAttackMob,
     }
     
     protected void initEntityAI() {
-        this.tasks.addTask(1, (EntityAIBase)new EntityAIAttackRanged((IRangedAttackMob)this, 1.25, 3, 50.0f));
-        this.tasks.addTask(2, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0, 1.0000001E-5f));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
-        this.tasks.addTask(4, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityLiving.class, 10, true, false, IMob.MOB_SELECTOR));
+        this.tasks.addTask(1, new EntityAIAttackRanged((IRangedAttackMob)this, 1.25, 3, 50.0f));
+        this.tasks.addTask(2, new EntityAIWanderAvoidWater((EntityCreature)this, 1.0, 1.0000001E-5f));
+        this.tasks.addTask(3, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
+        this.tasks.addTask(4, new EntityAILookIdle((EntityLiving)this));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget((EntityCreature)this, EntityLiving.class, 10, true, false, IMob.MOB_SELECTOR));
     }
     
     protected void applyEntityAttributes() {

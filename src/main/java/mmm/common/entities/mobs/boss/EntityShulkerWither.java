@@ -64,14 +64,14 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
     }
     
     protected void initEntityAI() {
-        this.tasks.addTask(0, (EntityAIBase)new AIDoNothing());
-        this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(2, (EntityAIBase)new EntityAIAttackRanged((IRangedAttackMob)this, 1.0, 40, 20.0f));
-        this.tasks.addTask(5, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
-        this.tasks.addTask(7, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityLiving.class, 0, false, false, EntityShulkerWither.NOT_UNDEAD));
+        this.tasks.addTask(0, new AIDoNothing());
+        this.tasks.addTask(1, new EntityAISwimming((EntityLiving)this));
+        this.tasks.addTask(2, new EntityAIAttackRanged((IRangedAttackMob)this, 1.0, 40, 20.0f));
+        this.tasks.addTask(5, new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
+        this.tasks.addTask(6, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
+        this.tasks.addTask(7, new EntityAILookIdle((EntityLiving)this));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget((EntityCreature)this, EntityLiving.class, 0, false, false, EntityShulkerWither.NOT_UNDEAD));
     }
     
     protected void entityInit() {

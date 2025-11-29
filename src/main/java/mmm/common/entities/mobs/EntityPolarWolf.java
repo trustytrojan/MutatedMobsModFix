@@ -52,25 +52,25 @@ public class EntityPolarWolf extends EntityTameable implements IJumpingMount, IM
     
     protected void initEntityAI() {
         super.initEntityAI();
-        this.targetTasks.addTask(1, (EntityAIBase)new AIHurtByAggressor(this));
-        this.targetTasks.addTask(2, (EntityAIBase)new AITargetAggressor(this));
-        this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(4, (EntityAIBase)new EntityAILeapAtTarget((EntityLiving)this, 0.4f));
-        this.tasks.addTask(5, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0, true));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIFollowOwner((EntityTameable)this, 1.0, 10.0f, 2.0f));
-        this.tasks.addTask(7, (EntityAIBase)new EntityAIMate((EntityAnimal)this, 1.0));
-        this.tasks.addTask(8, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(10, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
-        this.tasks.addTask(10, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAIOwnerHurtByTarget((EntityTameable)this));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAIOwnerHurtTarget((EntityTameable)this));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, true, new Class[0]));
-        this.targetTasks.addTask(4, (EntityAIBase)new EntityAITargetNonTamed((EntityTameable)this, EntityAnimal.class, false, new Predicate<Entity>() {
+        this.targetTasks.addTask(1, new AIHurtByAggressor(this));
+        this.targetTasks.addTask(2, new AITargetAggressor(this));
+        this.tasks.addTask(1, new EntityAISwimming((EntityLiving)this));
+        this.tasks.addTask(4, new EntityAILeapAtTarget((EntityLiving)this, 0.4f));
+        this.tasks.addTask(5, new EntityAIAttackMelee((EntityCreature)this, 1.0, true));
+        this.tasks.addTask(6, new EntityAIFollowOwner((EntityTameable)this, 1.0, 10.0f, 2.0f));
+        this.tasks.addTask(7, new EntityAIMate((EntityAnimal)this, 1.0));
+        this.tasks.addTask(8, new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
+        this.tasks.addTask(10, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
+        this.tasks.addTask(10, new EntityAILookIdle((EntityLiving)this));
+        this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget((EntityTameable)this));
+        this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget((EntityTameable)this));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget((EntityCreature)this, true, new Class[0]));
+        this.targetTasks.addTask(4, new EntityAITargetNonTamed((EntityTameable)this, EntityAnimal.class, false, new Predicate<Entity>() {
             public boolean apply(@Nullable final Entity p_apply_1_) {
                 return p_apply_1_ instanceof EntitySheep || p_apply_1_ instanceof EntityRabbit;
             }
         }));
-        this.targetTasks.addTask(5, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, AbstractSkeleton.class, false));
+        this.targetTasks.addTask(5, new EntityAINearestAttackableTarget((EntityCreature)this, AbstractSkeleton.class, false));
     }
     
     @Nullable

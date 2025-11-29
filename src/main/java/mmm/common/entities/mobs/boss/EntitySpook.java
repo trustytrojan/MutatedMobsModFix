@@ -65,11 +65,11 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     }
     
     protected void initEntityAI() {
-        this.tasks.addTask(0, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(5, (EntityAIBase)new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
-        this.tasks.addTask(7, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
-        this.tasks.addTask(8, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
-        this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
+        this.tasks.addTask(0, new EntityAISwimming((EntityLiving)this));
+        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
+        this.tasks.addTask(7, new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
+        this.tasks.addTask(8, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
+        this.tasks.addTask(8, new EntityAILookIdle((EntityLiving)this));
         this.applyEntityAI();
     }
     
@@ -79,10 +79,10 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     }
     
     protected void applyEntityAI() {
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIMoveThroughVillage((EntityCreature)this, 1.0, false));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, true, new Class[] { EntityPigZombie.class }));
-        this.tasks.addTask(1, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0, true));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityLivingBase.class, true));
+        this.tasks.addTask(6, new EntityAIMoveThroughVillage((EntityCreature)this, 1.0, false));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget((EntityCreature)this, true, new Class[] { EntityPigZombie.class }));
+        this.tasks.addTask(1, new EntityAIAttackMelee((EntityCreature)this, 1.0, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget((EntityCreature)this, EntityLivingBase.class, true));
     }
     
     protected void applyEntityAttributes() {
@@ -129,10 +129,10 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
             this.isBreakDoorsTaskSet = enabled;
             ((PathNavigateGround)this.getNavigator()).setBreakDoors(enabled);
             if (enabled) {
-                this.tasks.addTask(1, (EntityAIBase)this.breakDoor);
+                this.tasks.addTask(1, this.breakDoor);
             }
             else {
-                this.tasks.removeTask((EntityAIBase)this.breakDoor);
+                this.tasks.removeTask(this.breakDoor);
             }
         }
     }

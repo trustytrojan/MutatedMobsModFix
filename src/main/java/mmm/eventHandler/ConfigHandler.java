@@ -13,7 +13,7 @@ public class ConfigHandler
     public static int O_confettiChance = 100;
 
     @Config.Comment({ "Set to true if you still want creeper mutant to damage players.(Works only if Creeper Confetti mod is installed!)" })
-    public static boolean O_damagesPlayers = false;
+    public static boolean O_damagesPlayers = true;
 
     @Config.Comment({ "Enable Creeper Golems Finishing Move!" })
     public static boolean S_CreeperGolemExplodeOnDeath = true;
@@ -32,26 +32,26 @@ public class ConfigHandler
 
     @Config.Comment({ "Set Mob and Bosses Spawnrate" })
     public static int M_BlazePigSpawnRate = 10;
-    public static int M_BlazeSkeletonSpawnRate = 20;
+    public static int M_BlazeSkeletonSpawnRate = 10;
     public static int M_ShulkerGhastSpawnRate = 10;
     public static int M_GhastShulkerSpawnRate = 10;
-    public static int M_CreepervokerSpawnRate = 20;
-    public static int M_CreeperSpiderSpawnRate = 15;
-    public static int M_IlliusionerCreeperSpawnRate = 15;
+    public static int M_CreepervokerSpawnRate = 10;
+    public static int M_CreeperSpiderSpawnRate = 10;
+    public static int M_IlliusionerCreeperSpawnRate = 10;
     public static int M_IlliusionerWitherSkeletonSpawnRate = 10;
-    public static int M_EndermanSkeletonSpawnRate = 20;
+    public static int M_EndermanSkeletonSpawnRate = 10;
     public static int M_EnderGolemSpawnRate = 0;
-    public static int M_ZombieCreeperSpawnRate = 20;
-    public static int M_CreeperPigSpawnRate = 20;
-    public static int M_SilverfishCreeperSpawnRate = 25;
-    public static int M_SlimeCreeperSpawnRate = 20;
+    public static int M_ZombieCreeperSpawnRate = 10;
+    public static int M_CreeperPigSpawnRate = 10;
+    public static int M_SilverfishCreeperSpawnRate = 10;
+    public static int M_SlimeCreeperSpawnRate = 10;
     public static int M_SpiderGuardianSpawnRate = 10;
-    public static int M_PigmanSpiderSpawnRate = 30;
-    public static int M_WitchSpiderSpawnRate = 15;
+    public static int M_PigmanSpiderSpawnRate = 10;
+    public static int M_WitchSpiderSpawnRate = 10;
     public static int M_SpiderPigSpawnRate = 10;
-    public static int M_ZombieSpiderSpawnRate = 25;
+    public static int M_ZombieSpiderSpawnRate = 10;
     public static int M_SquidGhastSpawnRate = 10;
-    public static int M_HuskSpiderSpawnRate = 20;
+    public static int M_HuskSpiderSpawnRate = 10;
     public static int M_WitherShulkerSpawnRate = 0;
     public static int M_ShulkerWitherSpawnRate = 0;
     public static int M_GuardianGolemSpawnRate = 0;
@@ -61,7 +61,7 @@ public class ConfigHandler
     public static int M_ElderSpiderGuardianSpawnRate = 0;
     public static int M_IlliusionerGhastSpawnRate = 0;
     public static int M_SpookSpawnRate = 0;
-    public static int M_SquidCreeperSpawnRate = 20;
+    public static int M_SquidCreeperSpawnRate = 10;
     public static int M_EndermanCreeperSpawnRate = 10;
     public static int M_EnderSnowmanSpawnRate = 0;
     public static int M_BlazeSnowmanSpawnRate = 0;
@@ -72,15 +72,15 @@ public class ConfigHandler
 
     @Config.Comment({ "Sets limit for specific type of mobs in one chunk!" })
     public static int Min_MobAmount = 1;
-    public static int Max_MobAmount = 2;
+    public static int Max_MobAmount = 1;
     public static int Min_GolemAmount = 1;
     public static int Max_GolemAmount = 1;
     public static int Min_EvilMobAmount = 1;
-    public static int Max_EvilMobAmount = 3;
+    public static int Max_EvilMobAmount = 1;
     public static int Min_CreeperMobAmount = 1;
-    public static int Max_CreeperMobAmount = 3;
+    public static int Max_CreeperMobAmount = 1;
     public static int Min_SpiderMobAmount = 1;
-    public static int Max_SpiderMobAmount = 3;
+    public static int Max_SpiderMobAmount = 1;
 
     @Config.Comment({ "Mutated Mobs Health && Attack" })
     public static int HP_BlazeGolem = 140;
@@ -153,46 +153,6 @@ public class ConfigHandler
     @Config.Comment({ "Set Maximum Slime Monster Size" })
     public static int SIZE_SlimeGolem_MAX = 3;
     public static int SIZE_SlimeCreeper_MAX = 4;
-
-    @Config.Comment({ "Enable/Disable Mobs" })
-    public static boolean EnableBlazeGolem = true;
-    public static boolean EnableBlazePig = true;
-    public static boolean EnableBlazeSkeleton = true;
-    public static boolean EnableBlazeSnowman = true;
-    public static boolean EnableCreeperGolem = true;
-    public static boolean EnableCreeperPig = true;
-    public static boolean EnableCreepervoker = true;
-    public static boolean EnableElderSpiderGuardian = true;
-    public static boolean EnableEnderGolem = true;
-    public static boolean EnableEnderSkeleton = true;
-    public static boolean EnableEnderSnowman = true;
-    public static boolean EnableEnderCreeper = true;
-    public static boolean EnableGhastShulker = true;
-    public static boolean EnableGuardianGolem = true;
-    public static boolean EnableHuskSpider = true;
-    public static boolean EnableIlliusionerCreeper = true;
-    public static boolean EnableIlliusionerWitherSkeleton = true;
-    public static boolean EnableIlliusionerGhast = true;
-    public static boolean EnableSlimeGolem = true;
-    public static boolean EnableSlimeCreeper = true;
-    public static boolean EnableShulkerGhast = true;
-    public static boolean EnableSilverfishCreeper = true;
-    public static boolean EnableSpiderCreeper = true;
-    public static boolean EnableSpiderGuardian = true;
-    public static boolean EnableSpiderPig = true;
-    public static boolean EnableSpiderWitch = true;
-    public static boolean EnableSquidCreeper = true;
-    public static boolean EnableSquidGhast = true;
-    public static boolean EnableZombieCreeper = true;
-    public static boolean EnableZombieSpider = true;
-    public static boolean EnableZombieSpiderPigman = true;
-    public static boolean EnableWitherShulker = true;
-    public static boolean EnableShulkerWither = true;
-    public static boolean EnableSpook = true;
-    public static boolean EnableSantaSpider = true;
-    public static boolean EnablePolarWolf = true;
-    public static boolean EnableDeadPolarWolf = true;
-    public static boolean EnableBlenderman = true;
 
     @Config.Comment({ "Should defuser work on mutants?" })
     public static boolean CanDefuse = true;

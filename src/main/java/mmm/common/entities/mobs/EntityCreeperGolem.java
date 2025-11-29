@@ -55,16 +55,16 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
     }
     
     protected void initEntityAI() {
-        this.tasks.addTask(1, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0, true));
-        this.tasks.addTask(2, (EntityAIBase)new EntityAIMoveTowardsTarget((EntityCreature)this, 0.9, 32.0f));
-        this.tasks.addTask(3, (EntityAIBase)new EntityAIMoveThroughVillage((EntityCreature)this, 0.6, true));
-        this.tasks.addTask(4, (EntityAIBase)new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
-        this.tasks.addTask(6, (EntityAIBase)new EntityAIWanderAvoidWater((EntityCreature)this, 0.6));
-        this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
-        this.tasks.addTask(8, (EntityAIBase)new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAIProtectTheVillage3(this));
-        this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
-        this.targetTasks.addTask(3, (EntityAIBase)new EntityAINearestAttackableTarget((EntityCreature)this, EntityLiving.class, 10, false, true, new Predicate<EntityLiving>() {
+        this.tasks.addTask(1, new EntityAIAttackMelee((EntityCreature)this, 1.0, true));
+        this.tasks.addTask(2, new EntityAIMoveTowardsTarget((EntityCreature)this, 0.9, 32.0f));
+        this.tasks.addTask(3, new EntityAIMoveThroughVillage((EntityCreature)this, 0.6, true));
+        this.tasks.addTask(4, new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
+        this.tasks.addTask(6, new EntityAIWanderAvoidWater((EntityCreature)this, 0.6));
+        this.tasks.addTask(7, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
+        this.tasks.addTask(8, new EntityAILookIdle((EntityLiving)this));
+        this.targetTasks.addTask(1, new EntityAIProtectTheVillage3(this));
+        this.targetTasks.addTask(2, new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget((EntityCreature)this, EntityLiving.class, 10, false, true, new Predicate<EntityLiving>() {
             public boolean apply(@Nullable final EntityLiving p_apply_1_) {
                 return p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_) && !(p_apply_1_ instanceof EntityCreeper);
             }

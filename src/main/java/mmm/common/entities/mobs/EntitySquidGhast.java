@@ -36,10 +36,10 @@ public class EntitySquidGhast extends EntityFlying implements IMob, IMutant
     }
     
     protected void initEntityAI() {
-        this.tasks.addTask(5, (EntityAIBase)new AIRandomFly(this));
-        this.tasks.addTask(7, (EntityAIBase)new AILookAround(this));
-        this.tasks.addTask(7, (EntityAIBase)new AIFireballAttack(this));
-        this.targetTasks.addTask(1, (EntityAIBase)new EntityAIFindEntityNearestPlayer((EntityLiving)this));
+        this.tasks.addTask(5, new AIRandomFly(this));
+        this.tasks.addTask(7, new AILookAround(this));
+        this.tasks.addTask(7, new AIFireballAttack(this));
+        this.targetTasks.addTask(1, new EntityAIFindEntityNearestPlayer((EntityLiving)this));
     }
     
     @SideOnly(Side.CLIENT)
