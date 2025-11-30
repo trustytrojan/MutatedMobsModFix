@@ -19,7 +19,7 @@ public abstract class AbstractCustomIllager extends EntityMob
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)AbstractCustomIllager.AGGRESSIVE, (Object)0);
+        this.dataManager.register((DataParameter)AbstractCustomIllager.AGGRESSIVE, 0);
     }
     
     @SideOnly(Side.CLIENT)
@@ -36,7 +36,7 @@ public abstract class AbstractCustomIllager extends EntityMob
         else {
             i &= ~mask;
         }
-        this.dataManager.set((DataParameter)AbstractCustomIllager.AGGRESSIVE, (Object)(byte)(i & 0xFF));
+        this.dataManager.set((DataParameter)AbstractCustomIllager.AGGRESSIVE, (byte)(i & 0xFF));
     }
     
     public CreatureType getCreatureType() {

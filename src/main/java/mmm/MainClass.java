@@ -30,7 +30,7 @@ public class MainClass
     @Mod.EventHandler
     public void init(final FMLInitializationEvent e) {
         if (ModLoader.isCreeperConfettiLoaded) {
-            MinecraftForge.EVENT_BUS.register((Object)new ConfettiHandler());
+            MinecraftForge.EVENT_BUS.register(new ConfettiHandler());
             MainClass.proxy.init(e);
         }
     }

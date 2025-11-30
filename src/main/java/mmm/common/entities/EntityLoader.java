@@ -67,13 +67,13 @@ public class EntityLoader
     }
     
     public static void register(final Class<? extends Entity> EntityClass, final String entityNameIn, final int solidColorIn, final int spotColorIn) {
-        EntityRegistry.registerModEntity(new ResourceLocation("mmm:" + entityNameIn), EntityClass, entityNameIn, entityId, (Object)MainClass.instance, 64, 1, true, solidColorIn, spotColorIn);
+        EntityRegistry.registerModEntity(new ResourceLocation("mmm:" + entityNameIn), EntityClass, entityNameIn, entityId, MainClass.instance, 64, 1, true, solidColorIn, spotColorIn);
         LOGGER.debug("Registered " + entityNameIn + " with id " + entityId);
         ++entityId;
     }
     
     public static void registerNoEgg(final Class<? extends Entity> EntityClass, final String entityNameIn) {
-        EntityRegistry.registerModEntity(new ResourceLocation("mmm:" + entityNameIn), EntityClass, entityNameIn, entityId, (Object)MainClass.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation("mmm:" + entityNameIn), EntityClass, entityNameIn, entityId, MainClass.instance, 64, 1, true);
         LOGGER.debug("Registered " + entityNameIn + " with id " + entityId);
         ++entityId;
     }

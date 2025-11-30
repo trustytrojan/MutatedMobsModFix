@@ -62,7 +62,7 @@ public class ItemIronMobFuser extends Item
             this.marked = null;
             this.marked2 = null;
         }
-        return (ActionResult<ItemStack>)new ActionResult(EnumActionResult.SUCCESS, (Object)itemstack);
+        return (ActionResult<ItemStack>)new ActionResult(EnumActionResult.SUCCESS, itemstack);
     }
     
     public void spawnWeather(final World world) {

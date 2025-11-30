@@ -33,8 +33,8 @@ public class ConfettiHandler
             creeper = (EntityHalfCreeper)event.getEntityLiving();
         }
         if (creeper != null && creeper.getCreeperState() == 1) {
-            final int ignitedTime = (int)ReflectionHelper.getPrivateValue((Class)EntityHalfCreeper.class, (Object)creeper, ConfettiHandler.TIME_SINCE_IGNITED);
-            final int fuseTime = (int)ReflectionHelper.getPrivateValue((Class)EntityHalfCreeper.class, (Object)creeper, ConfettiHandler.FUSE_TIME);
+            final int ignitedTime = (int)ReflectionHelper.getPrivateValue((Class)EntityHalfCreeper.class, creeper, ConfettiHandler.TIME_SINCE_IGNITED);
+            final int fuseTime = (int)ReflectionHelper.getPrivateValue((Class)EntityHalfCreeper.class, creeper, ConfettiHandler.FUSE_TIME);
             if (ignitedTime >= fuseTime - 1 && this.willExplodeToConfetti()) {
                 creeper.getEntityWorld().playSound((EntityPlayer)null, creeper.posX, creeper.posY, creeper.posZ, SoundEvents.ENTITY_FIREWORK_TWINKLE, SoundCategory.BLOCKS, 0.5f, (1.0f + (creeper.getEntityWorld().rand.nextFloat() - creeper.getEntityWorld().rand.nextFloat()) * 0.2f) * 0.7f);
                 if (creeper.getEntityWorld().isRemote) {

@@ -62,6 +62,6 @@ public class ItemShulkerDetonator extends Item
                 this.marked = null;
             }
         }
-        return (ActionResult<ItemStack>)new ActionResult(EnumActionResult.SUCCESS, (Object)itemstack);
+        return (ActionResult<ItemStack>)new ActionResult(EnumActionResult.SUCCESS, itemstack);
     }
 }
