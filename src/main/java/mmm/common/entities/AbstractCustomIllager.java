@@ -49,7 +49,7 @@ public abstract class AbstractCustomIllager extends EntityMob
     }
     
     static {
-        AGGRESSIVE = EntityDataManager.createKey((Class)AbstractCustomIllager.class, DataSerializers.BYTE);
+        AGGRESSIVE = EntityDataManager.createKey(AbstractCustomIllager.class, DataSerializers.BYTE);
     }
     
     @SideOnly(Side.CLIENT)

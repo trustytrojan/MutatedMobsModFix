@@ -119,6 +119,6 @@ public class EntityShulkerSkull extends EntityFireball
     }
     
     static {
-        INVULNERABLE = EntityDataManager.createKey((Class)EntityShulkerSkull.class, DataSerializers.BOOLEAN);
+        INVULNERABLE = EntityDataManager.createKey(EntityShulkerSkull.class, DataSerializers.BOOLEAN);
     }
 }
