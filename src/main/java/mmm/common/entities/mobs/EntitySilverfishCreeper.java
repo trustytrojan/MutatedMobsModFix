@@ -234,7 +234,7 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
             final boolean flag = this.world.getGameRules().getBoolean("mobGriefing");
             final float f = this.getPowered() ? 2.0f : 1.0f;
             this.dead = true;
-            this.world.createExplosion((Entity)this, this.posX, this.posY, this.posZ, this.explosionRadius * f, flag);
+            this.world.createExplosion(this, this.posX, this.posY, this.posZ, this.explosionRadius * f, flag);
             this.split();
             this.setDead();
             this.spawnLingeringCloud();
@@ -305,16 +305,16 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
                 entitypigzombie10.setCustomNameTag(this.getCustomNameTag());
                 entitypigzombie10.setAlwaysRenderNameTag(this.getAlwaysRenderNameTag());
             }
-            this.world.spawnEntity((Entity)entitypigzombie);
-            this.world.spawnEntity((Entity)entitypigzombie2);
-            this.world.spawnEntity((Entity)entitypigzombie3);
-            this.world.spawnEntity((Entity)entitypigzombie4);
-            this.world.spawnEntity((Entity)entitypigzombie5);
-            this.world.spawnEntity((Entity)entitypigzombie6);
-            this.world.spawnEntity((Entity)entitypigzombie7);
-            this.world.spawnEntity((Entity)entitypigzombie8);
-            this.world.spawnEntity((Entity)entitypigzombie9);
-            this.world.spawnEntity((Entity)entitypigzombie10);
+            this.world.spawnEntity(entitypigzombie);
+            this.world.spawnEntity(entitypigzombie2);
+            this.world.spawnEntity(entitypigzombie3);
+            this.world.spawnEntity(entitypigzombie4);
+            this.world.spawnEntity(entitypigzombie5);
+            this.world.spawnEntity(entitypigzombie6);
+            this.world.spawnEntity(entitypigzombie7);
+            this.world.spawnEntity(entitypigzombie8);
+            this.world.spawnEntity(entitypigzombie9);
+            this.world.spawnEntity(entitypigzombie10);
         }
     }
     
@@ -330,7 +330,7 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
             for (final PotionEffect potioneffect : collection) {
                 entityareaeffectcloud.addEffect(new PotionEffect(potioneffect));
             }
-            this.world.spawnEntity((Entity)entityareaeffectcloud);
+            this.world.spawnEntity(entityareaeffectcloud);
         }
     }
     
@@ -425,7 +425,7 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
             if (this.lookForFriends <= 0) {
                 final World world = this.silverfish.world;
                 final Random random = this.silverfish.getRNG();
-                final BlockPos blockpos = new BlockPos((Entity)this.silverfish);
+                final BlockPos blockpos = new BlockPos(this.silverfish);
                 for (int i = 0; i <= 5 && i >= -5; i = ((i <= 0) ? 1 : 0) - i) {
                     for (int j = 0; j <= 10 && j >= -10; j = ((j <= 0) ? 1 : 0) - j) {
                         for (int k = 0; k <= 10 && k >= -10; k = ((k <= 0) ? 1 : 0) - k) {

@@ -231,7 +231,7 @@ public class EntitySpiderPig extends EntityAnimal implements IJumpingMount, IMut
                 entitypigzombie.setCustomNameTag(this.getCustomNameTag());
                 entitypigzombie.setAlwaysRenderNameTag(this.getAlwaysRenderNameTag());
             }
-            this.world.spawnEntity((Entity)entitypigzombie);
+            this.world.spawnEntity(entitypigzombie);
             this.setDead();
         }
     }
@@ -244,7 +244,7 @@ public class EntitySpiderPig extends EntityAnimal implements IJumpingMount, IMut
         player.rotationYaw = this.rotationYaw;
         player.rotationPitch = this.rotationPitch;
         if (!this.world.isRemote) {
-            player.startRiding((Entity)this);
+            player.startRiding(this);
         }
     }
     

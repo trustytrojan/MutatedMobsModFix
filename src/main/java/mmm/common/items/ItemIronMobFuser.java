@@ -66,10 +66,10 @@ public class ItemIronMobFuser extends Item
     }
     
     public void spawnWeather(final World world) {
-        world.addWeatherEffect((Entity)new EntityLightningBolt(world, this.marked.posX + 5.0, this.marked.posY, this.marked.posZ - 5.0, false));
-        world.addWeatherEffect((Entity)new EntityLightningBolt(world, this.marked.posX - 5.0, this.marked.posY, this.marked.posZ + 5.0, false));
-        world.addWeatherEffect((Entity)new EntityLightningBolt(world, this.marked.posX - 5.0, this.marked.posY, this.marked.posZ + 5.0, false));
-        world.addWeatherEffect((Entity)new EntityLightningBolt(world, this.marked.posX + 5.0, this.marked.posY, this.marked.posZ - 5.0, false));
+        world.addWeatherEffect(new EntityLightningBolt(world, this.marked.posX + 5.0, this.marked.posY, this.marked.posZ - 5.0, false));
+        world.addWeatherEffect(new EntityLightningBolt(world, this.marked.posX - 5.0, this.marked.posY, this.marked.posZ + 5.0, false));
+        world.addWeatherEffect(new EntityLightningBolt(world, this.marked.posX - 5.0, this.marked.posY, this.marked.posZ + 5.0, false));
+        world.addWeatherEffect(new EntityLightningBolt(world, this.marked.posX + 5.0, this.marked.posY, this.marked.posZ - 5.0, false));
     }
     
     public void SpawnMutant(final World world, final EntityPlayer playerIn) {
@@ -79,7 +79,7 @@ public class ItemIronMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             this.spawnWeather(world);
-            world.spawnEntity((Entity)entitycreeper);
+            world.spawnEntity(entitycreeper);
             this.marked = null;
             this.marked2 = null;
             world.playSound((EntityPlayer)null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ITEM_TOTEM_USE, SoundCategory.NEUTRAL, 0.5f, 0.4f / (ItemIronMobFuser.itemRand.nextFloat() * 0.4f + 0.8f));
@@ -90,7 +90,7 @@ public class ItemIronMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             this.spawnWeather(world);
-            world.spawnEntity((Entity)entitycreeper2);
+            world.spawnEntity(entitycreeper2);
             this.marked = null;
             this.marked2 = null;
         }
@@ -100,7 +100,7 @@ public class ItemIronMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             this.spawnWeather(world);
-            world.spawnEntity((Entity)entitycreeper3);
+            world.spawnEntity(entitycreeper3);
             this.marked = null;
             this.marked2 = null;
         }
@@ -110,7 +110,7 @@ public class ItemIronMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             this.spawnWeather(world);
-            world.spawnEntity((Entity)entitycreeper4);
+            world.spawnEntity(entitycreeper4);
             this.marked = null;
             this.marked2 = null;
         }
@@ -121,7 +121,7 @@ public class ItemIronMobFuser extends Item
             this.marked2.setDead();
             this.spawnWeather(world);
             entitycreeper5.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack((Item)Items.BOW));
-            world.spawnEntity((Entity)entitycreeper5);
+            world.spawnEntity(entitycreeper5);
             this.marked = null;
             this.marked2 = null;
         }
@@ -131,7 +131,7 @@ public class ItemIronMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             this.spawnWeather(world);
-            world.spawnEntity((Entity)entitycreeper6);
+            world.spawnEntity(entitycreeper6);
             this.marked = null;
             this.marked2 = null;
         }
@@ -141,7 +141,7 @@ public class ItemIronMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             this.spawnWeather(world);
-            world.spawnEntity((Entity)entitycreeper7);
+            world.spawnEntity(entitycreeper7);
             this.marked = null;
             this.marked2 = null;
         }
@@ -151,7 +151,7 @@ public class ItemIronMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             this.spawnWeather(world);
-            world.spawnEntity((Entity)entitycreeper8);
+            world.spawnEntity(entitycreeper8);
             this.marked = null;
             this.marked2 = null;
         }
@@ -161,7 +161,7 @@ public class ItemIronMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             this.spawnWeather(world);
-            world.spawnEntity((Entity)entitycreeper9);
+            world.spawnEntity(entitycreeper9);
             this.marked = null;
             this.marked2 = null;
         }
@@ -171,7 +171,7 @@ public class ItemIronMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             this.spawnWeather(world);
-            world.spawnEntity((Entity)entitycreeper10);
+            world.spawnEntity(entitycreeper10);
             this.marked = null;
             this.marked2 = null;
         }
@@ -182,7 +182,7 @@ public class ItemIronMobFuser extends Item
             this.marked2.setDead();
             this.spawnWeather(world);
             entitycreeper11.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.STONE_SWORD));
-            world.spawnEntity((Entity)entitycreeper11);
+            world.spawnEntity(entitycreeper11);
             this.marked = null;
             this.marked2 = null;
         }
@@ -193,7 +193,7 @@ public class ItemIronMobFuser extends Item
             this.marked2.setDead();
             this.spawnWeather(world);
             entitycreeper12.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack((Item)Items.BOW));
-            world.spawnEntity((Entity)entitycreeper12);
+            world.spawnEntity(entitycreeper12);
             this.marked = null;
             this.marked2 = null;
         }
@@ -204,7 +204,7 @@ public class ItemIronMobFuser extends Item
             this.marked2.setDead();
             this.spawnWeather(world);
             entitycreeper13.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
-            world.spawnEntity((Entity)entitycreeper13);
+            world.spawnEntity(entitycreeper13);
             this.marked = null;
             this.marked2 = null;
         }
@@ -214,7 +214,7 @@ public class ItemIronMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             this.spawnWeather(world);
-            world.spawnEntity((Entity)entitycreeper14);
+            world.spawnEntity(entitycreeper14);
             this.marked = null;
             this.marked2 = null;
         }
@@ -224,7 +224,7 @@ public class ItemIronMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             this.spawnWeather(world);
-            world.spawnEntity((Entity)entitycreeper15);
+            world.spawnEntity(entitycreeper15);
             this.marked = null;
             this.marked2 = null;
         }
@@ -234,7 +234,7 @@ public class ItemIronMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             this.spawnWeather(world);
-            world.spawnEntity((Entity)entitycreeper16);
+            world.spawnEntity(entitycreeper16);
             this.marked = null;
             this.marked2 = null;
         }

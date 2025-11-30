@@ -236,7 +236,7 @@ public class EntitySpiderCreeper extends EntityHalfCreeper
             final boolean flag = this.world.getGameRules().getBoolean("mobGriefing");
             final float f = this.getPowered() ? 2.0f : 1.0f;
             this.dead = true;
-            this.world.createExplosion((Entity)this, this.posX, this.posY, this.posZ, this.explosionRadius * f, flag);
+            this.world.createExplosion(this, this.posX, this.posY, this.posZ, this.explosionRadius * f, flag);
             this.setDead();
             this.spawnLingeringCloud();
         }
@@ -254,7 +254,7 @@ public class EntitySpiderCreeper extends EntityHalfCreeper
             for (final PotionEffect potioneffect : collection) {
                 entityareaeffectcloud.addEffect(new PotionEffect(potioneffect));
             }
-            this.world.spawnEntity((Entity)entityareaeffectcloud);
+            this.world.spawnEntity(entityareaeffectcloud);
         }
     }
     

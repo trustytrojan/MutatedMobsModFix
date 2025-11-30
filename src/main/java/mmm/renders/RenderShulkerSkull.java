@@ -48,7 +48,7 @@ public class RenderShulkerSkull extends Render<EntityShulkerSkull>
             GlStateManager.enableColorMaterial();
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
-        this.skeletonHeadModel.render((Entity)entity, 0.0f, 0.0f, 0.0f, f, f2, 0.0625f);
+        this.skeletonHeadModel.render(entity, 0.0f, 0.0f, 0.0f, f, f2, 0.0625f);
         if (this.renderOutlines) {
             GlStateManager.disableOutlineMode();
             GlStateManager.disableColorMaterial();

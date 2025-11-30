@@ -70,7 +70,7 @@ public class ItemGoldMobFuser extends Item
             entitycreeper.setLocationAndAngles(this.marked.posX, this.marked.posY, this.marked.posZ, this.marked.rotationYaw, 0.0f);
             this.marked.setDead();
             this.marked2.setDead();
-            world.spawnEntity((Entity)entitycreeper);
+            world.spawnEntity(entitycreeper);
             this.marked = null;
             this.marked2 = null;
             world.playSound((EntityPlayer)null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ITEM_TOTEM_USE, SoundCategory.NEUTRAL, 0.5f, 0.4f / (ItemGoldMobFuser.itemRand.nextFloat() * 0.4f + 0.8f));
@@ -80,7 +80,7 @@ public class ItemGoldMobFuser extends Item
             entitycreeper2.setLocationAndAngles(this.marked.posX, this.marked.posY, this.marked.posZ, this.marked.rotationYaw, 0.0f);
             this.marked.setDead();
             this.marked2.setDead();
-            world.spawnEntity((Entity)entitycreeper2);
+            world.spawnEntity(entitycreeper2);
             this.marked = null;
             this.marked2 = null;
         }
@@ -89,7 +89,7 @@ public class ItemGoldMobFuser extends Item
             entitycreeper3.setLocationAndAngles(this.marked.posX, this.marked.posY, this.marked.posZ, this.marked.rotationYaw, 0.0f);
             this.marked.setDead();
             this.marked2.setDead();
-            world.spawnEntity((Entity)entitycreeper3);
+            world.spawnEntity(entitycreeper3);
             this.marked = null;
             this.marked2 = null;
         }
@@ -98,7 +98,7 @@ public class ItemGoldMobFuser extends Item
             entitycreeper4.setLocationAndAngles(this.marked.posX, this.marked.posY, this.marked.posZ, this.marked.rotationYaw, 0.0f);
             this.marked.setDead();
             this.marked2.setDead();
-            world.spawnEntity((Entity)entitycreeper4);
+            world.spawnEntity(entitycreeper4);
             this.marked = null;
             this.marked2 = null;
         }
@@ -108,7 +108,7 @@ public class ItemGoldMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             entitycreeper5.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack((Item)Items.BOW));
-            world.spawnEntity((Entity)entitycreeper5);
+            world.spawnEntity(entitycreeper5);
             this.marked = null;
             this.marked2 = null;
         }
@@ -117,7 +117,7 @@ public class ItemGoldMobFuser extends Item
             entitycreeper6.setLocationAndAngles(this.marked.posX, this.marked.posY, this.marked.posZ, this.marked.rotationYaw, 0.0f);
             this.marked.setDead();
             this.marked2.setDead();
-            world.spawnEntity((Entity)entitycreeper6);
+            world.spawnEntity(entitycreeper6);
             this.marked = null;
             this.marked2 = null;
         }
@@ -126,7 +126,7 @@ public class ItemGoldMobFuser extends Item
             entitycreeper7.setLocationAndAngles(this.marked.posX, this.marked.posY, this.marked.posZ, this.marked.rotationYaw, 0.0f);
             this.marked.setDead();
             this.marked2.setDead();
-            world.spawnEntity((Entity)entitycreeper7);
+            world.spawnEntity(entitycreeper7);
             this.marked = null;
             this.marked2 = null;
         }
@@ -135,7 +135,7 @@ public class ItemGoldMobFuser extends Item
             entitycreeper8.setLocationAndAngles(this.marked.posX, this.marked.posY, this.marked.posZ, this.marked.rotationYaw, 0.0f);
             this.marked.setDead();
             this.marked2.setDead();
-            world.spawnEntity((Entity)entitycreeper8);
+            world.spawnEntity(entitycreeper8);
             this.marked = null;
             this.marked2 = null;
         }
@@ -144,7 +144,7 @@ public class ItemGoldMobFuser extends Item
             entitycreeper9.setLocationAndAngles(this.marked.posX, this.marked.posY, this.marked.posZ, this.marked.rotationYaw, 0.0f);
             this.marked.setDead();
             this.marked2.setDead();
-            world.spawnEntity((Entity)entitycreeper9);
+            world.spawnEntity(entitycreeper9);
             this.marked = null;
             this.marked2 = null;
         }
@@ -153,7 +153,7 @@ public class ItemGoldMobFuser extends Item
             entitycreeper10.setLocationAndAngles(this.marked.posX, this.marked.posY, this.marked.posZ, this.marked.rotationYaw, 0.0f);
             this.marked.setDead();
             this.marked2.setDead();
-            world.spawnEntity((Entity)entitycreeper10);
+            world.spawnEntity(entitycreeper10);
             this.marked = null;
             this.marked2 = null;
         }
@@ -163,7 +163,7 @@ public class ItemGoldMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             entitycreeper11.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.STONE_SWORD));
-            world.spawnEntity((Entity)entitycreeper11);
+            world.spawnEntity(entitycreeper11);
             this.marked = null;
             this.marked2 = null;
         }
@@ -173,7 +173,7 @@ public class ItemGoldMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             entitycreeper12.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack((Item)Items.BOW));
-            world.spawnEntity((Entity)entitycreeper12);
+            world.spawnEntity(entitycreeper12);
             this.marked = null;
             this.marked2 = null;
         }
@@ -183,7 +183,7 @@ public class ItemGoldMobFuser extends Item
             this.marked.setDead();
             this.marked2.setDead();
             entitycreeper13.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
-            world.spawnEntity((Entity)entitycreeper13);
+            world.spawnEntity(entitycreeper13);
             this.marked = null;
             this.marked2 = null;
         }
@@ -192,7 +192,7 @@ public class ItemGoldMobFuser extends Item
             entitycreeper14.setLocationAndAngles(this.marked.posX, this.marked.posY, this.marked.posZ, this.marked.rotationYaw, 0.0f);
             this.marked.setDead();
             this.marked2.setDead();
-            world.spawnEntity((Entity)entitycreeper14);
+            world.spawnEntity(entitycreeper14);
             this.marked = null;
             this.marked2 = null;
         }
@@ -201,7 +201,7 @@ public class ItemGoldMobFuser extends Item
             entitycreeper15.setLocationAndAngles(this.marked.posX, this.marked.posY, this.marked.posZ, this.marked.rotationYaw, 0.0f);
             this.marked.setDead();
             this.marked2.setDead();
-            world.spawnEntity((Entity)entitycreeper15);
+            world.spawnEntity(entitycreeper15);
             this.marked = null;
             this.marked2 = null;
         }
@@ -210,7 +210,7 @@ public class ItemGoldMobFuser extends Item
             entitycreeper16.setLocationAndAngles(this.marked.posX, this.marked.posY, this.marked.posZ, this.marked.rotationYaw, 0.0f);
             this.marked.setDead();
             this.marked2.setDead();
-            world.spawnEntity((Entity)entitycreeper16);
+            world.spawnEntity(entitycreeper16);
             this.marked = null;
             this.marked2 = null;
         }

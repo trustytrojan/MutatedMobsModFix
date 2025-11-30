@@ -42,10 +42,10 @@ public class EntityEnderBall extends EntityThrowable
     protected void onImpact(final RayTraceResult result) {
         if (result.entityHit != null) {
             final int i = 3;
-            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage((Entity)this, (Entity)this.getThrower()), (float)i);
+            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), (float)i);
         }
         if (!this.world.isRemote) {
-            this.world.setEntityState((Entity)this, (byte)3);
+            this.world.setEntityState(this, (byte)3);
             this.setDead();
         }
     }

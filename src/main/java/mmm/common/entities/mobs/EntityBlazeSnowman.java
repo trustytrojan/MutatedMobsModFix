@@ -124,14 +124,14 @@ public class EntityBlazeSnowman extends EntityGolem implements IRangedAttackMob,
     }
     
     public void attackEntityWithRangedAttack(final EntityLivingBase target, final float distanceFactor) {
-        final double d0 = this.getDistanceSq((Entity)target);
+        final double d0 = this.getDistanceSq(target);
         final double d2 = target.posX - this.posX;
         final double d3 = target.getEntityBoundingBox().minY + target.height / 2.0f - (this.posY + this.height / 2.0f);
         final double d4 = target.posZ - this.posZ;
         final float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5f;
         final EntitySmallFireball entitysmallfireball = new EntitySmallFireball(this.world, (EntityLivingBase)this, d2 + this.getRNG().nextGaussian() * f, d3, d4 + this.getRNG().nextGaussian() * f);
         entitysmallfireball.posY = this.posY + this.height / 2.0f + 0.5;
-        this.world.spawnEntity((Entity)entitysmallfireball);
+        this.world.spawnEntity(entitysmallfireball);
     }
     
     public float getEyeHeight() {

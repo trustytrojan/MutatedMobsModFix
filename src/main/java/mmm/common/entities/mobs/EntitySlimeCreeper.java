@@ -170,7 +170,7 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
                 }
                 entityslime.setSlimeSize(i / 2, true);
                 entityslime.setLocationAndAngles(this.posX + f, this.posY + 0.5, this.posZ + f2, this.rand.nextFloat() * 360.0f, 0.0f);
-                this.world.spawnEntity((Entity)entityslime);
+                this.world.spawnEntity(entityslime);
                 if (this.getSlimeSize() == 1) {
                     this.SpawnMobs();
                 }
@@ -194,7 +194,7 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
                 }
                 entityslime.setSlimeSize(i / 2, true);
                 entityslime.setLocationAndAngles(this.posX + f, this.posY + 0.5, this.posZ + f2, this.rand.nextFloat() * 360.0f, 0.0f);
-                this.world.spawnEntity((Entity)entityslime);
+                this.world.spawnEntity(entityslime);
             }
         }
     }
@@ -305,7 +305,7 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
             final boolean flag = this.world.getGameRules().getBoolean("mobGriefing");
             final float f = this.getPowered() ? 2.0f : 1.0f;
             this.dead = true;
-            this.world.createExplosion((Entity)this, this.posX, this.posY, this.posZ, (float)this.getSlimeSize(), flag);
+            this.world.createExplosion(this, this.posX, this.posY, this.posZ, (float)this.getSlimeSize(), flag);
             this.SpawnLittleCreeps();
             this.setDead();
             this.spawnLingeringCloud();
@@ -324,8 +324,8 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
                 entitypigzombie2.setCustomNameTag(this.getCustomNameTag());
                 entitypigzombie2.setAlwaysRenderNameTag(this.getAlwaysRenderNameTag());
             }
-            this.world.spawnEntity((Entity)entitypigzombie);
-            this.world.spawnEntity((Entity)entitypigzombie2);
+            this.world.spawnEntity(entitypigzombie);
+            this.world.spawnEntity(entitypigzombie2);
             this.setDead();
         }
     }
@@ -342,7 +342,7 @@ public class EntitySlimeCreeper extends EntityHalfCreeper
             for (final PotionEffect potioneffect : collection) {
                 entityareaeffectcloud.addEffect(new PotionEffect(potioneffect));
             }
-            this.world.spawnEntity((Entity)entityareaeffectcloud);
+            this.world.spawnEntity(entityareaeffectcloud);
         }
     }
     

@@ -53,7 +53,7 @@ public class EntityShulkerSkull extends EntityFireball
     public float getExplosionResistance(final Explosion explosionIn, final World worldIn, final BlockPos pos, final IBlockState blockStateIn) {
         float f = super.getExplosionResistance(explosionIn, worldIn, pos, blockStateIn);
         final Block block = blockStateIn.getBlock();
-        if (this.isInvulnerable() && block.canEntityDestroy(blockStateIn, (IBlockAccess)worldIn, pos, (Entity)this) && ForgeEventFactory.onEntityDestroyBlock(this.shootingEntity, pos, blockStateIn)) {
+        if (this.isInvulnerable() && block.canEntityDestroy(blockStateIn, (IBlockAccess)worldIn, pos, this) && ForgeEventFactory.onEntityDestroyBlock(this.shootingEntity, pos, blockStateIn)) {
             f = Math.min(0.8f, f);
         }
         return f;
@@ -89,7 +89,7 @@ public class EntityShulkerSkull extends EntityFireball
                     }
                 }
             }
-            this.world.newExplosion((Entity)this, this.posX, this.posY, this.posZ, 2.0f, false, this.world.getGameRules().getBoolean("mobGriefing"));
+            this.world.newExplosion(this, this.posX, this.posY, this.posZ, 2.0f, false, this.world.getGameRules().getBoolean("mobGriefing"));
             this.setDead();
         }
     }

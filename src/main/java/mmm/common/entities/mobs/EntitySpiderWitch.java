@@ -149,7 +149,7 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
                 else if (this.rand.nextFloat() < 0.05f && this.getHealth() < this.getMaxHealth()) {
                     potiontype = PotionTypes.HEALING;
                 }
-                else if (this.rand.nextFloat() < 0.5f && this.getAttackTarget() != null && !this.isPotionActive(MobEffects.SPEED) && this.getAttackTarget().getDistanceSq((Entity)this) > 121.0) {
+                else if (this.rand.nextFloat() < 0.5f && this.getAttackTarget() != null && !this.isPotionActive(MobEffects.SPEED) && this.getAttackTarget().getDistanceSq(this) > 121.0) {
                     potiontype = PotionTypes.SWIFTNESS;
                 }
                 if (potiontype != null) {
@@ -163,7 +163,7 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
                 }
             }
             if (this.rand.nextFloat() < 7.5E-4f) {
-                this.world.setEntityState((Entity)this, (byte)15);
+                this.world.setEntityState(this, (byte)15);
             }
         }
         super.onLivingUpdate();
@@ -219,7 +219,7 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
             entityPotion.rotationPitch += 20.0f;
             entitypotion.shoot(d2, d3 + f * 0.2f, d4, 0.75f, 8.0f);
             this.world.playSound((EntityPlayer)null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_WITCH_THROW, this.getSoundCategory(), 1.0f, 0.8f + this.rand.nextFloat() * 0.4f);
-            this.world.spawnEntity((Entity)entitypotion);
+            this.world.spawnEntity(entitypotion);
         }
     }
     

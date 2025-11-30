@@ -95,11 +95,11 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
                 entitypigzombie5.setCustomNameTag(this.getCustomNameTag());
                 entitypigzombie5.setAlwaysRenderNameTag(this.getAlwaysRenderNameTag());
             }
-            this.world.spawnEntity((Entity)entitypigzombie);
-            this.world.spawnEntity((Entity)entitypigzombie2);
-            this.world.spawnEntity((Entity)entitypigzombie3);
-            this.world.spawnEntity((Entity)entitypigzombie4);
-            this.world.spawnEntity((Entity)entitypigzombie5);
+            this.world.spawnEntity(entitypigzombie);
+            this.world.spawnEntity(entitypigzombie2);
+            this.world.spawnEntity(entitypigzombie3);
+            this.world.spawnEntity(entitypigzombie4);
+            this.world.spawnEntity(entitypigzombie5);
             this.WillSplit();
         }
     }
@@ -289,11 +289,11 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
         public void updateTask() {
             final EntityLivingBase entitylivingbase = this.parentEntity.getAttackTarget();
             final double d0 = 64.0;
-            if (entitylivingbase.getDistanceSq((Entity)this.parentEntity) < 4096.0 && this.parentEntity.canEntityBeSeen((Entity)entitylivingbase)) {
+            if (entitylivingbase.getDistanceSq(this.parentEntity) < 4096.0 && this.parentEntity.canEntityBeSeen(entitylivingbase)) {
                 final World world = this.parentEntity.world;
                 ++this.attackTimer;
                 if (this.attackTimer == 10) {
-                    world.playEvent((EntityPlayer)null, 1015, new BlockPos((Entity)this.parentEntity), 0);
+                    world.playEvent((EntityPlayer)null, 1015, new BlockPos(this.parentEntity), 0);
                 }
                 if (this.attackTimer == 20) {
                     final double d2 = 4.0;
@@ -301,13 +301,13 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
                     final double d3 = entitylivingbase.posX - (this.parentEntity.posX + vec3d.x * 4.0);
                     final double d4 = entitylivingbase.getEntityBoundingBox().minY + entitylivingbase.height / 2.0f - (0.5 + this.parentEntity.posY + this.parentEntity.height / 2.0f);
                     final double d5 = entitylivingbase.posZ - (this.parentEntity.posZ + vec3d.z * 4.0);
-                    world.playEvent((EntityPlayer)null, 1016, new BlockPos((Entity)this.parentEntity), 0);
+                    world.playEvent((EntityPlayer)null, 1016, new BlockPos(this.parentEntity), 0);
                     final EntityLargeFireball entitylargefireball = new EntityLargeFireball(world, (EntityLivingBase)this.parentEntity, d3, d4, d5);
                     entitylargefireball.explosionPower = this.parentEntity.getFireballStrength();
                     entitylargefireball.posX = this.parentEntity.posX + vec3d.x * 4.0;
                     entitylargefireball.posY = this.parentEntity.posY + this.parentEntity.height / 2.0f + 0.5;
                     entitylargefireball.posZ = this.parentEntity.posZ + vec3d.z * 4.0;
-                    world.spawnEntity((Entity)entitylargefireball);
+                    world.spawnEntity(entitylargefireball);
                     this.attackTimer = -40;
                 }
             }
@@ -342,11 +342,11 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
         public void updateTask() {
             final EntityLivingBase entitylivingbase = this.parentEntity.getAttackTarget();
             final double d0 = 64.0;
-            if (entitylivingbase.getDistanceSq((Entity)this.parentEntity) < 4096.0 && this.parentEntity.canEntityBeSeen((Entity)entitylivingbase)) {
+            if (entitylivingbase.getDistanceSq(this.parentEntity) < 4096.0 && this.parentEntity.canEntityBeSeen(entitylivingbase)) {
                 final World world = this.parentEntity.world;
                 ++this.attackTimer;
                 if (this.attackTimer == 10) {
-                    world.playEvent((EntityPlayer)null, 1015, new BlockPos((Entity)this.parentEntity), 0);
+                    world.playEvent((EntityPlayer)null, 1015, new BlockPos(this.parentEntity), 0);
                 }
                 if (this.attackTimer == 20) {
                     final double d2 = 4.0;
@@ -354,13 +354,13 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
                     final double d3 = entitylivingbase.posX - (this.parentEntity.posX + vec3d.x * 4.0);
                     final double d4 = entitylivingbase.getEntityBoundingBox().minY + entitylivingbase.height / 2.0f - (0.5 + this.parentEntity.posY + this.parentEntity.height / 2.0f);
                     final double d5 = entitylivingbase.posZ - (this.parentEntity.posZ + vec3d.z * 4.0);
-                    world.playEvent((EntityPlayer)null, 1016, new BlockPos((Entity)this.parentEntity), 0);
+                    world.playEvent((EntityPlayer)null, 1016, new BlockPos(this.parentEntity), 0);
                     final EntitySquidFireball entitylargefireball = new EntitySquidFireball(world, (EntityLivingBase)this.parentEntity, d3, d4, d5);
                     entitylargefireball.explosionPower = this.parentEntity.getFireballStrength();
                     entitylargefireball.posX = this.parentEntity.posX + vec3d.x * 4.0;
                     entitylargefireball.posY = this.parentEntity.posY + this.parentEntity.height / 2.0f + 0.5;
                     entitylargefireball.posZ = this.parentEntity.posZ + vec3d.z * 4.0;
-                    world.spawnEntity((Entity)entitylargefireball);
+                    world.spawnEntity(entitylargefireball);
                     this.attackTimer = -40;
                 }
             }
@@ -392,7 +392,7 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
             else {
                 final EntityLivingBase entitylivingbase = this.parentEntity.getAttackTarget();
                 final double d0 = 64.0;
-                if (entitylivingbase.getDistanceSq((Entity)this.parentEntity) < 4096.0) {
+                if (entitylivingbase.getDistanceSq(this.parentEntity) < 4096.0) {
                     final double d2 = entitylivingbase.posX - this.parentEntity.posX;
                     final double d3 = entitylivingbase.posZ - this.parentEntity.posZ;
                     this.parentEntity.rotationYaw = -(float)MathHelper.atan2(d2, d3) * 57.295776f;
@@ -477,7 +477,7 @@ public class EntityIlliusionerGhast extends EntityFlying implements IMob, IMutan
             AxisAlignedBB axisalignedbb = this.parentEntity.getEntityBoundingBox();
             for (int i = 1; i < p_179926_7_; ++i) {
                 axisalignedbb = axisalignedbb.offset(d0, d2, d3);
-                if (!this.parentEntity.world.getCollisionBoxes((Entity)this.parentEntity, axisalignedbb).isEmpty()) {
+                if (!this.parentEntity.world.getCollisionBoxes(this.parentEntity, axisalignedbb).isEmpty()) {
                     return false;
                 }
             }

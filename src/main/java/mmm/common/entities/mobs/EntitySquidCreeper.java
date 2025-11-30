@@ -223,7 +223,7 @@ public class EntitySquidCreeper extends EntityHalfCreeper implements IMutant
             for (final PotionEffect potioneffect : collection) {
                 entityareaeffectcloud.addEffect(new PotionEffect(potioneffect));
             }
-            this.world.spawnEntity((Entity)entityareaeffectcloud);
+            this.world.spawnEntity(entityareaeffectcloud);
         }
     }
     

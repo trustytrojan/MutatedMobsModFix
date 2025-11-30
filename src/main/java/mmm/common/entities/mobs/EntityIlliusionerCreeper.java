@@ -190,11 +190,11 @@ public class EntityIlliusionerCreeper extends EntityHalfCreeper
                 entitypigzombie5.setCustomNameTag(this.getCustomNameTag());
                 entitypigzombie5.setAlwaysRenderNameTag(this.getAlwaysRenderNameTag());
             }
-            this.world.spawnEntity((Entity)entitypigzombie);
-            this.world.spawnEntity((Entity)entitypigzombie2);
-            this.world.spawnEntity((Entity)entitypigzombie3);
-            this.world.spawnEntity((Entity)entitypigzombie4);
-            this.world.spawnEntity((Entity)entitypigzombie5);
+            this.world.spawnEntity(entitypigzombie);
+            this.world.spawnEntity(entitypigzombie2);
+            this.world.spawnEntity(entitypigzombie3);
+            this.world.spawnEntity(entitypigzombie4);
+            this.world.spawnEntity(entitypigzombie5);
             this.WillSplit();
         }
     }
@@ -279,7 +279,7 @@ public class EntityIlliusionerCreeper extends EntityHalfCreeper
                 final boolean flag = this.world.getGameRules().getBoolean("mobGriefing");
                 final float f = this.getPowered() ? 2.0f : 1.0f;
                 this.dead = true;
-                this.world.createExplosion((Entity)this, this.posX, this.posY, this.posZ, (float)this.explosionRadius, flag);
+                this.world.createExplosion(this, this.posX, this.posY, this.posZ, (float)this.explosionRadius, flag);
                 this.setDead();
             }
         }
@@ -297,7 +297,7 @@ public class EntityIlliusionerCreeper extends EntityHalfCreeper
             for (final PotionEffect potioneffect : collection) {
                 entityareaeffectcloud.addEffect(new PotionEffect(potioneffect));
             }
-            this.world.spawnEntity((Entity)entityareaeffectcloud);
+            this.world.spawnEntity(entityareaeffectcloud);
         }
     }
     

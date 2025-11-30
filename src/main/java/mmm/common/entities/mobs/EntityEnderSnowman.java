@@ -107,7 +107,7 @@ public class EntityEnderSnowman extends EntityGolem implements IRangedAttackMob,
         final float f = MathHelper.sqrt(d2 * d2 + d4 * d4) * 0.2f;
         entitysnowball.shoot(d2, d3 + f, d4, 1.6f, 12.0f);
         this.playSound(SoundEvents.ENTITY_SNOWMAN_SHOOT, 1.0f, 1.0f / (this.getRNG().nextFloat() * 0.4f + 0.8f));
-        this.world.spawnEntity((Entity)entitysnowball);
+        this.world.spawnEntity(entitysnowball);
         this.teleportRandomly();
     }
     

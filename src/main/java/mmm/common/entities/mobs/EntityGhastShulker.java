@@ -154,7 +154,7 @@ public class EntityGhastShulker extends EntityGolem implements IMob, IMutant
         super.onUpdate();
         BlockPos blockpos = (BlockPos)((com.google.common.base.Optional)this.dataManager.get(EntityGhastShulker.ATTACHED_BLOCK_POS)).orNull();
         if (blockpos == null && !this.world.isRemote) {
-            blockpos = new BlockPos((Entity)this);
+            blockpos = new BlockPos(this);
             this.dataManager.set(EntityGhastShulker.ATTACHED_BLOCK_POS, com.google.common.base.Optional.of(blockpos));
         }
         if (this.isRiding()) {
@@ -278,7 +278,7 @@ public class EntityGhastShulker extends EntityGolem implements IMob, IMutant
                 }
             }
             if (d5 > 0.0) {
-                final List<Entity> list = (List<Entity>)this.world.getEntitiesWithinAABBExcludingEntity((Entity)this, this.getEntityBoundingBox());
+                final List<Entity> list = (List<Entity>)this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox());
                 if (!list.isEmpty()) {
                     for (final Entity entity : list) {
                         if (!(entity instanceof EntityGhastShulker) && !entity.noClip) {
@@ -295,8 +295,8 @@ public class EntityGhastShulker extends EntityGolem implements IMob, IMutant
             final double d7 = this.getAttackTarget().posX + (this.getAttackTarget().getRNG().nextDouble() - 0.5) * 8.0;
             final double d8 = MathHelper.clamp(this.getAttackTarget().posY + (this.getAttackTarget().getRNG().nextInt(16) - 8), 0.0, (double)(this.getAttackTarget().world.getActualHeight() - 4));
             final double d9 = this.getAttackTarget().posZ + (this.getAttackTarget().getRNG().nextDouble() - 0.5) * 8.0;
-            final EntityShulkerBullet entityshulkerbullet = new EntityShulkerBullet(this.world, (EntityLivingBase)this, (Entity)this.getAttackTarget(), (EnumFacing.Axis)null);
-            this.world.spawnEntity((Entity)entityshulkerbullet);
+            final EntityShulkerBullet entityshulkerbullet = new EntityShulkerBullet(this.world, (EntityLivingBase)this, this.getAttackTarget(), (EnumFacing.Axis)null);
+            this.world.spawnEntity(entityshulkerbullet);
             this.playSound(SoundEvents.ENTITY_SHULKER_SHOOT, 2.0f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
         }
     }
@@ -325,10 +325,10 @@ public class EntityGhastShulker extends EntityGolem implements IMob, IMutant
     
     protected boolean tryTeleportToNewPosition() {
         if (!this.isAIDisabled() && this.isEntityAlive()) {
-            final BlockPos blockpos = new BlockPos((Entity)this);
+            final BlockPos blockpos = new BlockPos(this);
             for (int i = 0; i < 5; ++i) {
                 BlockPos blockpos2 = blockpos.add(8 - this.rand.nextInt(17), 8 - this.rand.nextInt(17), 8 - this.rand.nextInt(17));
-                if (blockpos2.getY() > 0 && this.world.isAirBlock(blockpos2) && this.world.isInsideWorldBorder((Entity)this) && this.world.getCollisionBoxes((Entity)this, new AxisAlignedBB(blockpos2)).isEmpty()) {
+                if (blockpos2.getY() > 0 && this.world.isAirBlock(blockpos2) && this.world.isInsideWorldBorder(this) && this.world.getCollisionBoxes(this, new AxisAlignedBB(blockpos2)).isEmpty()) {
                     boolean flag = false;
                     for (final EnumFacing enumfacing : EnumFacing.values()) {
                         if (this.world.isBlockNormalCube(blockpos2.offset(enumfacing), false)) {
@@ -526,13 +526,13 @@ public class EntityGhastShulker extends EntityGolem implements IMob, IMutant
             if (EntityGhastShulker.this.world.getDifficulty() != EnumDifficulty.PEACEFUL) {
                 --this.attackTime;
                 final EntityLivingBase entitylivingbase = EntityGhastShulker.this.getAttackTarget();
-                EntityGhastShulker.this.getLookHelper().setLookPositionWithEntity((Entity)entitylivingbase, 180.0f, 180.0f);
-                final double d0 = EntityGhastShulker.this.getDistanceSq((Entity)entitylivingbase);
+                EntityGhastShulker.this.getLookHelper().setLookPositionWithEntity(entitylivingbase, 180.0f, 180.0f);
+                final double d0 = EntityGhastShulker.this.getDistanceSq(entitylivingbase);
                 if (d0 < 400.0) {
                     if (this.attackTime <= 0) {
                         this.attackTime = 10 + EntityGhastShulker.this.rand.nextInt(10) * 20 / 2;
-                        final EntityShulkerFireball EntityGhastShulkerbullet = new EntityShulkerFireball(EntityGhastShulker.this.world, (EntityLivingBase)EntityGhastShulker.this, (Entity)entitylivingbase, EntityGhastShulker.this.getAttachmentFacing().getAxis());
-                        EntityGhastShulker.this.world.spawnEntity((Entity)EntityGhastShulkerbullet);
+                        final EntityShulkerFireball EntityGhastShulkerbullet = new EntityShulkerFireball(EntityGhastShulker.this.world, (EntityLivingBase)EntityGhastShulker.this, entitylivingbase, EntityGhastShulker.this.getAttachmentFacing().getAxis());
+                        EntityGhastShulker.this.world.spawnEntity(EntityGhastShulkerbullet);
                         EntityGhastShulker.this.playSound(SoundEvents.ENTITY_GHAST_SCREAM, 1.0f, (EntityGhastShulker.this.rand.nextFloat() - EntityGhastShulker.this.rand.nextFloat()) * 0.2f + 1.0f);
                         EntityGhastShulker.this.LaunchShulkers();
                     }

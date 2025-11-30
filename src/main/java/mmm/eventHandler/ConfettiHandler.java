@@ -68,7 +68,7 @@ public class ConfettiHandler
     
     private void damagePlayers(final EntityHalfCreeper creeper) {
         final float explosionStrength = creeper.getPowered() ? 2.0f : 1.0f;
-        final Explosion explosion = new Explosion(creeper.getEntityWorld(), (Entity)creeper, creeper.posX, creeper.posY, creeper.posZ, 3.0f * explosionStrength, false, false);
+        final Explosion explosion = new Explosion(creeper.getEntityWorld(), creeper, creeper.posX, creeper.posY, creeper.posZ, 3.0f * explosionStrength, false, false);
         explosion.doExplosionA();
     }
     

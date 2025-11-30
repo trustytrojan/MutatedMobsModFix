@@ -143,11 +143,11 @@ public class EntityIlliusionerWitherSkeleton extends EntityMob implements IMutan
                 entitypigzombie5.setCustomNameTag(this.getCustomNameTag());
                 entitypigzombie5.setAlwaysRenderNameTag(this.getAlwaysRenderNameTag());
             }
-            this.world.spawnEntity((Entity)entitypigzombie);
-            this.world.spawnEntity((Entity)entitypigzombie2);
-            this.world.spawnEntity((Entity)entitypigzombie3);
-            this.world.spawnEntity((Entity)entitypigzombie4);
-            this.world.spawnEntity((Entity)entitypigzombie5);
+            this.world.spawnEntity(entitypigzombie);
+            this.world.spawnEntity(entitypigzombie2);
+            this.world.spawnEntity(entitypigzombie3);
+            this.world.spawnEntity(entitypigzombie4);
+            this.world.spawnEntity(entitypigzombie5);
             this.WillSplit();
         }
     }

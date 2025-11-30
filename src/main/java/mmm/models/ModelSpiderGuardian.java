@@ -96,7 +96,7 @@ public class ModelSpiderGuardian extends ModelBase
         this.guardianEye.rotationPointZ = -8.25f;
         Entity entity = Minecraft.getMinecraft().getRenderViewEntity();
         if (EntitySpiderGuardian.hasTargetedEntity()) {
-            entity = (Entity)EntitySpiderGuardian.getTargetedEntity();
+            entity = EntitySpiderGuardian.getTargetedEntity();
         }
         if (entity != null) {
             final Vec3d vec3d = entity.getPositionEyes(0.0f);

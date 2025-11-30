@@ -237,7 +237,7 @@ public class EntityEnderManSkeleton extends EntityMob implements IRangedAttackMo
         this.playSound(SoundEvents.ENTITY_SKELETON_SHOOT, 1.0f, 1.0f / (this.getRNG().nextFloat() * 0.4f + 0.8f));
         entitytippedarrow.setIsCritical(true);
         entitytippedarrow.setDamage((double)ConfigHandler.ATK_EnderSkeleton_Arrow);
-        this.world.spawnEntity((Entity)entitytippedarrow);
+        this.world.spawnEntity(entitytippedarrow);
         this.teleportRandomly();
     }
     

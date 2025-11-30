@@ -217,7 +217,7 @@ public class EntityElderSpiderGuardian extends EntityMob implements IMutant
             }
             final EntityLivingBase entitylivingbase = this.getTargetedEntity();
             if (entitylivingbase != null) {
-                this.getLookHelper().setLookPositionWithEntity((Entity)entitylivingbase, 90.0f, 90.0f);
+                this.getLookHelper().setLookPositionWithEntity(entitylivingbase, 90.0f, 90.0f);
                 this.getLookHelper().onUpdateLook();
                 final double d5 = this.getAttackAnimationScale(0.0f);
                 double d6 = entitylivingbase.posX - this.posX;
@@ -258,18 +258,18 @@ public class EntityElderSpiderGuardian extends EntityMob implements IMutant
     }
     
     public boolean isNotColliding() {
-        return this.world.checkNoEntityCollision(this.getEntityBoundingBox(), (Entity)this) && this.world.getCollisionBoxes((Entity)this, this.getEntityBoundingBox()).isEmpty();
+        return this.world.checkNoEntityCollision(this.getEntityBoundingBox(), this) && this.world.getCollisionBoxes(this, this.getEntityBoundingBox()).isEmpty();
     }
     
     public boolean getCanSpawnHere() {
-        return (this.rand.nextInt(20) == 0 || !this.world.canBlockSeeSky(new BlockPos((Entity)this))) && super.getCanSpawnHere();
+        return (this.rand.nextInt(20) == 0 || !this.world.canBlockSeeSky(new BlockPos(this))) && super.getCanSpawnHere();
     }
     
     public boolean attackEntityFrom(final DamageSource source, final float amount) {
         if (!source.isMagicDamage() && source.getImmediateSource() instanceof EntityLivingBase) {
             final EntityLivingBase entitylivingbase = (EntityLivingBase)source.getImmediateSource();
             if (!source.isExplosion()) {
-                entitylivingbase.attackEntityFrom(DamageSource.causeThornsDamage((Entity)this), this.lastDamage * 1.25f);
+                entitylivingbase.attackEntityFrom(DamageSource.causeThornsDamage(this), this.lastDamage * 1.25f);
             }
         }
         return super.attackEntityFrom(source, amount);
@@ -321,13 +321,13 @@ public class EntityElderSpiderGuardian extends EntityMob implements IMutant
         }
         
         public boolean shouldContinueExecuting() {
-            return super.shouldContinueExecuting() && this.guardian.getDistanceSq((Entity)this.guardian.getAttackTarget()) > 9.0;
+            return super.shouldContinueExecuting() && this.guardian.getDistanceSq(this.guardian.getAttackTarget()) > 9.0;
         }
         
         public void startExecuting() {
             this.tickCounter = -10;
             this.guardian.getNavigator().clearPath();
-            this.guardian.getLookHelper().setLookPositionWithEntity((Entity)this.guardian.getAttackTarget(), 90.0f, 90.0f);
+            this.guardian.getLookHelper().setLookPositionWithEntity(this.guardian.getAttackTarget(), 90.0f, 90.0f);
             this.guardian.isAirBorne = true;
         }
         
@@ -339,22 +339,22 @@ public class EntityElderSpiderGuardian extends EntityMob implements IMutant
         public void updateTask() {
             final EntityLivingBase entitylivingbase = this.guardian.getAttackTarget();
             this.guardian.getNavigator().clearPath();
-            this.guardian.getLookHelper().setLookPositionWithEntity((Entity)entitylivingbase, 90.0f, 90.0f);
-            if (!this.guardian.canEntityBeSeen((Entity)entitylivingbase)) {
+            this.guardian.getLookHelper().setLookPositionWithEntity(entitylivingbase, 90.0f, 90.0f);
+            if (!this.guardian.canEntityBeSeen(entitylivingbase)) {
                 this.guardian.setAttackTarget((EntityLivingBase)null);
             }
             else {
                 ++this.tickCounter;
                 if (this.tickCounter == 0) {
                     this.guardian.setTargetedEntity(this.guardian.getAttackTarget().getEntityId());
-                    this.guardian.world.setEntityState((Entity)this.guardian, (byte)21);
+                    this.guardian.world.setEntityState(this.guardian, (byte)21);
                 }
                 else if (this.tickCounter >= this.guardian.getAttackDuration()) {
                     float f = 2.0f;
                     if (this.guardian.world.getDifficulty() == EnumDifficulty.HARD) {
                         f += 4.0f;
                     }
-                    entitylivingbase.attackEntityFrom(DamageSource.causeIndirectMagicDamage((Entity)this.guardian, (Entity)this.guardian), f);
+                    entitylivingbase.attackEntityFrom(DamageSource.causeIndirectMagicDamage(this.guardian, this.guardian), f);
                     entitylivingbase.attackEntityFrom(DamageSource.causeMobDamage((EntityLivingBase)this.guardian), (float)this.guardian.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
                     this.guardian.setAttackTarget((EntityLivingBase)null);
                     entitylivingbase.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 150));
@@ -375,7 +375,7 @@ public class EntityElderSpiderGuardian extends EntityMob implements IMutant
         }
         
         public boolean apply(@Nullable final EntityLivingBase p_apply_1_) {
-            return (p_apply_1_ instanceof EntityPlayer || p_apply_1_ instanceof EntitySquid || p_apply_1_ instanceof EntityVillager) && p_apply_1_.getDistanceSq((Entity)this.parentEntity) > 9.0;
+            return (p_apply_1_ instanceof EntityPlayer || p_apply_1_ instanceof EntitySquid || p_apply_1_ instanceof EntityVillager) && p_apply_1_.getDistanceSq(this.parentEntity) > 9.0;
         }
     }
 }

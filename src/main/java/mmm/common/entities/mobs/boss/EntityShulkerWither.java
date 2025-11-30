@@ -192,8 +192,8 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
                 final double d7 = this.getAttackTarget().posX + (this.getAttackTarget().getRNG().nextDouble() - 0.5) * 8.0;
                 final double d8 = MathHelper.clamp(this.getAttackTarget().posY + (this.getAttackTarget().getRNG().nextInt(16) - 8), 0.0, (double)(this.getAttackTarget().world.getActualHeight() - 4));
                 final double d9 = this.getAttackTarget().posZ + (this.getAttackTarget().getRNG().nextDouble() - 0.5) * 8.0;
-                final EntityShulkerBullet entityshulkerbullet = new EntityShulkerBullet(this.world, (EntityLivingBase)this, (Entity)this.getAttackTarget(), (EnumFacing.Axis)null);
-                this.world.spawnEntity((Entity)entityshulkerbullet);
+                final EntityShulkerBullet entityshulkerbullet = new EntityShulkerBullet(this.world, (EntityLivingBase)this, this.getAttackTarget(), (EnumFacing.Axis)null);
+                this.world.spawnEntity(entityshulkerbullet);
                 this.playSound(SoundEvents.ENTITY_SHULKER_SHOOT, 2.0f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
             }
         }
@@ -203,8 +203,8 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
         if (this.getInvulTime() > 0) {
             final int j1 = this.getInvulTime() - 1;
             if (j1 <= 0) {
-                this.world.newExplosion((Entity)this, this.posX, this.posY + this.getEyeHeight(), this.posZ, 7.0f, false, this.world.getGameRules().getBoolean("mobGriefing"));
-                this.world.playBroadcastSound(1023, new BlockPos((Entity)this), 0);
+                this.world.newExplosion(this, this.posX, this.posY + this.getEyeHeight(), this.posZ, 7.0f, false, this.world.getGameRules().getBoolean("mobGriefing"));
+                this.world.playBroadcastSound(1023, new BlockPos(this), 0);
             }
             this.setInvulTime(j1);
             if (this.ticksExisted % 10 == 0) {
@@ -252,7 +252,7 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
                         int j3 = 0;
                         while (j3 < 10 && !list.isEmpty()) {
                             final EntityLivingBase entitylivingbase = list.get(this.rand.nextInt(list.size()));
-                            if (entitylivingbase != this && entitylivingbase.isEntityAlive() && this.canEntityBeSeen((Entity)entitylivingbase)) {
+                            if (entitylivingbase != this && entitylivingbase.isEntityAlive() && this.canEntityBeSeen(entitylivingbase)) {
                                 if (!(entitylivingbase instanceof EntityPlayer)) {
                                     this.updateWatchedTargetId(i, entitylivingbase.getEntityId());
                                     break;
@@ -293,14 +293,14 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
                                 final BlockPos blockpos = new BlockPos(i4, k6, l3);
                                 final IBlockState iblockstate = this.world.getBlockState(blockpos);
                                 final Block block = iblockstate.getBlock();
-                                if (!block.isAir(iblockstate, (IBlockAccess)this.world, blockpos) && block.canEntityDestroy(iblockstate, (IBlockAccess)this.world, blockpos, (Entity)this) && ForgeEventFactory.onEntityDestroyBlock((EntityLivingBase)this, blockpos, iblockstate)) {
+                                if (!block.isAir(iblockstate, (IBlockAccess)this.world, blockpos) && block.canEntityDestroy(iblockstate, (IBlockAccess)this.world, blockpos, this) && ForgeEventFactory.onEntityDestroyBlock((EntityLivingBase)this, blockpos, iblockstate)) {
                                     flag = (this.world.destroyBlock(blockpos, true) || flag);
                                 }
                             }
                         }
                     }
                     if (flag) {
-                        this.world.playEvent((EntityPlayer)null, 1022, new BlockPos((Entity)this), 0);
+                        this.world.playEvent((EntityPlayer)null, 1022, new BlockPos(this), 0);
                     }
                 }
             }
@@ -371,7 +371,7 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
     }
     
     private void launchWitherSkullToCoords(final int p_82209_1_, final double x, final double y, final double z, final boolean invulnerable) {
-        this.world.playEvent((EntityPlayer)null, 1024, new BlockPos((Entity)this), 0);
+        this.world.playEvent((EntityPlayer)null, 1024, new BlockPos(this), 0);
         final double d0 = this.getHeadX(p_82209_1_);
         final double d2 = this.getHeadY(p_82209_1_);
         final double d3 = this.getHeadZ(p_82209_1_);
@@ -385,7 +385,7 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
         EntityShulkerSkull.posY = d2;
         EntityShulkerSkull.posX = d0;
         EntityShulkerSkull.posZ = d3;
-        this.world.spawnEntity((Entity)EntityShulkerSkull);
+        this.world.spawnEntity(EntityShulkerSkull);
     }
     
     public void attackEntityWithRangedAttack(final EntityLivingBase target, final float distanceFactor) {

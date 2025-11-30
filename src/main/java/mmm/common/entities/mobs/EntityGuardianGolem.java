@@ -115,7 +115,7 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
         this.homeCheckTimer = homeCheckTimer;
         if (homeCheckTimer <= 0) {
             this.homeCheckTimer = 70 + this.rand.nextInt(50);
-            this.village = this.world.getVillageCollection().getNearestVillage(new BlockPos((Entity)this), 32);
+            this.village = this.world.getVillageCollection().getNearestVillage(new BlockPos(this), 32);
             if (this.village == null) {
                 this.detachHome();
             }
@@ -168,7 +168,7 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
             }
             final EntityLivingBase entitylivingbase = this.getTargetedEntity();
             if (entitylivingbase != null) {
-                this.getLookHelper().setLookPositionWithEntity((Entity)entitylivingbase, 90.0f, 90.0f);
+                this.getLookHelper().setLookPositionWithEntity(entitylivingbase, 90.0f, 90.0f);
                 this.getLookHelper().onUpdateLook();
                 final double d5 = this.getAttackAnimationScale(0.0f);
                 double d6 = entitylivingbase.posX - this.posX;
@@ -194,7 +194,7 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
         if (!source.isMagicDamage() && source.getImmediateSource() instanceof EntityLivingBase) {
             final EntityLivingBase entitylivingbase = (EntityLivingBase)source.getImmediateSource();
             if (!source.isExplosion()) {
-                entitylivingbase.attackEntityFrom(DamageSource.causeThornsDamage((Entity)this), this.lastDamage * 2.0f);
+                entitylivingbase.attackEntityFrom(DamageSource.causeThornsDamage(this), this.lastDamage * 2.0f);
             }
         }
         return super.attackEntityFrom(source, amount);
@@ -220,7 +220,7 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
     
     public boolean attackEntityAsMob(final Entity entityIn) {
         this.attackTimer = 10;
-        this.world.setEntityState((Entity)this, (byte)4);
+        this.world.setEntityState(this, (byte)4);
         final boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage((EntityLivingBase)this), (float)(ConfigHandler.ATK_GuardianGolem_MIN + this.rand.nextInt(ConfigHandler.ATK_GuardianGolem_MAX)));
         if (flag) {
             entityIn.motionY += 0.4000000059604645;
@@ -263,11 +263,11 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
     public void setHoldingRose(final boolean p_70851_1_) {
         if (p_70851_1_) {
             this.holdRoseTick = 400;
-            this.world.setEntityState((Entity)this, (byte)11);
+            this.world.setEntityState(this, (byte)11);
         }
         else {
             this.holdRoseTick = 0;
-            this.world.setEntityState((Entity)this, (byte)34);
+            this.world.setEntityState(this, (byte)34);
         }
     }
     
@@ -338,13 +338,13 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
         }
         
         public boolean shouldContinueExecuting() {
-            return super.shouldContinueExecuting() && this.guardian.getDistanceSq((Entity)this.guardian.getAttackTarget()) > 9.0;
+            return super.shouldContinueExecuting() && this.guardian.getDistanceSq(this.guardian.getAttackTarget()) > 9.0;
         }
         
         public void startExecuting() {
             this.tickCounter = -10;
             this.guardian.getNavigator().clearPath();
-            this.guardian.getLookHelper().setLookPositionWithEntity((Entity)this.guardian.getAttackTarget(), 90.0f, 90.0f);
+            this.guardian.getLookHelper().setLookPositionWithEntity(this.guardian.getAttackTarget(), 90.0f, 90.0f);
             this.guardian.isAirBorne = true;
         }
         
@@ -356,22 +356,22 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
         public void updateTask() {
             final EntityLivingBase entitylivingbase = this.guardian.getAttackTarget();
             this.guardian.getNavigator().clearPath();
-            this.guardian.getLookHelper().setLookPositionWithEntity((Entity)entitylivingbase, 90.0f, 90.0f);
-            if (!this.guardian.canEntityBeSeen((Entity)entitylivingbase)) {
+            this.guardian.getLookHelper().setLookPositionWithEntity(entitylivingbase, 90.0f, 90.0f);
+            if (!this.guardian.canEntityBeSeen(entitylivingbase)) {
                 this.guardian.setAttackTarget((EntityLivingBase)null);
             }
             else {
                 ++this.tickCounter;
                 if (this.tickCounter == 0) {
                     this.guardian.setTargetedEntity(this.guardian.getAttackTarget().getEntityId());
-                    this.guardian.world.setEntityState((Entity)this.guardian, (byte)21);
+                    this.guardian.world.setEntityState(this.guardian, (byte)21);
                 }
                 else if (this.tickCounter >= this.guardian.getAttackDuration()) {
                     float f = 1.0f;
                     if (this.guardian.world.getDifficulty() == EnumDifficulty.HARD) {
                         f += 2.0f;
                     }
-                    entitylivingbase.attackEntityFrom(DamageSource.causeIndirectMagicDamage((Entity)this.guardian, (Entity)this.guardian), f);
+                    entitylivingbase.attackEntityFrom(DamageSource.causeIndirectMagicDamage(this.guardian, this.guardian), f);
                     entitylivingbase.attackEntityFrom(DamageSource.causeMobDamage((EntityLivingBase)this.guardian), (float)this.guardian.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
                     this.guardian.setAttackTarget((EntityLivingBase)null);
                 }
@@ -389,7 +389,7 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
         }
         
         public boolean apply(@Nullable final EntityLivingBase p_apply_1_) {
-            return p_apply_1_ instanceof EntityMob && p_apply_1_.getDistanceSq((Entity)this.parentEntity) > 9.0;
+            return p_apply_1_ instanceof EntityMob && p_apply_1_.getDistanceSq(this.parentEntity) > 9.0;
         }
     }
 }

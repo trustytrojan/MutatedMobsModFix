@@ -46,11 +46,11 @@ public class RenderWitherBullet extends Render<EntityWitherBullet>
         GlStateManager.enableRescaleNormal();
         GlStateManager.scale(-1.0f, -1.0f, 1.0f);
         this.bindEntityTexture(entity);
-        this.model.render((Entity)entity, 0.0f, 0.0f, 0.0f, f, f2, 0.03125f);
+        this.model.render(entity, 0.0f, 0.0f, 0.0f, f, f2, 0.03125f);
         GlStateManager.enableBlend();
         GlStateManager.color(1.0f, 1.0f, 1.0f, 0.5f);
         GlStateManager.scale(8.0f, 8.0f, 8.0f);
-        this.model.render((Entity)entity, 0.0f, 0.0f, 0.0f, f, f2, 0.03125f);
+        this.model.render(entity, 0.0f, 0.0f, 0.0f, f, f2, 0.03125f);
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
         super.doRender(entity, x, y, z, entityYaw, partialTicks);

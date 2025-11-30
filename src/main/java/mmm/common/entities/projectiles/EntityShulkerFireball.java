@@ -57,7 +57,7 @@ public class EntityShulkerFireball extends Entity
     public EntityShulkerFireball(final World worldIn, final EntityLivingBase ownerIn, final Entity targetIn, final EnumFacing.Axis p_i46772_4_) {
         this(worldIn);
         this.owner = ownerIn;
-        final BlockPos blockpos = new BlockPos((Entity)ownerIn);
+        final BlockPos blockpos = new BlockPos(ownerIn);
         final double d0 = blockpos.getX() + 0.5;
         final double d2 = blockpos.getY() + 0.5;
         final double d3 = blockpos.getZ() + 0.5;
@@ -69,7 +69,7 @@ public class EntityShulkerFireball extends Entity
     
     protected void writeEntityToNBT(final NBTTagCompound compound) {
         if (this.owner != null) {
-            final BlockPos blockpos = new BlockPos((Entity)this.owner);
+            final BlockPos blockpos = new BlockPos(this.owner);
             final NBTTagCompound nbttagcompound = NBTUtil.createUUIDTag(this.owner.getUniqueID());
             nbttagcompound.setInteger("X", blockpos.getX());
             nbttagcompound.setInteger("Y", blockpos.getY());
@@ -124,7 +124,7 @@ public class EntityShulkerFireball extends Entity
         double d0 = 0.5;
         BlockPos blockpos;
         if (this.target == null) {
-            blockpos = new BlockPos((Entity)this).down();
+            blockpos = new BlockPos(this).down();
         }
         else {
             d0 = this.target.height * 0.5;
@@ -135,7 +135,7 @@ public class EntityShulkerFireball extends Entity
         double d4 = blockpos.getZ() + 0.5;
         EnumFacing enumfacing = null;
         if (blockpos.distanceSqToCenter(this.posX, this.posY, this.posZ) >= 4.0) {
-            final BlockPos blockpos2 = new BlockPos((Entity)this);
+            final BlockPos blockpos2 = new BlockPos(this);
             final List<EnumFacing> list = Lists.<EnumFacing>newArrayList();
             if (p_184569_1_ != EnumFacing.Axis.X) {
                 if (blockpos2.getX() < blockpos.getX() && this.world.isAirBlock(blockpos2.east())) {
@@ -201,7 +201,7 @@ public class EntityShulkerFireball extends Entity
                 if (this.target == null && this.targetUniqueId != null) {
                     for (final EntityLivingBase entitylivingbase : this.world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(this.targetBlockPos.add(-2, -2, -2), this.targetBlockPos.add(2, 2, 2)))) {
                         if (entitylivingbase.getUniqueID().equals(this.targetUniqueId)) {
-                            this.target = (Entity)entitylivingbase;
+                            this.target = entitylivingbase;
                             break;
                         }
                     }
@@ -229,13 +229,13 @@ public class EntityShulkerFireball extends Entity
                     this.motionY += (this.targetDeltaY - this.motionY) * 0.2;
                     this.motionZ += (this.targetDeltaZ - this.motionZ) * 0.2;
                 }
-                final RayTraceResult raytraceresult = ProjectileHelper.forwardsRaycast((Entity)this, true, false, (Entity)this.owner);
+                final RayTraceResult raytraceresult = ProjectileHelper.forwardsRaycast(this, true, false, this.owner);
                 if (raytraceresult != null) {
                     this.bulletHit(raytraceresult);
                 }
             }
             this.setPosition(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-            ProjectileHelper.rotateTowardsMovement((Entity)this, 0.5f);
+            ProjectileHelper.rotateTowardsMovement(this, 0.5f);
             if (this.world.isRemote) {
                 this.world.spawnParticle(EnumParticleTypes.END_ROD, this.posX - this.motionX, this.posY - this.motionY + 0.15, this.posZ - this.motionZ, 0.0, 0.0, 0.0, new int[0]);
             }
@@ -247,7 +247,7 @@ public class EntityShulkerFireball extends Entity
                     }
                 }
                 if (this.direction != null) {
-                    final BlockPos blockpos = new BlockPos((Entity)this);
+                    final BlockPos blockpos = new BlockPos(this);
                     final EnumFacing.Axis enumfacing$axis = this.direction.getAxis();
                     if (this.world.isBlockNormalCube(blockpos.offset(this.direction), false)) {
                         this.selectNextMoveDirection(enumfacing$axis);
@@ -287,7 +287,7 @@ public class EntityShulkerFireball extends Entity
             this.playSound(SoundEvents.ENTITY_SHULKER_BULLET_HIT, 1.0f, 1.0f);
         }
         else {
-            final boolean flag = result.entityHit.attackEntityFrom(DamageSource.causeIndirectDamage((Entity)this, this.owner).setProjectile(), 4.0f);
+            final boolean flag = result.entityHit.attackEntityFrom(DamageSource.causeIndirectDamage(this, this.owner).setProjectile(), 4.0f);
             if (flag) {
                 this.applyEnchantments(this.owner, result.entityHit);
                 if (result.entityHit instanceof EntityLivingBase) {
@@ -295,7 +295,7 @@ public class EntityShulkerFireball extends Entity
                     result.entityHit.setFire(10);
                 }
             }
-            this.world.createExplosion((Entity)this, this.posX, this.posY, this.posZ, 2.5f, false);
+            this.world.createExplosion(this, this.posX, this.posY, this.posZ, 2.5f, false);
         }
         this.setDead();
     }

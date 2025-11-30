@@ -92,7 +92,7 @@ public class EntityCreeperfangs extends Entity
                 }
             }
             if (!this.sentSpikeEvent) {
-                this.world.setEntityState((Entity)this, (byte)4);
+                this.world.setEntityState(this, (byte)4);
                 this.sentSpikeEvent = true;
             }
             if (--this.lifeTicks < 0) {
@@ -106,14 +106,14 @@ public class EntityCreeperfangs extends Entity
         if (p_190551_1_.isEntityAlive() && !p_190551_1_.getIsInvulnerable() && p_190551_1_ != entitylivingbase) {
             if (entitylivingbase == null) {
                 p_190551_1_.attackEntityFrom(DamageSource.MAGIC, 6.0f);
-                p_190551_1_.world.createExplosion((Entity)this, this.posX, this.posY, this.posZ, 1.0f, false);
+                p_190551_1_.world.createExplosion(this, this.posX, this.posY, this.posZ, 1.0f, false);
             }
             else {
-                if (entitylivingbase.isOnSameTeam((Entity)p_190551_1_)) {
+                if (entitylivingbase.isOnSameTeam(p_190551_1_)) {
                     return;
                 }
-                p_190551_1_.world.createExplosion((Entity)this, this.posX, this.posY, this.posZ, 1.0f, false);
-                p_190551_1_.attackEntityFrom(DamageSource.causeIndirectMagicDamage((Entity)this, (Entity)entitylivingbase), 6.0f);
+                p_190551_1_.world.createExplosion(this, this.posX, this.posY, this.posZ, 1.0f, false);
+                p_190551_1_.attackEntityFrom(DamageSource.causeIndirectMagicDamage(this, entitylivingbase), 6.0f);
             }
         }
     }

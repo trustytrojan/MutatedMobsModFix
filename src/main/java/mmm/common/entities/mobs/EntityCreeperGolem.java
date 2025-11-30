@@ -97,7 +97,7 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
                     this.motionY *= 2.5999999046325684;
                 }
                 if (this.deathTicks == 1) {
-                    this.world.playBroadcastSound(1028, new BlockPos((Entity)this), 0);
+                    this.world.playBroadcastSound(1028, new BlockPos(this), 0);
                 }
             }
             this.move(MoverType.SELF, 0.0, 0.10000000149011612, 0.0);
@@ -148,7 +148,7 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
         this.homeCheckTimer = homeCheckTimer;
         if (homeCheckTimer <= 0) {
             this.homeCheckTimer = 70 + this.rand.nextInt(50);
-            this.village = this.world.getVillageCollection().getNearestVillage(new BlockPos((Entity)this), 32);
+            this.village = this.world.getVillageCollection().getNearestVillage(new BlockPos(this), 32);
             if (this.village == null) {
                 this.detachHome();
             }
@@ -180,7 +180,7 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
             final boolean flag = this.world.getGameRules().getBoolean("mobGriefing");
             final float f = this.getPowered() ? 2.0f : 1.0f;
             this.dead = true;
-            this.world.createExplosion((Entity)this, this.posX, this.posY, this.posZ, this.explosionRadius * f, false);
+            this.world.createExplosion(this, this.posX, this.posY, this.posZ, this.explosionRadius * f, false);
             this.setDead();
         }
     }
@@ -197,7 +197,7 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
             for (final PotionEffect potioneffect : collection) {
                 entityareaeffectcloud.addEffect(new PotionEffect(potioneffect));
             }
-            this.world.spawnEntity((Entity)entityareaeffectcloud);
+            this.world.spawnEntity(entityareaeffectcloud);
         }
     }
     
@@ -321,9 +321,9 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
     
     public boolean attackEntityAsMob(final Entity entityIn) {
         this.attackTimer = 10;
-        this.world.setEntityState((Entity)this, (byte)4);
+        this.world.setEntityState(this, (byte)4);
         final boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage((EntityLivingBase)this), (float)(ConfigHandler.ATK_CreeperGolem_MIN + this.rand.nextInt(ConfigHandler.ATK_CreeperGolem_MAX)));
-        this.world.createExplosion((Entity)this, this.posX, this.posY, this.posZ, 1.0f, false);
+        this.world.createExplosion(this, this.posX, this.posY, this.posZ, 1.0f, false);
         if (flag) {
             this.applyEnchantments((EntityLivingBase)this, entityIn);
         }
@@ -360,11 +360,11 @@ public class EntityCreeperGolem extends EntityGolem implements IMutant
     public void setHoldingRose(final boolean p_70851_1_) {
         if (p_70851_1_) {
             this.holdRoseTick = 400;
-            this.world.setEntityState((Entity)this, (byte)11);
+            this.world.setEntityState(this, (byte)11);
         }
         else {
             this.holdRoseTick = 0;
-            this.world.setEntityState((Entity)this, (byte)34);
+            this.world.setEntityState(this, (byte)34);
         }
     }
     

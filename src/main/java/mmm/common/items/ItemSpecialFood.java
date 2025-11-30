@@ -50,11 +50,11 @@ public class ItemSpecialFood extends ItemFood
         }
         else if (!worldIn.isRemote && stack.getItem() == ModItems.porkchop_creeper) {
             final boolean flag = worldIn.getGameRules().getBoolean("mobGriefing");
-            worldIn.createExplosion((Entity)player, player.posX, player.posY + 2.0, player.posZ, 2.0f, flag);
+            worldIn.createExplosion(player, player.posX, player.posY + 2.0, player.posZ, 2.0f, flag);
         }
         else if (!worldIn.isRemote && stack.getItem() == ModItems.porkchop_chargedcreeper) {
             final boolean flag = worldIn.getGameRules().getBoolean("mobGriefing");
-            worldIn.createExplosion((Entity)player, player.posX, player.posY + 2.0, player.posZ, 10.0f, flag);
+            worldIn.createExplosion(player, player.posX, player.posY + 2.0, player.posZ, 10.0f, flag);
         }
     }
 }

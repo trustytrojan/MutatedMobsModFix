@@ -93,7 +93,7 @@ public class EntityEnderGolem extends EntityGolem implements IMutant
         this.homeCheckTimer = homeCheckTimer;
         if (homeCheckTimer <= 0) {
             this.homeCheckTimer = 70 + this.rand.nextInt(50);
-            this.village = this.world.getVillageCollection().getNearestVillage(new BlockPos((Entity)this), 32);
+            this.village = this.world.getVillageCollection().getNearestVillage(new BlockPos(this), 32);
             if (this.village == null) {
                 this.detachHome();
             }
@@ -193,7 +193,7 @@ public class EntityEnderGolem extends EntityGolem implements IMutant
         final double d0 = vec3d2.lengthVector();
         vec3d2 = vec3d2.normalize();
         final double d2 = vec3d.dotProduct(vec3d2);
-        return d2 > 1.0 - 0.025 / d0 && player.canEntityBeSeen((Entity)this);
+        return d2 > 1.0 - 0.025 / d0 && player.canEntityBeSeen(this);
     }
     
     public float getEyeHeight() {
@@ -257,7 +257,7 @@ public class EntityEnderGolem extends EntityGolem implements IMutant
     
     public boolean attackEntityAsMob(final Entity par1Entity) {
         this.attackTimer = 10;
-        this.world.setEntityState((Entity)this, (byte)4);
+        this.world.setEntityState(this, (byte)4);
         final boolean flag = par1Entity.attackEntityFrom(DamageSource.causeMobDamage((EntityLivingBase)this), (float)(ConfigHandler.ATK_EnderGolem_MIN + this.rand.nextInt(ConfigHandler.ATK_EnderGolem_MAX)));
         if (flag) {
             par1Entity.motionY += 0.5000000059604645;
@@ -265,7 +265,7 @@ public class EntityEnderGolem extends EntityGolem implements IMutant
         }
         if (this.getHeldBlockState() == Blocks.TNT.getDefaultState() && !this.world.isRemote) {
             final EntityTNTPrimed entitytntprimed = new EntityTNTPrimed(this.world, (double)((float)par1Entity.posX + 0.5f), par1Entity.posY, (double)((float)par1Entity.posZ + 0.5f), (EntityLivingBase)this);
-            this.world.spawnEntity((Entity)entitytntprimed);
+            this.world.spawnEntity(entitytntprimed);
             this.world.playSound((EntityPlayer)null, entitytntprimed.posX, entitytntprimed.posY, entitytntprimed.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0f, 1.0f);
             this.setHeldBlockState(null);
         }
@@ -454,7 +454,7 @@ public class EntityEnderGolem extends EntityGolem implements IMutant
             if (!this.enderman.shouldAttackPlayer(this.player)) {
                 return false;
             }
-            this.enderman.faceEntity((Entity)this.player, 10.0f, 10.0f);
+            this.enderman.faceEntity(this.player, 10.0f, 10.0f);
             return true;
         }
         
@@ -469,12 +469,12 @@ public class EntityEnderGolem extends EntityGolem implements IMutant
             else {
                 if (this.targetEntity != null) {
                     if (this.enderman.shouldAttackPlayer((EntityPlayer)this.targetEntity)) {
-                        if (((EntityPlayer)this.targetEntity).getDistanceSq((Entity)this.enderman) < 16.0) {
+                        if (((EntityPlayer)this.targetEntity).getDistanceSq(this.enderman) < 16.0) {
                             this.enderman.teleportRandomly();
                         }
                         this.teleportTime = 0;
                     }
-                    else if (((EntityPlayer)this.targetEntity).getDistanceSq((Entity)this.enderman) > 256.0 && this.teleportTime++ >= 30 && this.enderman.teleportToEntity((Entity)this.targetEntity)) {
+                    else if (((EntityPlayer)this.targetEntity).getDistanceSq(this.enderman) > 256.0 && this.teleportTime++ >= 30 && this.enderman.teleportToEntity(this.targetEntity)) {
                         this.teleportTime = 0;
                     }
                 }

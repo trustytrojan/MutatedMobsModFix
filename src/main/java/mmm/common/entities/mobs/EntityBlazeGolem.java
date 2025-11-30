@@ -103,7 +103,7 @@ public class EntityBlazeGolem extends EntityGolem implements IMutant
         }
         if (--this.homeCheckTimer <= 0) {
             this.homeCheckTimer = 70 + this.rand.nextInt(50);
-            this.village = this.world.getVillageCollection().getNearestVillage(new BlockPos((Entity)this), 32);
+            this.village = this.world.getVillageCollection().getNearestVillage(new BlockPos(this), 32);
             if (this.village == null) {
                 this.detachHome();
             }
@@ -297,7 +297,7 @@ public class EntityBlazeGolem extends EntityGolem implements IMutant
     
     public boolean attackEntityAsMob(final Entity entityIn) {
         this.attackTimer = 10;
-        this.world.setEntityState((Entity)this, (byte)4);
+        this.world.setEntityState(this, (byte)4);
         final boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage((EntityLivingBase)this), (float)(ConfigHandler.ATK_BlazeGolem_MIN + this.rand.nextInt(ConfigHandler.ATK_BlazeGolem_MAX)));
         entityIn.setFire(5);
         if (flag) {
@@ -336,11 +336,11 @@ public class EntityBlazeGolem extends EntityGolem implements IMutant
     public void setHoldingRose(final boolean p_70851_1_) {
         if (p_70851_1_) {
             this.holdRoseTick = 400;
-            this.world.setEntityState((Entity)this, (byte)11);
+            this.world.setEntityState(this, (byte)11);
         }
         else {
             this.holdRoseTick = 0;
-            this.world.setEntityState((Entity)this, (byte)34);
+            this.world.setEntityState(this, (byte)34);
         }
     }
     

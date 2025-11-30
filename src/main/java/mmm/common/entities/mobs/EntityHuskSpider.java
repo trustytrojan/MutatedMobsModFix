@@ -55,7 +55,7 @@ public class EntityHuskSpider extends EntityZombieSpider implements IMutant
         final boolean flag = super.attackEntityAsMob(entityIn);
         ((EntityLivingBase)entityIn).addPotionEffect(new PotionEffect(MobEffects.HUNGER, 150));
         if (flag) {
-            final float f = this.world.getDifficultyForLocation(new BlockPos((Entity)this)).getAdditionalDifficulty();
+            final float f = this.world.getDifficultyForLocation(new BlockPos(this)).getAdditionalDifficulty();
             if (this.getHeldItemMainhand().isEmpty() && this.isBurning() && this.rand.nextFloat() < f * 0.3f) {
                 entityIn.setFire(2 * (int)f);
             }

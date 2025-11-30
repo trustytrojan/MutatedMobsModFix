@@ -159,8 +159,8 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
                 final double d7 = this.getAttackTarget().posX + (this.getAttackTarget().getRNG().nextDouble() - 0.5) * 8.0;
                 final double d8 = MathHelper.clamp(this.getAttackTarget().posY + (this.getAttackTarget().getRNG().nextInt(16) - 8), 0.0, (double)(this.getAttackTarget().world.getActualHeight() - 4));
                 final double d9 = this.getAttackTarget().posZ + (this.getAttackTarget().getRNG().nextDouble() - 0.5) * 8.0;
-                final EntityShulkerBullet entityshulkerbullet = new EntityShulkerBullet(this.world, (EntityLivingBase)this, (Entity)this.getAttackTarget(), (EnumFacing.Axis)null);
-                this.world.spawnEntity((Entity)entityshulkerbullet);
+                final EntityShulkerBullet entityshulkerbullet = new EntityShulkerBullet(this.world, (EntityLivingBase)this, this.getAttackTarget(), (EnumFacing.Axis)null);
+                this.world.spawnEntity(entityshulkerbullet);
                 this.playSound(SoundEvents.ENTITY_SHULKER_SHOOT, 2.0f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
             }
         }
@@ -182,7 +182,7 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
         super.onUpdate();
         BlockPos blockpos = (BlockPos)((com.google.common.base.Optional)this.dataManager.get(EntityWitherShulker.ATTACHED_BLOCK_POS)).orNull();
         if (blockpos == null && !this.world.isRemote) {
-            blockpos = new BlockPos((Entity)this);
+            blockpos = new BlockPos(this);
             this.dataManager.set(EntityWitherShulker.ATTACHED_BLOCK_POS, com.google.common.base.Optional.of(blockpos));
         }
         if (this.isRiding()) {
@@ -306,7 +306,7 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
                 }
             }
             if (d5 > 0.0) {
-                final List<Entity> list = (List<Entity>)this.world.getEntitiesWithinAABBExcludingEntity((Entity)this, this.getEntityBoundingBox());
+                final List<Entity> list = (List<Entity>)this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox());
                 if (!list.isEmpty()) {
                     for (final Entity entity : list) {
                         if (!(entity instanceof EntityWitherShulker) && !entity.noClip) {
@@ -323,8 +323,8 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
             final double d7 = this.getAttackTarget().posX + (this.getAttackTarget().getRNG().nextDouble() - 0.5) * 8.0;
             final double d8 = MathHelper.clamp(this.getAttackTarget().posY + (this.getAttackTarget().getRNG().nextInt(16) - 8), 0.0, (double)(this.getAttackTarget().world.getActualHeight() - 4));
             final double d9 = this.getAttackTarget().posZ + (this.getAttackTarget().getRNG().nextDouble() - 0.5) * 8.0;
-            final EntityShulkerBullet entityshulkerbullet = new EntityShulkerBullet(this.world, (EntityLivingBase)this, (Entity)this.getAttackTarget(), (EnumFacing.Axis)null);
-            this.world.spawnEntity((Entity)entityshulkerbullet);
+            final EntityShulkerBullet entityshulkerbullet = new EntityShulkerBullet(this.world, (EntityLivingBase)this, this.getAttackTarget(), (EnumFacing.Axis)null);
+            this.world.spawnEntity(entityshulkerbullet);
             this.playSound(SoundEvents.ENTITY_SHULKER_SHOOT, 2.0f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
         }
     }
@@ -353,10 +353,10 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
     
     protected boolean tryTeleportToNewPosition() {
         if (!this.isAIDisabled() && this.isEntityAlive()) {
-            final BlockPos blockpos = new BlockPos((Entity)this);
+            final BlockPos blockpos = new BlockPos(this);
             for (int i = 0; i < 5; ++i) {
                 BlockPos blockpos2 = blockpos.add(8 - this.rand.nextInt(17), 8 - this.rand.nextInt(17), 8 - this.rand.nextInt(17));
-                if (blockpos2.getY() > 0 && this.world.isAirBlock(blockpos2) && this.world.isInsideWorldBorder((Entity)this) && this.world.getCollisionBoxes((Entity)this, new AxisAlignedBB(blockpos2)).isEmpty()) {
+                if (blockpos2.getY() > 0 && this.world.isAirBlock(blockpos2) && this.world.isInsideWorldBorder(this) && this.world.getCollisionBoxes(this, new AxisAlignedBB(blockpos2)).isEmpty()) {
                     boolean flag = false;
                     for (final EnumFacing enumfacing : EnumFacing.values()) {
                         if (this.world.isBlockNormalCube(blockpos2.offset(enumfacing), false)) {
@@ -578,13 +578,13 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
             if (EntityWitherShulker.this.world.getDifficulty() != EnumDifficulty.PEACEFUL) {
                 --this.attackTime;
                 final EntityLivingBase entitylivingbase = EntityWitherShulker.this.getAttackTarget();
-                EntityWitherShulker.this.getLookHelper().setLookPositionWithEntity((Entity)entitylivingbase, 180.0f, 180.0f);
-                final double d0 = EntityWitherShulker.this.getDistanceSq((Entity)entitylivingbase);
+                EntityWitherShulker.this.getLookHelper().setLookPositionWithEntity(entitylivingbase, 180.0f, 180.0f);
+                final double d0 = EntityWitherShulker.this.getDistanceSq(entitylivingbase);
                 if (d0 < 400.0) {
                     if (this.attackTime <= 0) {
                         this.attackTime = 10 + EntityWitherShulker.this.rand.nextInt(10) * 20 / 2;
-                        final EntityWitherBullet EntityGhastShulkerbullet = new EntityWitherBullet(EntityWitherShulker.this.world, (EntityLivingBase)EntityWitherShulker.this, (Entity)entitylivingbase, EntityWitherShulker.this.getAttachmentFacing().getAxis());
-                        EntityWitherShulker.this.world.spawnEntity((Entity)EntityGhastShulkerbullet);
+                        final EntityWitherBullet EntityGhastShulkerbullet = new EntityWitherBullet(EntityWitherShulker.this.world, (EntityLivingBase)EntityWitherShulker.this, entitylivingbase, EntityWitherShulker.this.getAttachmentFacing().getAxis());
+                        EntityWitherShulker.this.world.spawnEntity(EntityGhastShulkerbullet);
                         EntityWitherShulker.this.playSound(SoundEvents.ENTITY_WITHER_SHOOT, 1.0f, (EntityWitherShulker.this.rand.nextFloat() - EntityWitherShulker.this.rand.nextFloat()) * 0.2f + 1.0f);
                     }
                 }

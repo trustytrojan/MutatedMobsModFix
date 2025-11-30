@@ -48,7 +48,7 @@ public class ItemDetonator extends Item
         if (this.marked != null) {
             if (!worldIn.isRemote) {
                 final boolean flag = worldIn.getGameRules().getBoolean("mobGriefing");
-                worldIn.createExplosion((Entity)playerIn, this.marked.posX, this.marked.posY, this.marked.posZ, (float)this.explosionRadius, flag);
+                worldIn.createExplosion(playerIn, this.marked.posX, this.marked.posY, this.marked.posZ, (float)this.explosionRadius, flag);
                 this.marked = null;
                 if (!playerIn.isCreative()) {
                     itemstack.damageItem(10, (EntityLivingBase)playerIn);

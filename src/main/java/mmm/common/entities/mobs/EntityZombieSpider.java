@@ -184,7 +184,7 @@ public class EntityZombieSpider extends EntityMob implements IMutant
     public boolean attackEntityAsMob(final Entity entityIn) {
         final boolean flag = super.attackEntityAsMob(entityIn);
         if (flag) {
-            final float f = this.world.getDifficultyForLocation(new BlockPos((Entity)this)).getAdditionalDifficulty();
+            final float f = this.world.getDifficultyForLocation(new BlockPos(this)).getAdditionalDifficulty();
             if (this.getHeldItemMainhand().isEmpty() && this.isBurning() && this.rand.nextFloat() < f * 0.3f) {
                 entityIn.setFire(2 * (int)f);
             }
@@ -317,9 +317,9 @@ public class EntityZombieSpider extends EntityMob implements IMutant
             }
             final EntityVillager entityvillager = (EntityVillager)entityLivingIn;
             final EntityZombieVillager EntityZombieSpidervillager = new EntityZombieVillager(this.world);
-            EntityZombieSpidervillager.copyLocationAndAnglesFrom((Entity)entityvillager);
-            this.world.removeEntity((Entity)entityvillager);
-            EntityZombieSpidervillager.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos((Entity)EntityZombieSpidervillager)), (IEntityLivingData)new GroupData(false));
+            EntityZombieSpidervillager.copyLocationAndAnglesFrom(entityvillager);
+            this.world.removeEntity(entityvillager);
+            EntityZombieSpidervillager.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(EntityZombieSpidervillager)), (IEntityLivingData)new GroupData(false));
             EntityZombieSpidervillager.setProfession(entityvillager.getProfession());
             EntityZombieSpidervillager.setChild(entityvillager.isChild());
             EntityZombieSpidervillager.setNoAI(entityvillager.isAIDisabled());
@@ -327,8 +327,8 @@ public class EntityZombieSpider extends EntityMob implements IMutant
                 EntityZombieSpidervillager.setCustomNameTag(entityvillager.getCustomNameTag());
                 EntityZombieSpidervillager.setAlwaysRenderNameTag(entityvillager.getAlwaysRenderNameTag());
             }
-            this.world.spawnEntity((Entity)EntityZombieSpidervillager);
-            this.world.playEvent((EntityPlayer)null, 1026, new BlockPos((Entity)this), 0);
+            this.world.spawnEntity(EntityZombieSpidervillager);
+            this.world.playEvent((EntityPlayer)null, 1026, new BlockPos(this), 0);
         }
     }
     
@@ -361,7 +361,7 @@ public class EntityZombieSpider extends EntityMob implements IMutant
                     if (!list.isEmpty()) {
                         final EntityChicken entitychicken = list.get(0);
                         entitychicken.setChickenJockey(true);
-                        this.startRiding((Entity)entitychicken);
+                        this.startRiding(entitychicken);
                     }
                 }
                 else if (this.world.rand.nextFloat() < 0.05) {
@@ -369,8 +369,8 @@ public class EntityZombieSpider extends EntityMob implements IMutant
                     entitychicken2.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0f);
                     entitychicken2.onInitialSpawn(difficulty, (IEntityLivingData)null);
                     entitychicken2.setChickenJockey(true);
-                    this.world.spawnEntity((Entity)entitychicken2);
-                    this.startRiding((Entity)entitychicken2);
+                    this.world.spawnEntity(entitychicken2);
+                    this.startRiding(entitychicken2);
                 }
             }
         }

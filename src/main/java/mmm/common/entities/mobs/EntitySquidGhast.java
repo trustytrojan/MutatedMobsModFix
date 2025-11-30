@@ -165,11 +165,11 @@ public class EntitySquidGhast extends EntityFlying implements IMob, IMutant
         public void updateTask() {
             final EntityLivingBase entitylivingbase = this.parentEntity.getAttackTarget();
             final double d0 = 64.0;
-            if (entitylivingbase.getDistanceSq((Entity)this.parentEntity) < 4096.0 && this.parentEntity.canEntityBeSeen((Entity)entitylivingbase)) {
+            if (entitylivingbase.getDistanceSq(this.parentEntity) < 4096.0 && this.parentEntity.canEntityBeSeen(entitylivingbase)) {
                 final World world = this.parentEntity.world;
                 ++this.attackTimer;
                 if (this.attackTimer == 10) {
-                    world.playEvent((EntityPlayer)null, 1015, new BlockPos((Entity)this.parentEntity), 0);
+                    world.playEvent((EntityPlayer)null, 1015, new BlockPos(this.parentEntity), 0);
                 }
                 if (this.attackTimer == 20) {
                     final double d2 = 4.0;
@@ -177,13 +177,13 @@ public class EntitySquidGhast extends EntityFlying implements IMob, IMutant
                     final double d3 = entitylivingbase.posX - (this.parentEntity.posX + vec3d.x * 4.0);
                     final double d4 = entitylivingbase.getEntityBoundingBox().minY + entitylivingbase.height / 2.0f - (0.5 + this.parentEntity.posY + this.parentEntity.height / 2.0f);
                     final double d5 = entitylivingbase.posZ - (this.parentEntity.posZ + vec3d.z * 4.0);
-                    world.playEvent((EntityPlayer)null, 1016, new BlockPos((Entity)this.parentEntity), 0);
+                    world.playEvent((EntityPlayer)null, 1016, new BlockPos(this.parentEntity), 0);
                     final EntitySquidFireball EntitySquidFireball = new EntitySquidFireball(world, (EntityLivingBase)this.parentEntity, d3, d4, d5);
                     EntitySquidFireball.explosionPower = this.parentEntity.getFireballStrength();
                     EntitySquidFireball.posX = this.parentEntity.posX + vec3d.x * 4.0;
                     EntitySquidFireball.posY = this.parentEntity.posY + this.parentEntity.height / 2.0f + 0.5;
                     EntitySquidFireball.posZ = this.parentEntity.posZ + vec3d.z * 4.0;
-                    world.spawnEntity((Entity)EntitySquidFireball);
+                    world.spawnEntity(EntitySquidFireball);
                     this.attackTimer = -40;
                 }
             }
@@ -218,11 +218,11 @@ public class EntitySquidGhast extends EntityFlying implements IMob, IMutant
         public void updateTask() {
             final EntityLivingBase entitylivingbase = this.parentEntity.getAttackTarget();
             final double d0 = 64.0;
-            if (entitylivingbase.getDistanceSq((Entity)this.parentEntity) < 4096.0 && this.parentEntity.canEntityBeSeen((Entity)entitylivingbase)) {
+            if (entitylivingbase.getDistanceSq(this.parentEntity) < 4096.0 && this.parentEntity.canEntityBeSeen(entitylivingbase)) {
                 final World world = this.parentEntity.world;
                 ++this.attackTimer;
                 if (this.attackTimer == 10) {
-                    world.playEvent((EntityPlayer)null, 1015, new BlockPos((Entity)this.parentEntity), 0);
+                    world.playEvent((EntityPlayer)null, 1015, new BlockPos(this.parentEntity), 0);
                 }
                 if (this.attackTimer == 20) {
                     final double d2 = 4.0;
@@ -230,13 +230,13 @@ public class EntitySquidGhast extends EntityFlying implements IMob, IMutant
                     final double d3 = entitylivingbase.posX - (this.parentEntity.posX + vec3d.x * 4.0);
                     final double d4 = entitylivingbase.getEntityBoundingBox().minY + entitylivingbase.height / 2.0f - (0.5 + this.parentEntity.posY + this.parentEntity.height / 2.0f);
                     final double d5 = entitylivingbase.posZ - (this.parentEntity.posZ + vec3d.z * 4.0);
-                    world.playEvent((EntityPlayer)null, 1016, new BlockPos((Entity)this.parentEntity), 0);
+                    world.playEvent((EntityPlayer)null, 1016, new BlockPos(this.parentEntity), 0);
                     final EntitySquidFireball EntitySquidFireball = new EntitySquidFireball(world, (EntityLivingBase)this.parentEntity, d3, d4, d5);
                     EntitySquidFireball.explosionPower = this.parentEntity.getFireballStrength();
                     EntitySquidFireball.posX = this.parentEntity.posX + vec3d.x * 4.0;
                     EntitySquidFireball.posY = this.parentEntity.posY + this.parentEntity.height / 2.0f + 0.5;
                     EntitySquidFireball.posZ = this.parentEntity.posZ + vec3d.z * 4.0;
-                    world.spawnEntity((Entity)EntitySquidFireball);
+                    world.spawnEntity(EntitySquidFireball);
                     this.attackTimer = -40;
                 }
             }
@@ -268,7 +268,7 @@ public class EntitySquidGhast extends EntityFlying implements IMob, IMutant
             else {
                 final EntityLivingBase entitylivingbase = this.parentEntity.getAttackTarget();
                 final double d0 = 64.0;
-                if (entitylivingbase.getDistanceSq((Entity)this.parentEntity) < 4096.0) {
+                if (entitylivingbase.getDistanceSq(this.parentEntity) < 4096.0) {
                     final double d2 = entitylivingbase.posX - this.parentEntity.posX;
                     final double d3 = entitylivingbase.posZ - this.parentEntity.posZ;
                     this.parentEntity.rotationYaw = -(float)MathHelper.atan2(d2, d3) * 57.295776f;
@@ -353,7 +353,7 @@ public class EntitySquidGhast extends EntityFlying implements IMob, IMutant
             AxisAlignedBB axisalignedbb = this.parentEntity.getEntityBoundingBox();
             for (int i = 1; i < p_179926_7_; ++i) {
                 axisalignedbb = axisalignedbb.offset(d0, d2, d3);
-                if (!this.parentEntity.world.getCollisionBoxes((Entity)this.parentEntity, axisalignedbb).isEmpty()) {
+                if (!this.parentEntity.world.getCollisionBoxes(this.parentEntity, axisalignedbb).isEmpty()) {
                     return false;
                 }
             }

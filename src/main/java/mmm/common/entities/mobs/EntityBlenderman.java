@@ -201,7 +201,7 @@ public class EntityBlenderman extends EntityMob implements IMutant
         final double d0 = vec3d2.lengthVector();
         vec3d2 = vec3d2.normalize();
         final double d2 = vec3d.dotProduct(vec3d2);
-        return d2 > 1.0 - 0.025 / d0 && player.canEntityBeSeen((Entity)this);
+        return d2 > 1.0 - 0.025 / d0 && player.canEntityBeSeen(this);
     }
     
     public float getEyeHeight() {
@@ -286,7 +286,7 @@ public class EntityBlenderman extends EntityMob implements IMutant
         for (int i = 0; i < 8; ++i) {
             final EntitySmallFireball entitysmallfireball = new EntitySmallFireball(this.world, (EntityLivingBase)this, d1 + this.getRNG().nextGaussian() * 10.0, d2, d3 + this.getRNG().nextGaussian() * 10.0);
             entitysmallfireball.posY = this.posY + this.height / 2.0f + 0.5;
-            this.world.spawnEntity((Entity)entitysmallfireball);
+            this.world.spawnEntity(entitysmallfireball);
         }
     }
     
@@ -304,7 +304,7 @@ public class EntityBlenderman extends EntityMob implements IMutant
     
     public boolean attackEntityAsMob(final Entity par1Entity) {
         this.attackTimer = 10;
-        this.world.setEntityState((Entity)this, (byte)4);
+        this.world.setEntityState(this, (byte)4);
         final boolean flag = par1Entity.attackEntityFrom(DamageSource.causeMobDamage((EntityLivingBase)this), (float)(ConfigHandler.ATK_Blenderman_MIN + this.rand.nextInt(ConfigHandler.ATK_Blenderman_MAX)));
         if (flag) {
             this.applyEnchantments((EntityLivingBase)this, par1Entity);
@@ -486,7 +486,7 @@ public class EntityBlenderman extends EntityMob implements IMutant
             if (!this.enderman.shouldAttackPlayer(this.player)) {
                 return false;
             }
-            this.enderman.faceEntity((Entity)this.player, 10.0f, 10.0f);
+            this.enderman.faceEntity(this.player, 10.0f, 10.0f);
             return true;
         }
         
@@ -501,12 +501,12 @@ public class EntityBlenderman extends EntityMob implements IMutant
             else {
                 if (this.targetEntity != null) {
                     if (this.enderman.shouldAttackPlayer((EntityPlayer)this.targetEntity)) {
-                        if (((EntityPlayer)this.targetEntity).getDistanceSq((Entity)this.enderman) < 16.0) {
+                        if (((EntityPlayer)this.targetEntity).getDistanceSq(this.enderman) < 16.0) {
                             this.enderman.teleportRandomly();
                         }
                         this.teleportTime = 0;
                     }
-                    else if (((EntityPlayer)this.targetEntity).getDistanceSq((Entity)this.enderman) > 256.0 && this.teleportTime++ >= 30 && this.enderman.teleportToEntity((Entity)this.targetEntity)) {
+                    else if (((EntityPlayer)this.targetEntity).getDistanceSq(this.enderman) > 256.0 && this.teleportTime++ >= 30 && this.enderman.teleportToEntity(this.targetEntity)) {
                         this.teleportTime = 0;
                     }
                 }

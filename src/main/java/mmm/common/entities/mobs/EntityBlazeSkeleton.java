@@ -257,7 +257,7 @@ public class EntityBlazeSkeleton extends EntityMob implements IRangedAttackMob, 
         else {
             entitytippedarrow.setDamage((double)ConfigHandler.ATK_BlazeSkeleton_Arrow);
         }
-        this.world.spawnEntity((Entity)entitytippedarrow);
+        this.world.spawnEntity(entitytippedarrow);
     }
     
     protected EntityArrow getArrow(final float p_190726_1_) {

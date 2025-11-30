@@ -46,7 +46,7 @@ public class LayerShulkerWitherAura implements LayerRenderer<EntityShulkerWither
             this.witherModel.setLivingAnimations((EntityLivingBase)entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks);
             this.witherModel.setModelAttributes(this.witherRenderer.getMainModel());
             Minecraft.getMinecraft().entityRenderer.setupFogColor(true);
-            this.witherModel.render((Entity)entitylivingbaseIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+            this.witherModel.render(entitylivingbaseIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
             Minecraft.getMinecraft().entityRenderer.setupFogColor(false);
             GlStateManager.matrixMode(5890);
             GlStateManager.loadIdentity();

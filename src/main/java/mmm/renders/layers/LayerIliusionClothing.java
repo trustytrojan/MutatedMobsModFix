@@ -30,7 +30,7 @@ public class LayerIliusionClothing implements LayerRenderer<EntityIlliusionerWit
         this.layerModel.setLivingAnimations((EntityLivingBase)entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks);
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         this.renderer.bindTexture(LayerIliusionClothing.STRAY_CLOTHES_TEXTURES);
-        this.layerModel.render((Entity)entitylivingbaseIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+        this.layerModel.render(entitylivingbaseIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
     }
     
     public boolean shouldCombineTextures() {

@@ -251,7 +251,7 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     public boolean attackEntityAsMob(final Entity entityIn) {
         final boolean flag = super.attackEntityAsMob(entityIn);
         if (flag) {
-            final float f = this.world.getDifficultyForLocation(new BlockPos((Entity)this)).getAdditionalDifficulty();
+            final float f = this.world.getDifficultyForLocation(new BlockPos(this)).getAdditionalDifficulty();
             if (this.getHeldItemMainhand().isEmpty() && this.isBurning() && this.rand.nextFloat() < f * 0.3f) {
                 entityIn.setFire(2 * (int)f);
             }
@@ -269,7 +269,7 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
                     this.teleportRandomly();
                 }
                 if (this.rand.nextInt(35) == 0) {
-                    this.world.createExplosion((Entity)this, this.posX, this.posY, this.posZ, (float)this.punchExplosion, false);
+                    this.world.createExplosion(this, this.posX, this.posY, this.posZ, (float)this.punchExplosion, false);
                 }
                 if (this.rand.nextInt(30) == 0) {
                     ((EntityLivingBase)entityIn).addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 100));
@@ -286,7 +286,7 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
                     entityPotion.rotationPitch += 20.0f;
                     entitypotion.shoot(d2, d3 + f * 0.2f, d4, 0.75f, 8.0f);
                     this.world.playSound((EntityPlayer)null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_WITCH_THROW, this.getSoundCategory(), 1.0f, 0.8f + this.rand.nextFloat() * 0.4f);
-                    this.world.spawnEntity((Entity)entitypotion);
+                    this.world.spawnEntity(entitypotion);
                 }
                 if (this.rand.nextInt(100) == 0) {
                     entityIn.motionY *= 1.5;

@@ -39,7 +39,7 @@ public class RenderCreeperFangs extends Render<EntityCreeperfangs>
             GlStateManager.scale(-f2, -f2, f2);
             final float f3 = 0.03125f;
             GlStateManager.translate(0.0f, -0.626f, 0.0f);
-            this.model.render((Entity)entity, f, 0.0f, 0.0f, entity.rotationYaw, entity.rotationPitch, 0.03125f);
+            this.model.render(entity, f, 0.0f, 0.0f, entity.rotationYaw, entity.rotationPitch, 0.03125f);
             GlStateManager.popMatrix();
             GlStateManager.enableCull();
             super.doRender(entity, x, y, z, entityYaw, partialTicks);

@@ -51,7 +51,7 @@ public class ItemShulkerDetonator extends Item
         if (this.marked != null) {
             if (!worldIn.isRemote) {
                 final boolean flag = worldIn.getGameRules().getBoolean("mobGriefing");
-                worldIn.createExplosion((Entity)playerIn, this.marked.posX, this.marked.posY, this.marked.posZ, (float)this.explosionRadius, flag);
+                worldIn.createExplosion(playerIn, this.marked.posX, this.marked.posY, this.marked.posZ, (float)this.explosionRadius, flag);
                 this.marked.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 600));
                 this.marked = null;
                 if (!playerIn.isCreative()) {

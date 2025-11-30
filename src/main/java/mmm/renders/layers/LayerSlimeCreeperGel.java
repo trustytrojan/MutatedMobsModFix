@@ -30,7 +30,7 @@ public class LayerSlimeCreeperGel implements LayerRenderer<EntitySlimeCreeper>
             GlStateManager.enableBlend();
             GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
             this.slimeModel.setModelAttributes(this.slimeRenderer.getMainModel());
-            this.slimeModel.render((Entity)entitylivingbaseIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+            this.slimeModel.render(entitylivingbaseIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
             GlStateManager.disableBlend();
             GlStateManager.disableNormalize();
         }

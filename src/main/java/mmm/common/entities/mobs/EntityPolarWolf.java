@@ -135,11 +135,11 @@ public class EntityPolarWolf extends EntityTameable implements IJumpingMount, IM
                     this.aiSit.setSitting(false);
                     this.setHealth(150.0f);
                     this.playTameEffect(true);
-                    this.world.setEntityState((Entity)this, (byte)7);
+                    this.world.setEntityState(this, (byte)7);
                 }
                 else {
                     this.playTameEffect(false);
-                    this.world.setEntityState((Entity)this, (byte)6);
+                    this.world.setEntityState(this, (byte)6);
                 }
             }
             return true;
@@ -159,7 +159,7 @@ public class EntityPolarWolf extends EntityTameable implements IJumpingMount, IM
         player.rotationYaw = this.rotationYaw;
         player.rotationPitch = this.rotationPitch;
         if (!this.world.isRemote) {
-            player.startRiding((Entity)this);
+            player.startRiding(this);
         }
     }
     
@@ -342,36 +342,36 @@ public class EntityPolarWolf extends EntityTameable implements IJumpingMount, IM
             final EntitySkeleton entityskeleton = new EntitySkeleton(this.world);
             entityskeleton.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0f);
             entityskeleton.onInitialSpawn(difficulty, (IEntityLivingData)null);
-            this.world.spawnEntity((Entity)entityskeleton);
-            entityskeleton.startRiding((Entity)this);
+            this.world.spawnEntity(entityskeleton);
+            entityskeleton.startRiding(this);
         }
         if (this.world.rand.nextInt(80) == 0) {
             final EntityCreeper entityskeleton2 = new EntityCreeper(this.world);
             entityskeleton2.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0f);
             entityskeleton2.onInitialSpawn(difficulty, (IEntityLivingData)null);
-            this.world.spawnEntity((Entity)entityskeleton2);
-            entityskeleton2.startRiding((Entity)this);
+            this.world.spawnEntity(entityskeleton2);
+            entityskeleton2.startRiding(this);
         }
         if (this.world.rand.nextInt(95) == 0) {
             final EntityZombie entityskeleton3 = new EntityZombie(this.world);
             entityskeleton3.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0f);
             entityskeleton3.onInitialSpawn(difficulty, (IEntityLivingData)null);
-            this.world.spawnEntity((Entity)entityskeleton3);
-            entityskeleton3.startRiding((Entity)this);
+            this.world.spawnEntity(entityskeleton3);
+            entityskeleton3.startRiding(this);
         }
         if (this.world.rand.nextInt(120) == 0) {
             final EntityHusk entityskeleton4 = new EntityHusk(this.world);
             entityskeleton4.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0f);
             entityskeleton4.onInitialSpawn(difficulty, (IEntityLivingData)null);
-            this.world.spawnEntity((Entity)entityskeleton4);
-            entityskeleton4.startRiding((Entity)this);
+            this.world.spawnEntity(entityskeleton4);
+            entityskeleton4.startRiding(this);
         }
         if (this.world.rand.nextInt(150) == 0) {
             final EntityWitch entityskeleton5 = new EntityWitch(this.world);
             entityskeleton5.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0f);
             entityskeleton5.onInitialSpawn(difficulty, (IEntityLivingData)null);
-            this.world.spawnEntity((Entity)entityskeleton5);
-            entityskeleton5.startRiding((Entity)this);
+            this.world.spawnEntity(entityskeleton5);
+            entityskeleton5.startRiding(this);
         }
         if (livingdata == null) {
             livingdata = (IEntityLivingData)new GroupData();
@@ -399,7 +399,7 @@ public class EntityPolarWolf extends EntityTameable implements IJumpingMount, IM
                 entitypigzombie.setCustomNameTag(this.getCustomNameTag());
                 entitypigzombie.setAlwaysRenderNameTag(this.getAlwaysRenderNameTag());
             }
-            this.world.spawnEntity((Entity)entitypigzombie);
+            this.world.spawnEntity(entitypigzombie);
             this.setDead();
         }
     }
@@ -535,7 +535,7 @@ public class EntityPolarWolf extends EntityTameable implements IJumpingMount, IM
         protected void setEntityAttackTarget(final EntityCreature creatureIn, final EntityLivingBase entityLivingBaseIn) {
             super.setEntityAttackTarget(creatureIn, entityLivingBaseIn);
             if (creatureIn instanceof EntityPolarWolf) {
-                ((EntityPolarWolf)creatureIn).becomeAngryAt((Entity)entityLivingBaseIn);
+                ((EntityPolarWolf)creatureIn).becomeAngryAt(entityLivingBaseIn);
             }
         }
     }

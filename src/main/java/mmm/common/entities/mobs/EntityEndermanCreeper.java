@@ -133,7 +133,7 @@ public class EntityEndermanCreeper extends EntityHalfCreeper implements IMutant
                 this.explode();
             }
             if (this.getAttackTarget() != null && this.rand.nextInt(10) == 0) {
-                this.teleportToEntity((Entity)this.getAttackTarget());
+                this.teleportToEntity(this.getAttackTarget());
             }
         }
         super.onUpdate();
@@ -240,15 +240,15 @@ public class EntityEndermanCreeper extends EntityHalfCreeper implements IMutant
             final double d2 = this.posY + (this.rand.nextInt(64) - 32);
             final double d3 = this.posZ + (this.rand.nextDouble() - 0.5) * 64.0;
             if (this.getAttackTarget() != null) {
-                this.teleportToEntity((Entity)this.getAttackTarget());
-                this.world.createExplosion((Entity)this, this.posX, this.posY, this.posZ, (float)this.explosionRadius, flag);
+                this.teleportToEntity(this.getAttackTarget());
+                this.world.createExplosion(this, this.posX, this.posY, this.posZ, (float)this.explosionRadius, flag);
                 this.dead = true;
                 this.setDead();
                 this.spawnLingeringCloud();
             }
             else {
                 this.teleportTo(d0, d2, d3);
-                this.world.createExplosion((Entity)this, this.posX, this.posY, this.posZ, (float)this.explosionRadius, flag);
+                this.world.createExplosion(this, this.posX, this.posY, this.posZ, (float)this.explosionRadius, flag);
                 this.dead = true;
                 this.setDead();
                 this.spawnLingeringCloud();
@@ -277,7 +277,7 @@ public class EntityEndermanCreeper extends EntityHalfCreeper implements IMutant
             for (final PotionEffect potioneffect : collection) {
                 entityareaeffectcloud.addEffect(new PotionEffect(potioneffect));
             }
-            this.world.spawnEntity((Entity)entityareaeffectcloud);
+            this.world.spawnEntity(entityareaeffectcloud);
         }
     }
     

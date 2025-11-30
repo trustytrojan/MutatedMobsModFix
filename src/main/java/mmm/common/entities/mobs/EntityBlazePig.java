@@ -149,7 +149,7 @@ public class EntityBlazePig extends EntityAnimal implements IJumpingMount, IMuta
         player.rotationYaw = this.rotationYaw;
         player.rotationPitch = this.rotationPitch;
         if (!this.world.isRemote) {
-            player.startRiding((Entity)this);
+            player.startRiding(this);
         }
     }
     
@@ -231,7 +231,7 @@ public class EntityBlazePig extends EntityAnimal implements IJumpingMount, IMuta
                 entitypigzombie.setCustomNameTag(this.getCustomNameTag());
                 entitypigzombie.setAlwaysRenderNameTag(this.getAlwaysRenderNameTag());
             }
-            this.world.spawnEntity((Entity)entitypigzombie);
+            this.world.spawnEntity(entitypigzombie);
             this.setDead();
         }
     }

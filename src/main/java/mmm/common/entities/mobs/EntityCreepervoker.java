@@ -122,7 +122,7 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
             for (final PotionEffect potioneffect : collection) {
                 entityareaeffectcloud.addEffect(new PotionEffect(potioneffect));
             }
-            this.world.spawnEntity((Entity)entityareaeffectcloud);
+            this.world.spawnEntity(entityareaeffectcloud);
         }
     }
     
@@ -214,7 +214,7 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
             final double d0 = Math.min(entitylivingbase.posY, EntityCreepervoker.this.posY);
             final double d2 = Math.max(entitylivingbase.posY, EntityCreepervoker.this.posY) + 1.0;
             final float f = (float)MathHelper.atan2(entitylivingbase.posZ - EntityCreepervoker.this.posZ, entitylivingbase.posX - EntityCreepervoker.this.posX);
-            if (EntityCreepervoker.this.getDistanceSq((Entity)entitylivingbase) < 9.0) {
+            if (EntityCreepervoker.this.getDistanceSq(entitylivingbase) < 9.0) {
                 for (int i = 0; i < 5; ++i) {
                     final float f2 = f + i * 3.1415927f * 0.4f;
                     this.spawnFangs(EntityCreepervoker.this.posX + MathHelper.cos(f2) * 1.5, EntityCreepervoker.this.posZ + MathHelper.sin(f2) * 1.5, d0, d2, f2, 0);
@@ -250,7 +250,7 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
                 }
             }
             final EntityCreeperfangs EntityCreepervokerfangs = new EntityCreeperfangs(EntityCreepervoker.this.world, p_190876_1_, blockpos.getY() + d0, p_190876_3_, p_190876_9_, p_190876_10_, (EntityLivingBase)EntityCreepervoker.this);
-            EntityCreepervoker.this.world.spawnEntity((Entity)EntityCreepervokerfangs);
+            EntityCreepervoker.this.world.spawnEntity(EntityCreepervokerfangs);
         }
         
         protected SoundEvent getSpellPrepareSound() {
@@ -270,10 +270,10 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
         
         public void updateTask() {
             if (EntityCreepervoker.this.getAttackTarget() != null) {
-                EntityCreepervoker.this.getLookHelper().setLookPositionWithEntity((Entity)EntityCreepervoker.this.getAttackTarget(), (float)EntityCreepervoker.this.getHorizontalFaceSpeed(), (float)EntityCreepervoker.this.getVerticalFaceSpeed());
+                EntityCreepervoker.this.getLookHelper().setLookPositionWithEntity(EntityCreepervoker.this.getAttackTarget(), (float)EntityCreepervoker.this.getHorizontalFaceSpeed(), (float)EntityCreepervoker.this.getVerticalFaceSpeed());
             }
             else if (EntityCreepervoker.this.getWololoTarget() != null) {
-                EntityCreepervoker.this.getLookHelper().setLookPositionWithEntity((Entity)EntityCreepervoker.this.getWololoTarget(), (float)EntityCreepervoker.this.getHorizontalFaceSpeed(), (float)EntityCreepervoker.this.getVerticalFaceSpeed());
+                EntityCreepervoker.this.getLookHelper().setLookPositionWithEntity(EntityCreepervoker.this.getWololoTarget(), (float)EntityCreepervoker.this.getHorizontalFaceSpeed(), (float)EntityCreepervoker.this.getVerticalFaceSpeed());
             }
         }
     }
@@ -302,14 +302,14 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
         
         protected void castSpell() {
             for (int i = 0; i < 3; ++i) {
-                final BlockPos blockpos = new BlockPos((Entity)EntityCreepervoker.this).add(-2 + EntityCreepervoker.this.rand.nextInt(5), 2, -2 + EntityCreepervoker.this.rand.nextInt(5));
+                final BlockPos blockpos = new BlockPos(EntityCreepervoker.this).add(-2 + EntityCreepervoker.this.rand.nextInt(5), 2, -2 + EntityCreepervoker.this.rand.nextInt(5));
                 final EntityVex entityvex = new EntityVex(EntityCreepervoker.this.world);
                 entityvex.moveToBlockPosAndAngles(blockpos, 0.0f, 0.0f);
                 entityvex.onInitialSpawn(EntityCreepervoker.this.world.getDifficultyForLocation(blockpos), (IEntityLivingData)null);
                 entityvex.setOwner((EntityLiving)EntityCreepervoker.this);
                 entityvex.setBoundOrigin(blockpos);
                 entityvex.setLimitedLife(60 * (90 + EntityCreepervoker.this.rand.nextInt(90)));
-                EntityCreepervoker.this.world.spawnEntity((Entity)entityvex);
+                EntityCreepervoker.this.world.spawnEntity(entityvex);
             }
         }
         

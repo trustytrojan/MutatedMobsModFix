@@ -190,36 +190,36 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
             final EntitySkeleton entityskeleton = new EntitySkeleton(this.world);
             entityskeleton.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0f);
             entityskeleton.onInitialSpawn(difficulty, (IEntityLivingData)null);
-            this.world.spawnEntity((Entity)entityskeleton);
-            entityskeleton.startRiding((Entity)this);
+            this.world.spawnEntity(entityskeleton);
+            entityskeleton.startRiding(this);
         }
         if (this.world.rand.nextInt(80) == 0) {
             final EntityCreeper entityskeleton2 = new EntityCreeper(this.world);
             entityskeleton2.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0f);
             entityskeleton2.onInitialSpawn(difficulty, (IEntityLivingData)null);
-            this.world.spawnEntity((Entity)entityskeleton2);
-            entityskeleton2.startRiding((Entity)this);
+            this.world.spawnEntity(entityskeleton2);
+            entityskeleton2.startRiding(this);
         }
         if (this.world.rand.nextInt(95) == 0) {
             final EntityZombie entityskeleton3 = new EntityZombie(this.world);
             entityskeleton3.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0f);
             entityskeleton3.onInitialSpawn(difficulty, (IEntityLivingData)null);
-            this.world.spawnEntity((Entity)entityskeleton3);
-            entityskeleton3.startRiding((Entity)this);
+            this.world.spawnEntity(entityskeleton3);
+            entityskeleton3.startRiding(this);
         }
         if (this.world.rand.nextInt(120) == 0) {
             final EntityHusk entityskeleton4 = new EntityHusk(this.world);
             entityskeleton4.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0f);
             entityskeleton4.onInitialSpawn(difficulty, (IEntityLivingData)null);
-            this.world.spawnEntity((Entity)entityskeleton4);
-            entityskeleton4.startRiding((Entity)this);
+            this.world.spawnEntity(entityskeleton4);
+            entityskeleton4.startRiding(this);
         }
         if (this.world.rand.nextInt(150) == 0) {
             final EntityWitch entityskeleton5 = new EntityWitch(this.world);
             entityskeleton5.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0f);
             entityskeleton5.onInitialSpawn(difficulty, (IEntityLivingData)null);
-            this.world.spawnEntity((Entity)entityskeleton5);
-            entityskeleton5.startRiding((Entity)this);
+            this.world.spawnEntity(entityskeleton5);
+            entityskeleton5.startRiding(this);
         }
         if (livingdata == null) {
             livingdata = (IEntityLivingData)new GroupData();
@@ -341,7 +341,7 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
         protected void setEntityAttackTarget(final EntityCreature creatureIn, final EntityLivingBase entityLivingBaseIn) {
             super.setEntityAttackTarget(creatureIn, entityLivingBaseIn);
             if (creatureIn instanceof EntityZombieSpiderPigman) {
-                ((EntityZombieSpiderPigman)creatureIn).becomeAngryAt((Entity)entityLivingBaseIn);
+                ((EntityZombieSpiderPigman)creatureIn).becomeAngryAt(entityLivingBaseIn);
             }
         }
     }
