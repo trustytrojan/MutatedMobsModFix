@@ -2,7 +2,7 @@
 Since it seems [rolik1997](https://www.curseforge.com/members/rolik1997) has abandoned the [Mutated Mobs Mod](https://www.curseforge.com/minecraft/mc-mods/mutated-mobs-mod), and since I really like it for the variety of monsters it adds to Minecraft, I decided to decompile it to fix many bugs.
 
 ## Changes from the original
-- Fix entity ID mismatches by removing the `EnableXXXX` configuration values entirely
+- Fix entity ID mismatches caused by differing `EnableXXXX` configuration values between client/server by removing them entirely
   - These mismatches caused many `ClassCastException`s when trying to read data from an entity's `EntityDataManager` only to find another entity's data inside. More on this below.
 - Fix `defineId` warnings caused by passing the wrong class to `EntityDataManager.createKey`
 - Refactor code in `EntityLoader` to not have bloated lines
