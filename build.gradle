@@ -55,9 +55,9 @@ minecraft {
 }
 
 // Configure compiler to show all warnings
-tasks.withType(JavaCompile) {
-    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
-}
+// tasks.withType(JavaCompile) {
+//     options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+// }
 
 dependencies {
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
