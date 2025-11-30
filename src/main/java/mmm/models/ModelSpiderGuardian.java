@@ -30,33 +30,33 @@ public class ModelSpiderGuardian extends ModelBase
         this.textureWidth = 64;
         this.textureHeight = 64;
         this.guardianSpines = new ModelRenderer[12];
-        this.guardianBody = new ModelRenderer((ModelBase)this);
+        this.guardianBody = new ModelRenderer(this);
         this.guardianBody.setTextureOffset(0, 0).addBox(-6.0f, 10.0f, -8.0f, 12, 12, 16);
         this.guardianBody.setTextureOffset(0, 28).addBox(-8.0f, 10.0f, -6.0f, 2, 12, 12);
         this.guardianBody.setTextureOffset(0, 28).addBox(6.0f, 10.0f, -6.0f, 2, 12, 12, true);
         this.guardianBody.setTextureOffset(16, 40).addBox(-6.0f, 8.0f, -6.0f, 12, 2, 12);
         this.guardianBody.setTextureOffset(16, 40).addBox(-6.0f, 22.0f, -6.0f, 12, 2, 12);
         for (int i = 0; i < this.guardianSpines.length; ++i) {
-            (this.guardianSpines[i] = new ModelRenderer((ModelBase)this, 0, 0)).addBox(-1.0f, -4.5f, -1.0f, 2, 9, 2);
+            (this.guardianSpines[i] = new ModelRenderer(this, 0, 0)).addBox(-1.0f, -4.5f, -1.0f, 2, 9, 2);
             this.guardianBody.addChild(this.guardianSpines[i]);
         }
-        (this.guardianEye = new ModelRenderer((ModelBase)this, 8, 0)).addBox(-1.0f, 15.0f, 0.0f, 2, 2, 1);
+        (this.guardianEye = new ModelRenderer(this, 8, 0)).addBox(-1.0f, 15.0f, 0.0f, 2, 2, 1);
         this.guardianBody.addChild(this.guardianEye);
-        (this.spiderLeg1 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg1 = new ModelRenderer(this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg1.setRotationPoint(-4.0f, 15.0f, 2.0f);
-        (this.spiderLeg2 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg2 = new ModelRenderer(this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg2.setRotationPoint(4.0f, 15.0f, 2.0f);
-        (this.spiderLeg3 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg3 = new ModelRenderer(this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg3.setRotationPoint(-4.0f, 15.0f, 1.0f);
-        (this.spiderLeg4 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg4 = new ModelRenderer(this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg4.setRotationPoint(4.0f, 15.0f, 1.0f);
-        (this.spiderLeg5 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg5 = new ModelRenderer(this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg5.setRotationPoint(-4.0f, 15.0f, 0.0f);
-        (this.spiderLeg6 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg6 = new ModelRenderer(this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg6.setRotationPoint(4.0f, 15.0f, 0.0f);
-        (this.spiderLeg7 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg7 = new ModelRenderer(this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg7.setRotationPoint(-4.0f, 15.0f, -1.0f);
-        (this.spiderLeg8 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg8 = new ModelRenderer(this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg8.setRotationPoint(4.0f, 15.0f, -1.0f);
     }
     

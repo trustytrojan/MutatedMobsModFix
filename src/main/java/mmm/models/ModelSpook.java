@@ -32,27 +32,27 @@ public class ModelSpook extends ModelBiped
     
     public ModelSpook(final float modelSize, final boolean p_i1168_2_) {
         super(modelSize, 0.0f, 64, p_i1168_2_ ? 32 : 64);
-        (this.spiderBody = new ModelRenderer((ModelBase)this, 0, 12)).addBox(-5.0f, -4.0f, -6.0f, 10, 8, 12, 0.0f);
+        (this.spiderBody = new ModelRenderer(this, 0, 12)).addBox(-5.0f, -4.0f, -6.0f, 10, 8, 12, 0.0f);
         this.spiderBody.setRotationPoint(0.0f, 15.0f, 9.0f);
-        (this.spiderLeg1 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg1 = new ModelRenderer(this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg1.setRotationPoint(-4.0f, 15.0f, 2.0f);
-        (this.spiderLeg2 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg2 = new ModelRenderer(this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg2.setRotationPoint(4.0f, 15.0f, 2.0f);
-        (this.spiderLeg3 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg3 = new ModelRenderer(this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg3.setRotationPoint(-4.0f, 15.0f, 1.0f);
-        (this.spiderLeg4 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg4 = new ModelRenderer(this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg4.setRotationPoint(4.0f, 15.0f, 1.0f);
-        (this.spiderLeg5 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg5 = new ModelRenderer(this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg5.setRotationPoint(-4.0f, 15.0f, 0.0f);
-        (this.spiderLeg6 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg6 = new ModelRenderer(this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg6.setRotationPoint(4.0f, 15.0f, 0.0f);
-        (this.spiderLeg7 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg7 = new ModelRenderer(this, 18, 0)).addBox(-15.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg7.setRotationPoint(-4.0f, 15.0f, -1.0f);
-        (this.spiderLeg8 = new ModelRenderer((ModelBase)this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
+        (this.spiderLeg8 = new ModelRenderer(this, 18, 0)).addBox(-1.0f, -1.0f, -1.0f, 16, 2, 2, 0.0f);
         this.spiderLeg8.setRotationPoint(4.0f, 15.0f, -1.0f);
-        (this.biped2RightArm = new ModelRenderer((ModelBase)this, 40, 16)).addBox(-3.0f, -2.0f, 0.0f, 4, 12, 4, modelSize);
+        (this.biped2RightArm = new ModelRenderer(this, 40, 16)).addBox(-3.0f, -2.0f, 0.0f, 4, 12, 4, modelSize);
         this.biped2RightArm.setRotationPoint(-5.0f, 3.0f, 0.0f);
-        this.biped2LeftArm = new ModelRenderer((ModelBase)this, 40, 16);
+        this.biped2LeftArm = new ModelRenderer(this, 40, 16);
         this.biped2LeftArm.mirror = true;
         this.biped2LeftArm.addBox(-1.0f, -2.0f, 0.0f, 4, 12, 4, modelSize);
         this.biped2LeftArm.setRotationPoint(5.0f, 3.0f, 0.0f);

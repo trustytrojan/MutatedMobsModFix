@@ -23,10 +23,10 @@ public class ModelBlazeSnowman extends ModelBase
         this.blazeSticks = new ModelRenderer[12];
         final float f = 4.0f;
         final float f2 = 0.0f;
-        (this.head = new ModelRenderer((ModelBase)this, 0, 0).setTextureSize(64, 64)).addBox(-4.0f, -8.0f, -4.0f, 8, 8, 8, -0.5f);
+        (this.head = new ModelRenderer(this, 0, 0).setTextureSize(64, 64)).addBox(-4.0f, -8.0f, -4.0f, 8, 8, 8, -0.5f);
         this.head.setRotationPoint(0.0f, 4.0f, 0.0f);
         for (int i = 0; i < this.blazeSticks.length; ++i) {
-            (this.blazeSticks[i] = new ModelRenderer((ModelBase)this, 0, 16)).addBox(0.0f, 0.0f, 0.0f, 2, 8, 2);
+            (this.blazeSticks[i] = new ModelRenderer(this, 0, 16)).addBox(0.0f, 0.0f, 0.0f, 2, 8, 2);
         }
     }
     

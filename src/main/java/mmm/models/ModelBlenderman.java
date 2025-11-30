@@ -22,29 +22,29 @@ public class ModelBlenderman extends ModelBase
         this.blazeSticks = new ModelRenderer[12];
         this.textureWidth = 64;
         this.textureHeight = 64;
-        (this.Head = new ModelRenderer((ModelBase)this, 0, 0)).addBox(-4.0f, -8.0f, -4.0f, 8, 8, 8);
+        (this.Head = new ModelRenderer(this, 0, 0)).addBox(-4.0f, -8.0f, -4.0f, 8, 8, 8);
         this.Head.setRotationPoint(0.0f, 2.0f, 0.0f);
         this.Head.setTextureSize(64, 64);
         this.setRotation(this.Head, 0.0f, 0.0f, 0.0f);
-        (this.Headwear = new ModelRenderer((ModelBase)this, 0, 16)).addBox(-4.0f, -8.0f, -4.0f, 8, 8, 8);
+        (this.Headwear = new ModelRenderer(this, 0, 16)).addBox(-4.0f, -8.0f, -4.0f, 8, 8, 8);
         this.Headwear.setRotationPoint(0.0f, 2.0f, 0.0f);
         this.Headwear.setTextureSize(64, 64);
         this.setRotation(this.Headwear, 0.0f, 0.0f, 0.0f);
-        (this.Body = new ModelRenderer((ModelBase)this, 32, 16)).addBox(-4.0f, 0.0f, -2.0f, 8, 12, 4);
+        (this.Body = new ModelRenderer(this, 32, 16)).addBox(-4.0f, 0.0f, -2.0f, 8, 12, 4);
         this.Body.setRotationPoint(0.0f, 2.0f, 0.0f);
         this.Body.setTextureSize(64, 64);
         this.setRotation(this.Body, 0.0f, 0.0f, 0.0f);
-        (this.RightLeg = new ModelRenderer((ModelBase)this, 56, 0)).addBox(-1.0f, 0.0f, -1.0f, 2, 10, 2);
+        (this.RightLeg = new ModelRenderer(this, 56, 0)).addBox(-1.0f, 0.0f, -1.0f, 2, 10, 2);
         this.RightLeg.setRotationPoint(-2.0f, 14.0f, 0.0f);
         this.RightLeg.setTextureSize(64, 64);
         this.setRotation(this.RightLeg, 0.0f, 0.0f, 0.0f);
-        (this.LeftLeg = new ModelRenderer((ModelBase)this, 56, 0)).addBox(-1.0f, 0.0f, -1.0f, 2, 10, 2);
+        (this.LeftLeg = new ModelRenderer(this, 56, 0)).addBox(-1.0f, 0.0f, -1.0f, 2, 10, 2);
         this.LeftLeg.setRotationPoint(2.0f, 14.0f, 0.0f);
         this.LeftLeg.setTextureSize(64, 64);
         this.setRotation(this.LeftLeg, 0.0f, 0.0f, 0.0f);
         this.LeftLeg.mirror = false;
         for (int i = 0; i < this.blazeSticks.length; ++i) {
-            (this.blazeSticks[i] = new ModelRenderer((ModelBase)this, 0, 16)).addBox(0.0f, 0.0f, 0.0f, 2, 8, 2);
+            (this.blazeSticks[i] = new ModelRenderer(this, 0, 16)).addBox(0.0f, 0.0f, 0.0f, 2, 8, 2);
         }
     }
     

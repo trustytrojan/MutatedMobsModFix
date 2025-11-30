@@ -21,15 +21,15 @@ public class ModelEnderSnowman extends ModelBase
     public ModelEnderSnowman() {
         final float f = 4.0f;
         final float f2 = 0.0f;
-        (this.head = new ModelRenderer((ModelBase)this, 0, 0).setTextureSize(64, 64)).addBox(-4.0f, -8.0f, -4.0f, 8, 8, 8, -0.5f);
+        (this.head = new ModelRenderer(this, 0, 0).setTextureSize(64, 64)).addBox(-4.0f, -8.0f, -4.0f, 8, 8, 8, -0.5f);
         this.head.setRotationPoint(0.0f, 4.0f, 0.0f);
-        (this.rightHand = new ModelRenderer((ModelBase)this, 32, 0).setTextureSize(64, 64)).addBox(-1.0f, 0.0f, -1.0f, 12, 2, 2, -0.5f);
+        (this.rightHand = new ModelRenderer(this, 32, 0).setTextureSize(64, 64)).addBox(-1.0f, 0.0f, -1.0f, 12, 2, 2, -0.5f);
         this.rightHand.setRotationPoint(0.0f, 6.0f, 0.0f);
-        (this.leftHand = new ModelRenderer((ModelBase)this, 32, 0).setTextureSize(64, 64)).addBox(-1.0f, 0.0f, -1.0f, 12, 2, 2, -0.5f);
+        (this.leftHand = new ModelRenderer(this, 32, 0).setTextureSize(64, 64)).addBox(-1.0f, 0.0f, -1.0f, 12, 2, 2, -0.5f);
         this.leftHand.setRotationPoint(0.0f, 6.0f, 0.0f);
-        (this.body = new ModelRenderer((ModelBase)this, 0, 16).setTextureSize(64, 64)).addBox(-5.0f, -10.0f, -5.0f, 10, 10, 10, -0.5f);
+        (this.body = new ModelRenderer(this, 0, 16).setTextureSize(64, 64)).addBox(-5.0f, -10.0f, -5.0f, 10, 10, 10, -0.5f);
         this.body.setRotationPoint(0.0f, 13.0f, 0.0f);
-        (this.bottomBody = new ModelRenderer((ModelBase)this, 0, 36).setTextureSize(64, 64)).addBox(-6.0f, -12.0f, -6.0f, 12, 12, 12, -0.5f);
+        (this.bottomBody = new ModelRenderer(this, 0, 36).setTextureSize(64, 64)).addBox(-6.0f, -12.0f, -6.0f, 12, 12, 12, -0.5f);
         this.bottomBody.setRotationPoint(0.0f, 24.0f, 0.0f);
     }
     

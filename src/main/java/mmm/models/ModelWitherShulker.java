@@ -20,9 +20,9 @@ public class ModelWitherShulker extends ModelBase
     public ModelWitherShulker() {
         this.textureHeight = 64;
         this.textureWidth = 64;
-        this.lid = new ModelRenderer((ModelBase)this);
-        this.base = new ModelRenderer((ModelBase)this);
-        this.head = new ModelRenderer((ModelBase)this);
+        this.lid = new ModelRenderer(this);
+        this.base = new ModelRenderer(this);
+        this.head = new ModelRenderer(this);
         this.lid.setTextureOffset(0, 0).addBox(-8.0f, -16.0f, -8.0f, 16, 12, 16);
         this.lid.setRotationPoint(0.0f, 24.0f, 0.0f);
         this.base.setTextureOffset(0, 28).addBox(-8.0f, -8.0f, -8.0f, 16, 8, 16);

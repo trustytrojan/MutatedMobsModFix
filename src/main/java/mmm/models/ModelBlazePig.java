@@ -20,11 +20,11 @@ public class ModelBlazePig extends ModelBase
     
     public ModelBlazePig(final int height, final float scale) {
         this.blazeSticks = new ModelRenderer[12];
-        this.head = new ModelRenderer((ModelBase)this, 0, 0);
+        this.head = new ModelRenderer(this, 0, 0);
         this.childYOffset = 8.0f;
         this.childZOffset = 4.0f;
         for (int i = 0; i < this.blazeSticks.length; ++i) {
-            (this.blazeSticks[i] = new ModelRenderer((ModelBase)this, 0, 16)).addBox(-5.0f, 2.0f, -7.0f, 2, 8, 2);
+            (this.blazeSticks[i] = new ModelRenderer(this, 0, 16)).addBox(-5.0f, 2.0f, -7.0f, 2, 8, 2);
         }
         this.head.addBox(-5.0f, -15.0f, -7.0f, 8, 8, 8, scale);
         this.head.setTextureOffset(16, 16).addBox(-3.0f, -10.0f, -8.0f, 4, 3, 1, scale);

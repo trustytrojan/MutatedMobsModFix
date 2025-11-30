@@ -27,18 +27,18 @@ public class ModelBlazeSkeleton extends ModelBiped
         super(modelSize, 0.0f, 64, 32);
         this.blazeSticks = new ModelRenderer[12];
         for (int i = 0; i < this.blazeSticks.length; ++i) {
-            (this.blazeSticks[i] = new ModelRenderer((ModelBase)this, 0, 16)).addBox(0.0f, 0.0f, 0.0f, 2, 8, 2);
+            (this.blazeSticks[i] = new ModelRenderer(this, 0, 16)).addBox(0.0f, 0.0f, 0.0f, 2, 8, 2);
         }
         if (!p_i46303_2_) {
-            (this.bipedRightArm = new ModelRenderer((ModelBase)this, 40, 16)).addBox(-1.0f, -2.0f, -1.0f, 2, 12, 2, modelSize);
+            (this.bipedRightArm = new ModelRenderer(this, 40, 16)).addBox(-1.0f, -2.0f, -1.0f, 2, 12, 2, modelSize);
             this.bipedRightArm.setRotationPoint(-5.0f, 2.0f, 0.0f);
-            this.bipedLeftArm = new ModelRenderer((ModelBase)this, 40, 16);
+            this.bipedLeftArm = new ModelRenderer(this, 40, 16);
             this.bipedLeftArm.mirror = true;
             this.bipedLeftArm.addBox(-1.0f, -2.0f, -1.0f, 2, 12, 2, modelSize);
             this.bipedLeftArm.setRotationPoint(5.0f, 2.0f, 0.0f);
-            (this.bipedRightLeg = new ModelRenderer((ModelBase)this, 0, 16)).addBox(-1.0f, 0.0f, -1.0f, 2, 12, 2, modelSize);
+            (this.bipedRightLeg = new ModelRenderer(this, 0, 16)).addBox(-1.0f, 0.0f, -1.0f, 2, 12, 2, modelSize);
             this.bipedRightLeg.setRotationPoint(-2.0f, 12.0f, 0.0f);
-            this.bipedLeftLeg = new ModelRenderer((ModelBase)this, 0, 16);
+            this.bipedLeftLeg = new ModelRenderer(this, 0, 16);
             this.bipedLeftLeg.mirror = true;
             this.bipedLeftLeg.addBox(-1.0f, 0.0f, -1.0f, 2, 12, 2, modelSize);
             this.bipedLeftLeg.setRotationPoint(2.0f, 12.0f, 0.0f);
