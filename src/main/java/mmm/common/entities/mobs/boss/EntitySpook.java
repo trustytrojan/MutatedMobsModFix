@@ -67,8 +67,8 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     
     protected void initEntityAI() {
         this.tasks.addTask(0, new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
-        this.tasks.addTask(7, new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
+        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0));
+        this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0));
         this.tasks.addTask(8, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(8, new EntityAILookIdle((EntityLiving)this));
         this.applyEntityAI();
@@ -80,10 +80,10 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
     }
     
     protected void applyEntityAI() {
-        this.tasks.addTask(6, new EntityAIMoveThroughVillage((EntityCreature)this, 1.0, false));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget((EntityCreature)this, true, new Class[] { EntityPigZombie.class }));
-        this.tasks.addTask(1, new EntityAIAttackMelee((EntityCreature)this, 1.0, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget((EntityCreature)this, EntityLivingBase.class, true));
+        this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0, false));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[] { EntityPigZombie.class }));
+        this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLivingBase.class, true));
     }
     
     protected void applyEntityAttributes() {

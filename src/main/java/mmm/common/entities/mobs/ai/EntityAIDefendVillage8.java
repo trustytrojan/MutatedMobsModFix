@@ -16,7 +16,7 @@ public class EntityAIDefendVillage8 extends EntityAITarget
     EntityLivingBase villageAgressorTarget;
     
     public EntityAIDefendVillage8(final EntityGuardianGolem ironGolemIn) {
-        super((EntityCreature)ironGolemIn, false, true);
+        super(ironGolemIn, false, true);
         this.irongolem = ironGolemIn;
         this.setMutexBits(1);
     }

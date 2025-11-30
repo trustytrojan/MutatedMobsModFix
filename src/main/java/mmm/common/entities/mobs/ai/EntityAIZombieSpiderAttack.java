@@ -14,7 +14,7 @@ public class EntityAIZombieSpiderAttack extends EntityAIAttackMelee
     private int raiseArmTicks;
     
     public EntityAIZombieSpiderAttack(final EntityZombieSpider zombieIn, final double speedIn, final boolean longMemoryIn) {
-        super((EntityCreature)zombieIn, speedIn, longMemoryIn);
+        super(zombieIn, speedIn, longMemoryIn);
         this.zombie = zombieIn;
     }
     

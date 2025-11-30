@@ -22,7 +22,7 @@ public class EntityAIDestroyBlock extends EntityAIMoveToBlock
     private int currentTask;
     
     public EntityAIDestroyBlock(final EntityZombieSpiderPigman villagerIn, final double speedIn) {
-        super((EntityCreature)villagerIn, speedIn, 16);
+        super(villagerIn, speedIn, 16);
         this.villager = villagerIn;
     }
     

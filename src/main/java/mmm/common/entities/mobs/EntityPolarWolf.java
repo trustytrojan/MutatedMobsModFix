@@ -57,21 +57,21 @@ public class EntityPolarWolf extends EntityTameable implements IJumpingMount, IM
         this.targetTasks.addTask(2, new AITargetAggressor(this));
         this.tasks.addTask(1, new EntityAISwimming((EntityLiving)this));
         this.tasks.addTask(4, new EntityAILeapAtTarget((EntityLiving)this, 0.4f));
-        this.tasks.addTask(5, new EntityAIAttackMelee((EntityCreature)this, 1.0, true));
+        this.tasks.addTask(5, new EntityAIAttackMelee(this, 1.0, true));
         this.tasks.addTask(6, new EntityAIFollowOwner((EntityTameable)this, 1.0, 10.0f, 2.0f));
         this.tasks.addTask(7, new EntityAIMate((EntityAnimal)this, 1.0));
-        this.tasks.addTask(8, new EntityAIWanderAvoidWater((EntityCreature)this, 1.0));
+        this.tasks.addTask(8, new EntityAIWanderAvoidWater(this, 1.0));
         this.tasks.addTask(10, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(10, new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget((EntityTameable)this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget((EntityTameable)this));
-        this.targetTasks.addTask(3, new EntityAIHurtByTarget((EntityCreature)this, true, new Class[0]));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true, new Class[0]));
         this.targetTasks.addTask(4, new EntityAITargetNonTamed((EntityTameable)this, EntityAnimal.class, false, new Predicate<Entity>() {
             public boolean apply(@Nullable final Entity p_apply_1_) {
                 return p_apply_1_ instanceof EntitySheep || p_apply_1_ instanceof EntityRabbit;
             }
         }));
-        this.targetTasks.addTask(5, new EntityAINearestAttackableTarget((EntityCreature)this, AbstractSkeleton.class, false));
+        this.targetTasks.addTask(5, new EntityAINearestAttackableTarget(this, AbstractSkeleton.class, false));
     }
     
     @Nullable
@@ -529,7 +529,7 @@ public class EntityPolarWolf extends EntityTameable implements IJumpingMount, IM
     static class AIHurtByAggressor extends EntityAIHurtByTarget
     {
         public AIHurtByAggressor(final EntityPolarWolf p_i45828_1_) {
-            super((EntityCreature)p_i45828_1_, true, new Class[0]);
+            super(p_i45828_1_, true, new Class[0]);
         }
         
         protected void setEntityAttackTarget(final EntityCreature creatureIn, final EntityLivingBase entityLivingBaseIn) {
@@ -543,7 +543,7 @@ public class EntityPolarWolf extends EntityTameable implements IJumpingMount, IM
     static class AITargetAggressor extends EntityAINearestAttackableTarget<EntityPlayer>
     {
         public AITargetAggressor(final EntityPolarWolf p_i45829_1_) {
-            super((EntityCreature)p_i45829_1_, EntityPlayer.class, true);
+            super(p_i45829_1_, EntityPlayer.class, true);
         }
         
         public boolean shouldExecute() {

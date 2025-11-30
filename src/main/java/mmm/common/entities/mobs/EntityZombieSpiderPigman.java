@@ -335,7 +335,7 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     static class AIHurtByAggressor extends EntityAIHurtByTarget
     {
         public AIHurtByAggressor(final EntityZombieSpiderPigman p_i45828_1_) {
-            super((EntityCreature)p_i45828_1_, true, new Class[0]);
+            super(p_i45828_1_, true, new Class[0]);
         }
         
         protected void setEntityAttackTarget(final EntityCreature creatureIn, final EntityLivingBase entityLivingBaseIn) {
@@ -349,7 +349,7 @@ public class EntityZombieSpiderPigman extends EntityZombie implements IMutant
     static class AITargetAggressor extends EntityAINearestAttackableTarget<EntityPlayer>
     {
         public AITargetAggressor(final EntityZombieSpiderPigman p_i45829_1_) {
-            super((EntityCreature)p_i45829_1_, EntityPlayer.class, true);
+            super(p_i45829_1_, EntityPlayer.class, true);
         }
         
         public boolean shouldExecute() {

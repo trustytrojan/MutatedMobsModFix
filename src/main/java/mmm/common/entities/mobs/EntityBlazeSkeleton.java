@@ -49,13 +49,13 @@ public class EntityBlazeSkeleton extends EntityMob implements IRangedAttackMob, 
     
     protected void initEntityAI() {
         this.tasks.addTask(6, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, true));
-        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
-        this.tasks.addTask(7, new EntityAIWanderAvoidWater((EntityCreature)this, 1.0, 0.0f));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGolem.class, true));
+        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0));
+        this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0, 0.0f));
         this.tasks.addTask(8, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(8, new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(2, new EntityAIHurtByTarget((EntityCreature)this, false, new Class[0]));
+        this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false, new Class[0]));
         this.tasks.addTask(2, new EntityAIAttackRangedBow((EntityMob)this, 0.4, 12, 240.0f));
     }
     

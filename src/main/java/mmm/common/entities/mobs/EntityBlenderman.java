@@ -62,21 +62,21 @@ public class EntityBlenderman extends EntityMob implements IMutant
     
     protected void initEntityAI() {
         this.tasks.addTask(0, new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(7, new EntityAIWanderAvoidWater((EntityCreature)this, 1.0, 0.0f));
+        this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0, 0.0f));
         this.tasks.addTask(8, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(8, new EntityAILookIdle((EntityLiving)this));
         this.tasks.addTask(10, new AIPlaceBlock(this));
         this.tasks.addTask(11, new AITakeBlock(this));
         this.targetTasks.addTask(1, new AIFindPlayer(this));
-        this.tasks.addTask(1, new EntityAIAttackMelee((EntityCreature)this, 1.0, true));
-        this.tasks.addTask(2, new EntityAIMoveTowardsTarget((EntityCreature)this, 0.7, 70.0f));
-        this.tasks.addTask(3, new EntityAIMoveThroughVillage((EntityCreature)this, 0.7, true));
-        this.tasks.addTask(4, new EntityAIMoveTowardsRestriction((EntityCreature)this, 1.0));
-        this.tasks.addTask(6, new EntityAIWanderAvoidWater((EntityCreature)this, 0.6));
+        this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0, true));
+        this.tasks.addTask(2, new EntityAIMoveTowardsTarget(this, 0.7, 70.0f));
+        this.tasks.addTask(3, new EntityAIMoveThroughVillage(this, 0.7, true));
+        this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, 1.0));
+        this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 0.6));
         this.tasks.addTask(7, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget((EntityCreature)this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget((EntityCreature)this, EntityWolf.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget((EntityCreature)this, EntityGolem.class, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityWolf.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityGolem.class, true));
     }
     
     protected void applyEntityAttributes() {
@@ -455,7 +455,7 @@ public class EntityBlenderman extends EntityMob implements IMutant
         private int teleportTime;
         
         public AIFindPlayer(final EntityBlenderman p_i45842_1_) {
-            super((EntityCreature)p_i45842_1_, EntityPlayer.class, false);
+            super(p_i45842_1_, EntityPlayer.class, false);
             this.enderman = p_i45842_1_;
         }
         

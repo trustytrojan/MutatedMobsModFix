@@ -73,10 +73,10 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
         this.tasks.addTask(4, new AIAttack());
         this.tasks.addTask(7, new AIPeek());
         this.tasks.addTask(8, new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget((EntityCreature)this, true, new Class[0]));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
         this.targetTasks.addTask(2, new AIAttackNearest(this));
         this.targetTasks.addTask(3, new AIDefenseAttack(this));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget((EntityCreature)this, EntityLivingBase.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityLivingBase.class, true));
     }
     
     protected boolean canTriggerWalking() {
@@ -599,7 +599,7 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
     class AIAttackNearest extends EntityAINearestAttackableTarget<EntityPlayer>
     {
         public AIAttackNearest(final EntityWitherShulker shulker) {
-            super((EntityCreature)shulker, EntityPlayer.class, true);
+            super(shulker, EntityPlayer.class, true);
         }
         
         public boolean shouldExecute() {
@@ -618,7 +618,7 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
     static class AIDefenseAttack extends EntityAINearestAttackableTarget<EntityLivingBase>
     {
         public AIDefenseAttack(final EntityWitherShulker shulker) {
-            super((EntityCreature)shulker, EntityLivingBase.class, 10, true, false, new Predicate<EntityLivingBase>() {
+            super(shulker, EntityLivingBase.class, 10, true, false, new Predicate<EntityLivingBase>() {
                 public boolean apply(@Nullable final EntityLivingBase p_apply_1_) {
                     return p_apply_1_ instanceof IMob;
                 }
