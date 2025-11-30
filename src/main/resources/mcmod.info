@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "mmm",
+  "name": "Mutated Mobs Mod Fix",
+  "description": "Fork of rolik1997's Mutated Mobs Mod with many bugfixes",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://github.com/trustytrojan/MutatedMobsModFix",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["rolik1997", "trustytrojan"],
+  "credits": "",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
