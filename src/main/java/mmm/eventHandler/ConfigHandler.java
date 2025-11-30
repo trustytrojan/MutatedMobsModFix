@@ -52,23 +52,23 @@ public class ConfigHandler
     public static int M_ZombieSpiderSpawnRate = 10;
     public static int M_SquidGhastSpawnRate = 10;
     public static int M_HuskSpiderSpawnRate = 10;
-    public static int M_WitherShulkerSpawnRate = 0;
-    public static int M_ShulkerWitherSpawnRate = 0;
+    public static int M_WitherShulkerSpawnRate = 1;
+    public static int M_ShulkerWitherSpawnRate = 1;
     public static int M_GuardianGolemSpawnRate = 0;
     public static int M_SlimeGolemSpawnRate = 0;
     public static int M_CreeperGolemSpawnRate = 0;
     public static int M_BlazeGolemSpawnRate = 0;
-    public static int M_ElderSpiderGuardianSpawnRate = 0;
-    public static int M_IlliusionerGhastSpawnRate = 0;
-    public static int M_SpookSpawnRate = 0;
+    public static int M_ElderSpiderGuardianSpawnRate = 1;
+    public static int M_IlliusionerGhastSpawnRate = 10;
+    public static int M_SpookSpawnRate = 1;
     public static int M_SquidCreeperSpawnRate = 10;
     public static int M_EndermanCreeperSpawnRate = 10;
     public static int M_EnderSnowmanSpawnRate = 0;
     public static int M_BlazeSnowmanSpawnRate = 0;
-    public static int M_SantaSpiderSpawnRate = 0;
+    public static int M_SantaSpiderSpawnRate = 1;
     public static int M_WitherGolemSpawnRate = 0;
     public static int M_PolarWolfSpawnRate = 10;
-    public static int M_BlendermanSpawnRate = 0;
+    public static int M_BlendermanSpawnRate = 10;
 
     @Config.Comment({ "Sets limit for specific type of mobs in one chunk!" })
     public static int Min_MobAmount = 1;
