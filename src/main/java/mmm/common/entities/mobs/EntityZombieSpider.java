@@ -65,9 +65,9 @@ public class EntityZombieSpider extends EntityMob implements IMutant
     protected void applyEntityAI() {
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[] { EntityPigZombie.class }));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityVillager.class, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityIronGolem.class, true));
     }
     
     protected void applyEntityAttributes() {
@@ -320,7 +320,9 @@ public class EntityZombieSpider extends EntityMob implements IMutant
             EntityZombieSpidervillager.copyLocationAndAnglesFrom(entityvillager);
             this.world.removeEntity(entityvillager);
             EntityZombieSpidervillager.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(EntityZombieSpidervillager)), (IEntityLivingData)new GroupData(false));
-            EntityZombieSpidervillager.setProfession(entityvillager.getProfession());
+            @SuppressWarnings("deprecation")
+            int profession = entityvillager.getProfession();
+            EntityZombieSpidervillager.setProfession(profession);
             EntityZombieSpidervillager.setChild(entityvillager.isChild());
             EntityZombieSpidervillager.setNoAI(entityvillager.isAIDisabled());
             if (entityvillager.hasCustomName()) {

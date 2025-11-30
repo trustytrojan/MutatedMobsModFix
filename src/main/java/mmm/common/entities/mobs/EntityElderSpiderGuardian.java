@@ -53,10 +53,10 @@ public class EntityElderSpiderGuardian extends EntityMob implements IMutant
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0, 0.0f));
         this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0, true));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGolem.class, true));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityVillager.class, true));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySquid.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityGolem.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityVillager.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntitySquid.class, true));
     }
     
     protected void applyEntityAttributes() {

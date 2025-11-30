@@ -169,7 +169,7 @@ public class EntityGhastShulker extends EntityGolem implements IMob, IMutant
             final IBlockState iblockstate = this.world.getBlockState(blockpos);
             if (iblockstate.getMaterial() != Material.AIR) {
                 if (iblockstate.getBlock() == Blocks.PISTON_EXTENSION) {
-                    final EnumFacing enumfacing = (EnumFacing)iblockstate.getValue((IProperty)BlockPistonBase.FACING);
+                    final EnumFacing enumfacing = (EnumFacing)iblockstate.getValue(BlockPistonBase.FACING);
                     if (this.world.isAirBlock(blockpos.offset(enumfacing))) {
                         blockpos = blockpos.offset(enumfacing);
                         this.dataManager.set(EntityGhastShulker.ATTACHED_BLOCK_POS, com.google.common.base.Optional.of(blockpos));
@@ -179,7 +179,7 @@ public class EntityGhastShulker extends EntityGolem implements IMob, IMutant
                     }
                 }
                 else if (iblockstate.getBlock() == Blocks.PISTON_HEAD) {
-                    final EnumFacing enumfacing2 = (EnumFacing)iblockstate.getValue((IProperty)BlockPistonExtension.FACING);
+                    final EnumFacing enumfacing2 = (EnumFacing)iblockstate.getValue(BlockPistonExtension.FACING);
                     if (this.world.isAirBlock(blockpos.offset(enumfacing2))) {
                         blockpos = blockpos.offset(enumfacing2);
                         this.dataManager.set(EntityGhastShulker.ATTACHED_BLOCK_POS, com.google.common.base.Optional.of(blockpos));

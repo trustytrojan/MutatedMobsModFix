@@ -76,7 +76,7 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
         this.targetTasks.addTask(2, new AIAttackNearest(this));
         this.targetTasks.addTask(3, new AIDefenseAttack(this));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityLivingBase.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, true));
     }
     
     protected boolean canTriggerWalking() {
@@ -197,7 +197,7 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
             final IBlockState iblockstate = this.world.getBlockState(blockpos);
             if (iblockstate.getMaterial() != Material.AIR) {
                 if (iblockstate.getBlock() == Blocks.PISTON_EXTENSION) {
-                    final EnumFacing enumfacing = (EnumFacing)iblockstate.getValue((IProperty)BlockPistonBase.FACING);
+                    final EnumFacing enumfacing = (EnumFacing)iblockstate.getValue(BlockPistonBase.FACING);
                     if (this.world.isAirBlock(blockpos.offset(enumfacing))) {
                         blockpos = blockpos.offset(enumfacing);
                         this.dataManager.set(EntityWitherShulker.ATTACHED_BLOCK_POS, com.google.common.base.Optional.of(blockpos));
@@ -207,7 +207,7 @@ public class EntityWitherShulker extends EntityMob implements IBoss, IMutant
                     }
                 }
                 else if (iblockstate.getBlock() == Blocks.PISTON_HEAD) {
-                    final EnumFacing enumfacing2 = (EnumFacing)iblockstate.getValue((IProperty)BlockPistonExtension.FACING);
+                    final EnumFacing enumfacing2 = (EnumFacing)iblockstate.getValue(BlockPistonExtension.FACING);
                     if (this.world.isAirBlock(blockpos.offset(enumfacing2))) {
                         blockpos = blockpos.offset(enumfacing2);
                         this.dataManager.set(EntityWitherShulker.ATTACHED_BLOCK_POS, com.google.common.base.Optional.of(blockpos));

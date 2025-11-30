@@ -74,7 +74,7 @@ public class EntityEnderGolem extends EntityGolem implements IMutant
         this.tasks.addTask(7, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
         this.targetTasks.addTask(1, new EntityAIProtectTheVillage(this));
         this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false, new Class[0]));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityLiving.class, 5, false, true, new Predicate<EntityLiving>() {
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityLiving.class, 5, false, true, new Predicate<EntityLiving>() {
             public boolean apply(@Nullable final EntityLiving p_apply_1_) {
                 return p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_);
             }
@@ -429,7 +429,7 @@ public class EntityEnderGolem extends EntityGolem implements IMutant
         
         public boolean shouldExecute() {
             final double d0 = this.getTargetDistance();
-            this.player = this.enderman.world.getNearestAttackablePlayer(this.enderman.posX, this.enderman.posY, this.enderman.posZ, d0, d0, (Function)null, new Predicate<EntityPlayer>() {
+            this.player = this.enderman.world.getNearestAttackablePlayer(this.enderman.posX, this.enderman.posY, this.enderman.posZ, d0, d0, null, new Predicate<EntityPlayer>() {
                 public boolean apply(@Nullable final EntityPlayer p_apply_1_) {
                     return p_apply_1_ != null && AIFindPlayer.this.enderman.shouldAttackPlayer(p_apply_1_);
                 }

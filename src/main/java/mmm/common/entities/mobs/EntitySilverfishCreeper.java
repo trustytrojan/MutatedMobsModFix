@@ -53,7 +53,7 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
     
     protected void initEntityAI() {
         this.tasks.addTask(2, new EntityAICreeperSwell2(this));
-        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityOcelot.class, 6.0f, 1.0, 1.2));
+        this.tasks.addTask(3, new EntityAIAvoidEntity<>(this, EntityOcelot.class, 6.0f, 1.0, 1.2));
         this.summonSilverfish = new AISummonSilverfish(this);
         this.tasks.addTask(1, new EntityAISwimming((EntityLiving)this));
         this.tasks.addTask(3, this.summonSilverfish);
@@ -61,7 +61,7 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
         this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8));
         this.tasks.addTask(6, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(6, new EntityAILookIdle((EntityLiving)this));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
         this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false, new Class[0]));
     }
     
@@ -393,7 +393,7 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
                 final BlockPos blockpos = new BlockPos(this.entity.posX, this.entity.posY + 0.5, this.entity.posZ).offset(this.facing);
                 final IBlockState iblockstate = world.getBlockState(blockpos);
                 if (BlockSilverfish.canContainSilverfish(iblockstate)) {
-                    world.setBlockState(blockpos, Blocks.MONSTER_EGG.getDefaultState().withProperty((IProperty)BlockSilverfish.VARIANT, BlockSilverfish.EnumType.forModelBlock(iblockstate)), 3);
+                    world.setBlockState(blockpos, Blocks.MONSTER_EGG.getDefaultState().withProperty(BlockSilverfish.VARIANT, BlockSilverfish.EnumType.forModelBlock(iblockstate)), 3);
                     this.entity.spawnExplosionParticle();
                     this.entity.setDead();
                 }
@@ -436,7 +436,7 @@ public class EntitySilverfishCreeper extends EntityHalfCreeper
                                     world.destroyBlock(blockpos2, true);
                                 }
                                 else {
-                                    world.setBlockState(blockpos2, ((BlockSilverfish.EnumType)iblockstate.getValue((IProperty)BlockSilverfish.VARIANT)).getModelBlock(), 3);
+                                    world.setBlockState(blockpos2, ((BlockSilverfish.EnumType)iblockstate.getValue(BlockSilverfish.VARIANT)).getModelBlock(), 3);
                                 }
                                 if (random.nextBoolean()) {
                                     return;

@@ -38,7 +38,7 @@ public class EntityEnderManSkeleton extends EntityMob implements IRangedAttackMo
     
     public EntityEnderManSkeleton(final World worldIn) {
         super(worldIn);
-        this.aiArrowAttack = (EntityAIAttackRangedBow<EntityEnderManSkeleton>)new EntityAIAttackRangedBow((EntityMob)this, 1.0, 25, 1.0f);
+        this.aiArrowAttack = new EntityAIAttackRangedBow<>(this, 1.0, 25, 1.0f);
         this.aiAttackOnCollide = new EntityAIAttackMelee(this, 1.2, false) {
             public void resetTask() {
                 super.resetTask();
@@ -60,9 +60,9 @@ public class EntityEnderManSkeleton extends EntityMob implements IRangedAttackMo
         this.tasks.addTask(6, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(6, new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityWolf.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityGolem.class, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityWolf.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityGolem.class, true));
     }
     
     protected void applyEntityAttributes() {

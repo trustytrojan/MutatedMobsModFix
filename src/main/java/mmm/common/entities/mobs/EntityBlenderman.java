@@ -74,9 +74,9 @@ public class EntityBlenderman extends EntityMob implements IMutant
         this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, 1.0));
         this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 0.6));
         this.tasks.addTask(7, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityWolf.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityGolem.class, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityWolf.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityGolem.class, true));
     }
     
     protected void applyEntityAttributes() {
@@ -461,7 +461,7 @@ public class EntityBlenderman extends EntityMob implements IMutant
         
         public boolean shouldExecute() {
             final double d0 = this.getTargetDistance();
-            this.player = this.enderman.world.getNearestAttackablePlayer(this.enderman.posX, this.enderman.posY, this.enderman.posZ, d0, d0, (Function)null, new Predicate<EntityPlayer>() {
+            this.player = this.enderman.world.getNearestAttackablePlayer(this.enderman.posX, this.enderman.posY, this.enderman.posZ, d0, d0, null, new Predicate<EntityPlayer>() {
                 public boolean apply(@Nullable final EntityPlayer p_apply_1_) {
                     return p_apply_1_ != null && AIFindPlayer.this.enderman.shouldAttackPlayer(p_apply_1_);
                 }

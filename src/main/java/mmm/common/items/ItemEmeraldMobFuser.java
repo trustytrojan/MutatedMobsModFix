@@ -61,7 +61,7 @@ public class ItemEmeraldMobFuser extends Item
             this.marked = null;
             this.marked2 = null;
         }
-        return (ActionResult<ItemStack>)new ActionResult(EnumActionResult.SUCCESS, itemstack);
+        return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
     }
     
     public void SpawnMutant(final World world, final EntityPlayer playerIn) {

@@ -19,24 +19,24 @@ public abstract class AbstractCustomIllager extends EntityMob
     
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register((DataParameter)AbstractCustomIllager.AGGRESSIVE, 0);
+        this.dataManager.register(AbstractCustomIllager.AGGRESSIVE, (byte)0);
     }
     
     @SideOnly(Side.CLIENT)
     protected boolean isAggressive(final int mask) {
-        final int i = (byte)this.dataManager.get((DataParameter)AbstractCustomIllager.AGGRESSIVE);
+        final int i = (byte)this.dataManager.get(AbstractCustomIllager.AGGRESSIVE);
         return (i & mask) != 0x0;
     }
     
     protected void setAggressive(final int mask, final boolean value) {
-        int i = (byte)this.dataManager.get((DataParameter)AbstractCustomIllager.AGGRESSIVE);
+        int i = (byte)this.dataManager.get(AbstractCustomIllager.AGGRESSIVE);
         if (value) {
             i |= mask;
         }
         else {
             i &= ~mask;
         }
-        this.dataManager.set((DataParameter)AbstractCustomIllager.AGGRESSIVE, (byte)(i & 0xFF));
+        this.dataManager.set(AbstractCustomIllager.AGGRESSIVE, (byte)(i & 0xFF));
     }
     
     public CreatureType getCreatureType() {

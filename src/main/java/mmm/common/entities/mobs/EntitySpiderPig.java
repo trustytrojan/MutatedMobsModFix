@@ -49,7 +49,7 @@ public class EntitySpiderPig extends EntityAnimal implements IJumpingMount, IMut
         this.tasks.addTask(1, new EntityAIPanic(this, 1.25));
         this.tasks.addTask(3, new EntityAIMate((EntityAnimal)this, 1.0));
         this.tasks.addTask(4, new EntityAITempt(this, 1.2, Items.CARROT_ON_A_STICK, false));
-        this.tasks.addTask(4, new EntityAITempt(this, 1.2, false, (Set)EntitySpiderPig.TEMPTATION_ITEMS));
+        this.tasks.addTask(4, new EntityAITempt(this, 1.2, false, EntitySpiderPig.TEMPTATION_ITEMS));
         this.tasks.addTask(5, new EntityAIFollowParent((EntityAnimal)this, 1.1));
         this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0));
         this.tasks.addTask(7, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));

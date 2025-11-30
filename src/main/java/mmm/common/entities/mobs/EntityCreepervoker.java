@@ -45,7 +45,7 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
         super.initEntityAI();
         this.tasks.addTask(0, new EntityAISwimming((EntityLiving)this));
         this.tasks.addTask(1, new AICastingSpell());
-        this.tasks.addTask(2, new EntityAIAvoidEntity(this, EntityPlayer.class, 8.0f, 0.6, 1.0));
+        this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, EntityPlayer.class, 8.0f, 0.6, 1.0));
         this.tasks.addTask(4, new AISummonSpell());
         this.tasks.addTask(5, new AIAttackSpell());
         this.tasks.addTask(6, new AIWololoSpell());
@@ -53,11 +53,11 @@ public class EntityCreepervoker extends EntitySpellcasterIllager implements IMut
         this.tasks.addTask(9, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 3.0f, 1.0f));
         this.tasks.addTask(10, new EntityAIWatchClosest((EntityLiving)this, EntityLiving.class, 8.0f));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[] { EntityCreepervoker.class }));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true).setUnseenMemoryTicks(300));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityVillager.class, false).setUnseenMemoryTicks(300));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, false));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityGolem.class, false));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityCreeperPig.class, false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true).setUnseenMemoryTicks(300));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityVillager.class, false).setUnseenMemoryTicks(300));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityIronGolem.class, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityGolem.class, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityCreeperPig.class, false));
     }
     
     protected void applyEntityAttributes() {

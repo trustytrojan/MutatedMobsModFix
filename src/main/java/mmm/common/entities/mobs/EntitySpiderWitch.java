@@ -53,7 +53,7 @@ public class EntitySpiderWitch extends EntityMob implements IRangedAttackMob, IM
         this.tasks.addTask(3, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(3, new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
     }
     
     protected void entityInit() {

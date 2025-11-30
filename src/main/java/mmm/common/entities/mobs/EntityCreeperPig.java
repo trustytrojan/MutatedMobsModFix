@@ -46,7 +46,7 @@ public class EntityCreeperPig extends EntityHalfCreeper
     
     protected void initEntityAI() {
         this.tasks.addTask(1, new EntityAISwimming((EntityLiving)this));
-        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityOcelot.class, 6.0f, 1.0, 1.2));
+        this.tasks.addTask(3, new EntityAIAvoidEntity<>(this, EntityOcelot.class, 6.0f, 1.0, 1.2));
         this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8));
         this.tasks.addTask(6, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(6, new EntityAILookIdle((EntityLiving)this));
@@ -54,7 +54,7 @@ public class EntityCreeperPig extends EntityHalfCreeper
         if (ConfigHandler.S_EvilCreeperPigs) {
             this.tasks.addTask(2, new EntityAICreeperPigSwell(this));
             this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0, false));
-            this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+            this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
         }
         else {
             this.tasks.addTask(1, new EntityAIPanic(this, 1.25));

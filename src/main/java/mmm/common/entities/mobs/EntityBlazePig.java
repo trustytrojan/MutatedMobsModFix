@@ -52,7 +52,7 @@ public class EntityBlazePig extends EntityAnimal implements IJumpingMount, IMuta
         this.tasks.addTask(0, new EntityAISwimming((EntityLiving)this));
         this.tasks.addTask(3, new EntityAIMate((EntityAnimal)this, 1.0));
         this.tasks.addTask(4, new EntityAITempt(this, 1.2, Items.CARROT_ON_A_STICK, false));
-        this.tasks.addTask(4, new EntityAITempt(this, 1.2, false, (Set)EntityBlazePig.TEMPTATION_ITEMS));
+        this.tasks.addTask(4, new EntityAITempt(this, 1.2, false, EntityBlazePig.TEMPTATION_ITEMS));
         this.tasks.addTask(5, new EntityAIFollowParent((EntityAnimal)this, 1.1));
         this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0));
         this.tasks.addTask(7, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 6.0f));

@@ -63,7 +63,7 @@ public class EntityGuardianGolem extends EntityGolem implements IMutant
         this.targetTasks.addTask(1, new EntityAIDefendVillage8(this));
         this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false, new Class[0]));
         this.tasks.addTask(4, new AIGuardianAttack(this));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityLiving.class, 10, false, true, new Predicate<EntityLiving>() {
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityLiving.class, 10, false, true, new Predicate<EntityLiving>() {
             public boolean apply(@Nullable final EntityLiving p_apply_1_) {
                 return p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_) && !(p_apply_1_ instanceof EntityCreeper);
             }

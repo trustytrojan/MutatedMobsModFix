@@ -83,7 +83,7 @@ public class EntitySpook extends EntityMob implements IBoss, IMutant
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[] { EntityPigZombie.class }));
         this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLivingBase.class, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, true));
     }
     
     protected void applyEntityAttributes() {

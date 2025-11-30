@@ -36,7 +36,8 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
     private static final DataParameter<Integer> FIRST_HEAD_TARGET;
     private static final DataParameter<Integer> SECOND_HEAD_TARGET;
     private static final DataParameter<Integer> THIRD_HEAD_TARGET;
-    private static final DataParameter<Integer>[] HEAD_TARGETS;
+    @SuppressWarnings("unchecked")
+    private static final DataParameter<Integer>[] HEAD_TARGETS = new DataParameter[] { EntityShulkerWither.FIRST_HEAD_TARGET, EntityShulkerWither.SECOND_HEAD_TARGET, EntityShulkerWither.THIRD_HEAD_TARGET };;
     private static final DataParameter<Integer> INVULNERABILITY_TIME;
     private final float[] xRotationHeads;
     private final float[] yRotationHeads;
@@ -72,7 +73,7 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
         this.tasks.addTask(6, new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0f));
         this.tasks.addTask(7, new EntityAILookIdle((EntityLiving)this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLiving.class, 0, false, false, EntityShulkerWither.NOT_UNDEAD));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLiving.class, 0, false, false, EntityShulkerWither.NOT_UNDEAD));
     }
     
     protected void entityInit() {
@@ -507,7 +508,6 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
         FIRST_HEAD_TARGET = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
         SECOND_HEAD_TARGET = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
         THIRD_HEAD_TARGET = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
-        HEAD_TARGETS = new DataParameter[] { EntityShulkerWither.FIRST_HEAD_TARGET, EntityShulkerWither.SECOND_HEAD_TARGET, EntityShulkerWither.THIRD_HEAD_TARGET };
         INVULNERABILITY_TIME = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
         NOT_UNDEAD = new Predicate<Entity>() {
             public boolean apply(@Nullable final Entity p_apply_1_) {

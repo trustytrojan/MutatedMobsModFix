@@ -103,15 +103,15 @@ public class EntityShulkerSkull extends EntityFireball
     }
     
     protected void entityInit() {
-        this.dataManager.register((DataParameter)EntityShulkerSkull.INVULNERABLE, false);
+        this.dataManager.register(EntityShulkerSkull.INVULNERABLE, false);
     }
     
     public boolean isInvulnerable() {
-        return (boolean)this.dataManager.get((DataParameter)EntityShulkerSkull.INVULNERABLE);
+        return (boolean)this.dataManager.get(EntityShulkerSkull.INVULNERABLE);
     }
     
     public void setInvulnerable(final boolean invulnerable) {
-        this.dataManager.set((DataParameter)EntityShulkerSkull.INVULNERABLE, invulnerable);
+        this.dataManager.set(EntityShulkerSkull.INVULNERABLE, invulnerable);
     }
     
     protected boolean isFireballFiery() {
