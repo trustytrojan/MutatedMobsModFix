@@ -20,7 +20,7 @@ public class RenderSpiderHusk extends RenderBiped<EntityHuskSpider>
     
     public RenderSpiderHusk(final RenderManager renderManagerIn) {
         super(renderManagerIn, (ModelBiped)new ModelSpiderHusk(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerBipedArmor(this) {
+        this.addLayer(new LayerBipedArmor(this) {
             protected void initArmor() {
                 this.modelLeggings = new ModelSpiderHusk(0.5f, true);
                 this.modelArmor = new ModelSpiderHusk(1.0f, true);

@@ -20,7 +20,7 @@ public class RenderSpiderZombie extends RenderBiped<EntityZombieSpider>
     
     public RenderSpiderZombie(final RenderManager renderManagerIn) {
         super(renderManagerIn, (ModelBiped)new ModelSpiderZombie(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerBipedArmor(this) {
+        this.addLayer(new LayerBipedArmor(this) {
             protected void initArmor() {
                 this.modelLeggings = new ModelSpiderZombie(0.5f, true);
                 this.modelArmor = new ModelSpiderZombie(1.0f, true);

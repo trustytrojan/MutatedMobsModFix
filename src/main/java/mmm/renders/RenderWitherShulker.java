@@ -23,7 +23,7 @@ public class RenderWitherShulker extends RenderLiving<EntityWitherShulker>
     
     public RenderWitherShulker(final RenderManager p_i47194_1_) {
         super(p_i47194_1_, new ModelWitherShulker(), 0.0f);
-        this.addLayer((LayerRenderer)new HeadLayer());
+        this.addLayer(new HeadLayer());
     }
     
     public ModelWitherShulker getMainModel() {

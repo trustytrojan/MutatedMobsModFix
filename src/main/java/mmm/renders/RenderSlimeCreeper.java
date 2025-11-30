@@ -22,8 +22,8 @@ public class RenderSlimeCreeper extends RenderLiving<EntitySlimeCreeper>
     
     public RenderSlimeCreeper(final RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelCreeper(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerSlimeCreeperCharge(this));
-        this.addLayer((LayerRenderer)new LayerSlimeCreeperGel(this));
+        this.addLayer(new LayerSlimeCreeperCharge(this));
+        this.addLayer(new LayerSlimeCreeperGel(this));
     }
     
     protected void preRenderCallback(final EntitySlimeCreeper entitylivingbaseIn, final float partialTickTime) {

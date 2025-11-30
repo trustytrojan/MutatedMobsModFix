@@ -26,7 +26,7 @@ public class RenderEnderGolem extends RenderLiving<EntityEnderGolem>
     public RenderEnderGolem(final RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelEnderGolem(0.0f), 0.5f);
         this.rnd = new Random();
-        this.addLayer((LayerRenderer)new LayerHeldBlockGolem(this));
+        this.addLayer(new LayerHeldBlockGolem(this));
     }
     
     public ModelEnderGolem getMainModel() {

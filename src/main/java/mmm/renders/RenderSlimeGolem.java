@@ -22,7 +22,7 @@ public class RenderSlimeGolem extends RenderLiving<EntitySlimeGolem>
     
     public RenderSlimeGolem(final RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelSlimeGolem(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerSlimeGolemFlower(this));
+        this.addLayer(new LayerSlimeGolemFlower(this));
     }
     
     protected ResourceLocation getEntityTexture(final EntitySlimeGolem entity) {

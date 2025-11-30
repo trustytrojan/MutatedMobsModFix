@@ -25,7 +25,7 @@ public class RenderBlenderman extends RenderLiving<EntityBlenderman>
     public RenderBlenderman(final RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelBlenderman(), 0.5f);
         this.rnd = new Random();
-        this.addLayer((LayerRenderer)new LayerHeldBlockBlenderman(this));
+        this.addLayer(new LayerHeldBlockBlenderman(this));
     }
     
     public ModelBlenderman getMainModel() {

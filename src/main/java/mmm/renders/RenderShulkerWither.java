@@ -23,7 +23,7 @@ public class RenderShulkerWither extends RenderLiving<EntityShulkerWither>
     
     public RenderShulkerWither(final RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelShulkerWither(0.0f), 1.0f);
-        this.addLayer((LayerRenderer)new LayerShulkerWitherAura(this));
+        this.addLayer(new LayerShulkerWitherAura(this));
     }
     
     protected ResourceLocation getEntityTexture(final EntityShulkerWither entity) {

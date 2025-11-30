@@ -22,9 +22,9 @@ public class RenderIliusionWitherSkeleton extends RenderBiped<EntityIlliusionerW
     
     public RenderIliusionWitherSkeleton(final RenderManager renderManagerIn) {
         super(renderManagerIn, (ModelBiped)new ModelIWitherSkeleton(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerHeldItem((RenderLivingBase)this));
-        this.addLayer((LayerRenderer)new LayerBipedArmor((RenderLivingBase)this));
-        this.addLayer((LayerRenderer)new LayerIliusionClothing((RenderLivingBase)this));
+        this.addLayer(new LayerHeldItem((RenderLivingBase)this));
+        this.addLayer(new LayerBipedArmor((RenderLivingBase)this));
+        this.addLayer(new LayerIliusionClothing((RenderLivingBase)this));
     }
     
     protected ResourceLocation getEntityTexture(final EntityIlliusionerWitherSkeleton entity) {

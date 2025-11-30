@@ -25,7 +25,7 @@ public class RenderGuardianGolem extends RenderLiving<EntityGuardianGolem>
     
     public RenderGuardianGolem(final RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelGuardianGolem(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerGuardianGolemFlower(this));
+        this.addLayer(new LayerGuardianGolemFlower(this));
     }
     
     protected ResourceLocation getEntityTexture(final EntityGuardianGolem entity) {

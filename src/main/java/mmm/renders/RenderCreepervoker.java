@@ -21,7 +21,7 @@ public class RenderCreepervoker extends RenderLiving<EntityMob>
     
     public RenderCreepervoker(final RenderManager p_i47207_1_) {
         super(p_i47207_1_, new ModelIllager(0.0f, 0.0f, 64, 64), 0.5f);
-        this.addLayer((LayerRenderer)new LayerHeldItem(this) {
+        this.addLayer(new LayerHeldItem(this) {
             public void doRenderLayer(final EntityLivingBase entitylivingbaseIn, final float limbSwing, final float limbSwingAmount, final float partialTicks, final float ageInTicks, final float netHeadYaw, final float headPitch, final float scale) {
                 if (((EntityCreepervoker)entitylivingbaseIn).isSpellcasting()) {
                     super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);

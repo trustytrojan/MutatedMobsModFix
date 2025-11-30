@@ -21,8 +21,8 @@ public class RenderBlazeSkeleton extends RenderBiped<EntityBlazeSkeleton>
     
     public RenderBlazeSkeleton(final RenderManager renderManagerIn) {
         super(renderManagerIn, (ModelBiped)new ModelBlazeSkeleton(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerHeldItem((RenderLivingBase)this));
-        this.addLayer((LayerRenderer)new LayerBipedArmor(this) {
+        this.addLayer(new LayerHeldItem((RenderLivingBase)this));
+        this.addLayer(new LayerBipedArmor(this) {
             protected void initArmor() {
                 this.modelLeggings = new ModelBlazeSkeleton(0.5f, true);
                 this.modelArmor = new ModelBlazeSkeleton(1.0f, true);

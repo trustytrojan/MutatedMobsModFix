@@ -23,8 +23,8 @@ public class RenderCreeperGolem extends RenderLiving<EntityCreeperGolem>
     
     public RenderCreeperGolem(final RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelCreeperGolem(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerCreeperGolemFlower(this));
-        this.addLayer((LayerRenderer)new LayerCreeperGolemCharge(this));
+        this.addLayer(new LayerCreeperGolemFlower(this));
+        this.addLayer(new LayerCreeperGolemCharge(this));
     }
     
     protected ResourceLocation getEntityTexture(final EntityCreeperGolem entity) {

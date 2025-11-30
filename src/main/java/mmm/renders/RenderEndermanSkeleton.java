@@ -21,8 +21,8 @@ public class RenderEndermanSkeleton extends RenderBiped<EntityEnderManSkeleton>
     
     public RenderEndermanSkeleton(final RenderManager renderManagerIn) {
         super(renderManagerIn, (ModelBiped)new ModelEndermanSkeleton(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerHeldItem((RenderLivingBase)this));
-        this.addLayer((LayerRenderer)new LayerBipedArmor(this) {
+        this.addLayer(new LayerHeldItem((RenderLivingBase)this));
+        this.addLayer(new LayerBipedArmor(this) {
             protected void initArmor() {
                 this.modelLeggings = new ModelEndermanSkeleton(0.5f, true);
                 this.modelArmor = new ModelEndermanSkeleton(1.0f, true);

@@ -22,7 +22,7 @@ public class RenderSpiderWitch extends RenderLiving<EntitySpiderWitch>
     
     public RenderSpiderWitch(final RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelSpiderWitch(0.0f), 0.5f);
-        this.addLayer((LayerRenderer)new LayerHeldItemSpiderWitch(this));
+        this.addLayer(new LayerHeldItemSpiderWitch(this));
     }
     
     public ModelSpiderWitch getMainModel() {

@@ -23,7 +23,7 @@ public class RenderGhastShulker extends RenderLiving<EntityGhastShulker>
     
     public RenderGhastShulker(final RenderManager p_i47194_1_) {
         super(p_i47194_1_, new ModelGhastShulker(), 0.0f);
-        this.addLayer((LayerRenderer)new HeadLayer());
+        this.addLayer(new HeadLayer());
     }
     
     public ModelGhastShulker getMainModel() {

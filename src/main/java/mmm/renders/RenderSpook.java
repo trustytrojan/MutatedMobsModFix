@@ -22,8 +22,8 @@ public class RenderSpook extends RenderBiped<EntitySpook>
     
     public RenderSpook(final RenderManager renderManagerIn) {
         super(renderManagerIn, (ModelBiped)new ModelSpook(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerSpookArmor(this));
-        this.addLayer((LayerRenderer)new LayerBipedArmor(this) {
+        this.addLayer(new LayerSpookArmor(this));
+        this.addLayer(new LayerBipedArmor(this) {
             protected void initArmor() {
                 this.modelLeggings = new ModelSpook(0.5f, true);
                 this.modelArmor = new ModelSpook(1.0f, true);

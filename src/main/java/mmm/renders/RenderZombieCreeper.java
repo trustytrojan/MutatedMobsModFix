@@ -22,7 +22,7 @@ public class RenderZombieCreeper extends RenderBiped<EntityZombieCreeper>
     
     public RenderZombieCreeper(final RenderManager renderManagerIn) {
         super(renderManagerIn, (ModelBiped)new ModelZombieCreeper(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerBipedArmor(this) {
+        this.addLayer(new LayerBipedArmor(this) {
             protected void initArmor() {
                 this.modelLeggings = new ModelZombieCreeper(0.5f, true);
                 this.modelArmor = new ModelZombieCreeper(1.0f, true);

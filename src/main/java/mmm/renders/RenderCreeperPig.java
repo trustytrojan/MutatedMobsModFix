@@ -23,7 +23,7 @@ public class RenderCreeperPig extends RenderLiving<EntityCreeperPig>
     
     public RenderCreeperPig(final RenderManager p_i47198_1_) {
         super(p_i47198_1_, new ModelCreeperPig(), 0.7f);
-        this.addLayer((LayerRenderer)new LayerCreeperPigCharge(this));
+        this.addLayer(new LayerCreeperPigCharge(this));
     }
     
     protected void preRenderCallback(final EntityCreeperPig entitylivingbaseIn, final float partialTickTime) {

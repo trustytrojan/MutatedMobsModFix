@@ -23,7 +23,7 @@ public class RenderBlazeGolem extends RenderLiving<EntityBlazeGolem>
     
     public RenderBlazeGolem(final RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelBlazeGolem(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerBlazeGolemFlower(this));
+        this.addLayer(new LayerBlazeGolemFlower(this));
     }
     
     protected ResourceLocation getEntityTexture(final EntityBlazeGolem entity) {

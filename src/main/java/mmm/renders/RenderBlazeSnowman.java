@@ -21,7 +21,7 @@ public class RenderBlazeSnowman extends RenderLiving<EntityBlazeSnowman>
     
     public RenderBlazeSnowman(final RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelBlazeSnowman(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerBlazeSnowmanHead(this));
+        this.addLayer(new LayerBlazeSnowmanHead(this));
     }
     
     protected ResourceLocation getEntityTexture(final EntityBlazeSnowman entity) {

@@ -20,7 +20,7 @@ public class RenderZombieSpiderPigman extends RenderBiped<EntityZombieSpiderPigm
     
     public RenderZombieSpiderPigman(final RenderManager renderManagerIn) {
         super(renderManagerIn, (ModelBiped)new ModelSpiderPigman(), 0.5f);
-        this.addLayer((LayerRenderer)new LayerBipedArmor(this) {
+        this.addLayer(new LayerBipedArmor(this) {
             protected void initArmor() {
                 this.modelLeggings = new ModelSpiderPigman(0.5f, true);
                 this.modelArmor = new ModelSpiderPigman(1.0f, true);
