@@ -12,7 +12,7 @@ import net.minecraftforge.common.*;
 import mmm.eventHandler.*;
 import net.minecraftforge.fml.common.event.*;
 
-@Mod(modid = "mmm", version = "1.0.9", name = "Mutated Mobs Mod Fix", acceptedMinecraftVersions = "[1.12]")
+@Mod(modid = "mmm", version = "1.0.10", name = "Mutated Mobs Mod Fix", acceptedMinecraftVersions = "[1.12]")
 public class MainClass
 {
     @SidedProxy(clientSide = "mmm.client.proxy.ClientProxy", serverSide = "mmm.common.proxy.CommonProxy")
