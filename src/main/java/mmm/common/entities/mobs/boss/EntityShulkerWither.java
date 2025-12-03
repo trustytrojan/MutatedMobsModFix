@@ -33,12 +33,22 @@ import javax.annotation.*;
 public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, IBoss, IMutant
 {
     public static final net.minecraft.world.biome.Biome[] SPAWN_BIOMES = new net.minecraft.world.biome.Biome[] { Biomes.BEACH, Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.EXTREME_HILLS, Biomes.JUNGLE, Biomes.TAIGA, Biomes.MESA, Biomes.PLAINS, Biomes.SWAMPLAND, Biomes.SAVANNA, Biomes.RIVER, Biomes.REDWOOD_TAIGA, Biomes.ROOFED_FOREST, Biomes.STONE_BEACH };
-    private static final DataParameter<Integer> FIRST_HEAD_TARGET;
-    private static final DataParameter<Integer> SECOND_HEAD_TARGET;
-    private static final DataParameter<Integer> THIRD_HEAD_TARGET;
+
+    private static final DataParameter<Integer> FIRST_HEAD_TARGET = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> SECOND_HEAD_TARGET = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> THIRD_HEAD_TARGET = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
+
     @SuppressWarnings("unchecked")
-    private static final DataParameter<Integer>[] HEAD_TARGETS = new DataParameter[] { EntityShulkerWither.FIRST_HEAD_TARGET, EntityShulkerWither.SECOND_HEAD_TARGET, EntityShulkerWither.THIRD_HEAD_TARGET };;
-    private static final DataParameter<Integer> INVULNERABILITY_TIME;
+    private static final DataParameter<Integer>[] HEAD_TARGETS = new DataParameter[] { EntityShulkerWither.FIRST_HEAD_TARGET, EntityShulkerWither.SECOND_HEAD_TARGET, EntityShulkerWither.THIRD_HEAD_TARGET };
+
+    private static final DataParameter<Integer> INVULNERABILITY_TIME = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
+
+    private static final Predicate<Entity> NOT_UNDEAD = new Predicate<Entity>() {
+        public boolean apply(@Nullable final Entity p_apply_1_) {
+            return p_apply_1_ instanceof EntityLivingBase && ((EntityLivingBase)p_apply_1_).getCreatureAttribute() != EnumCreatureAttribute.UNDEAD && ((EntityLivingBase)p_apply_1_).attackable();
+        }
+    };
+
     private final float[] xRotationHeads;
     private final float[] yRotationHeads;
     private final float[] xRotOHeads;
@@ -47,7 +57,6 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
     private final int[] idleHeadUpdates;
     private int blockBreakCounter;
     private final BossInfoServer bossInfo;
-    private static final Predicate<Entity> NOT_UNDEAD;
     
     public EntityShulkerWither(final World worldIn) {
         super(worldIn);
@@ -502,18 +511,6 @@ public class EntityShulkerWither extends EntityMob implements IRangedAttackMob, 
     }
     
     public void setSwingingArms(final boolean swingingArms) {
-    }
-    
-    static {
-        FIRST_HEAD_TARGET = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
-        SECOND_HEAD_TARGET = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
-        THIRD_HEAD_TARGET = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
-        INVULNERABILITY_TIME = EntityDataManager.createKey(EntityShulkerWither.class, DataSerializers.VARINT);
-        NOT_UNDEAD = new Predicate<Entity>() {
-            public boolean apply(@Nullable final Entity p_apply_1_) {
-                return p_apply_1_ instanceof EntityLivingBase && ((EntityLivingBase)p_apply_1_).getCreatureAttribute() != EnumCreatureAttribute.UNDEAD && ((EntityLivingBase)p_apply_1_).attackable();
-            }
-        };
     }
     
     class AIDoNothing extends EntityAIBase
